@@ -1655,22 +1655,31 @@ function setMode(m){
   document.getElementById('mode-math').style.display=m==='math'?'block':'none';
   document.getElementById('mode-custom').style.display=m==='custom'?'block':'none';
   if(m==='custom') renderCustomSelects();
+  // Always re-sync card highlights so switching tabs never shows stale selections
+  syncCardHighlights();
   render();
+}
+
+function syncCardHighlights(){
+  // Always re-sync ALL card .on states to match current S.sci and S.math
+  // This prevents stale highlights when switching modes or auto-pairing
+  document.querySelectorAll('[id^="sci-"]').forEach(b=>b.classList.remove('on'));
+  document.querySelectorAll('[id^="math-"]').forEach(b=>b.classList.remove('on'));
+  document.getElementById(`sci-${S.sci}`)?.classList.add('on');
+  document.getElementById(`math-${S.math}`)?.classList.add('on');
 }
 
 function setSciMode(v){
   S.sci=v;
   S.math=SCI_TO_MATH[v]; // auto-pair math
-  document.querySelectorAll('[id^="sci-"]').forEach(b=>b.classList.remove('on'));
-  document.getElementById(`sci-${v}`)?.classList.add('on');
+  syncCardHighlights();
   render();
 }
 
 function setMathMode(v){
   S.math=v;
   S.sci=MATH_TO_SCI[v]; // auto-pair science
-  document.querySelectorAll('[id^="math-"]').forEach(b=>b.classList.remove('on'));
-  document.getElementById(`math-${v}`)?.classList.add('on');
+  syncCardHighlights();
   render();
 }
 
@@ -1770,6 +1779,7 @@ window.addEventListener('DOMContentLoaded',()=>{
 setMode('sci');
 updateMathCards();
 updateSpcResult();
+syncCardHighlights();
 </script>
 </body>
 </html>
