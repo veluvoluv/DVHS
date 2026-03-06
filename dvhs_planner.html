@@ -462,7 +462,7 @@ body{font-family:var(--font-body);background:var(--bg);color:var(--ink);min-heig
           <div class="pc-body">
             <div class="pc-name">AP Bio Focus ⭐ <span style="font-size:.6rem;opacity:.7">(selected)</span></div>
             <div class="pc-seq">Biology → H.Chemistry → AP Biology → H.Anatomy</div>
-            <div class="pc-math">📐 Math pairing: Geometry → Alg 2 → AP Calc AB → AP Calc BC</div>
+            <div class="pc-math">📐 Math pairing: Alg 2 → H.Pre-Calc → Calculus (avoids yr 11/12 AP clash)</div>
             <div class="pc-tags"><span class="ptag ptag-ok">Pre-med/Bio</span><span class="ptag ptag-ok">2 APs</span><span class="ptag ptag-ok">UC recommended</span></div>
           </div>
         </button>
@@ -517,7 +517,7 @@ body{font-family:var(--font-body);background:var(--bg);color:var(--ink);min-heig
           <div class="pc-body">
             <div class="pc-name">AP Calculus ⭐ <span style="font-size:.6rem;opacity:.7">(selected)</span></div>
             <div class="pc-seq" id="seq-apcalc"></div>
-            <div class="pc-math" id="pair-apcalc">🔬 Science pairing: AP Bio Focus</div>
+            <div class="pc-math" id="pair-apcalc">🔬 Science pairing: Standard (Bio→Chem→Physics) — AP Bio pairing available in Custom mode</div>
             <div class="pc-tags" id="tags-apcalc"><span class="ptag ptag-ok">Correct sequence ✓</span><span class="ptag ptag-ok">4 yrs math</span></div>
           </div>
         </button>
@@ -1508,6 +1508,10 @@ function togglePre(key){
   // Sync the S.msCredit for backward compat with getMATH
   S.msCredit = (hasGeoDone()||hasAlg2Done()) ? 'alg1geo' : 'alg1';
 
+  // Re-derive the math pairing for the current science choice — scenario may have changed
+  // e.g. unchecking Geo means apbio now pairs with apcalc instead of calc
+  if(S.mode !== 'custom') S.math = getSciToMath()[S.sci];
+
   // Auto-update elective slots based on Spanish MS credit
   syncSpanishElectives();
 
@@ -1619,10 +1623,36 @@ function updateMathCards(){
 
 function upGPA(yr,v){S.gpa[yr]=v;renderProgress();}
 
-// ── SCIENCE recommended math pairings
-const SCI_TO_MATH={std:'geo',hon:'apcalc',apbio:'apcalc',apchem:'calc',marine:'apstats'};
-// ── MATH recommended science pairings
-const MATH_TO_SCI={geo:'std',calc:'apbio',apcalc:'apbio',apstats:'marine'};
+// ── Science → Math pairing (scenario-aware)
+// With Alg1+Geo in MS, MATH_ALG1GEO.apcalc puts AP Calc AB in yr11 + AP Calc BC in yr12.
+// SCI.apbio also puts AP Bio in yr11 + H.Anatomy in yr12 → year 11/12 double-AP clash.
+// Solution: when only Geo done, apbio↔apcalc is incompatible. Use 'calc' instead.
+// If Alg2 also done (pre-calc start), apcalc shifts AP Calc AB to yr10 → no clash.
+function getSciToMath(){
+  const g = hasGeoDone(), a2 = hasAlg2Done();
+  return {
+    std:    'geo',
+    hon:    'apcalc',
+    apbio:  a2 ? 'apcalc' : g ? 'calc' : 'apcalc',
+    apchem: 'calc',
+    marine: 'apstats',
+  };
+}
+
+// ── Math → Science pairing (scenario-aware)
+// When user picks apcalc from Math tab + geo done in MS, pairing with apbio creates
+// AP Calc AB+BC in yr11/12 colliding with AP Bio + H.Anatomy in yr11/12.
+// In that case, use 'std' (standard Bio→Chem→Physics→Anatomy) which has no AP in yr11/12.
+function getMathToSci(){
+  const g = hasGeoDone(), a2 = hasAlg2Done();
+  return {
+    geo:     'std',
+    calc:    'apbio',
+    // apcalc: if geo done but alg2 not done → clash with apbio → use std; otherwise apbio ok
+    apcalc:  (!a2 && g) ? 'std' : 'apbio',
+    apstats: 'marine',
+  };
+}
 
 // ── CUSTOM per-year options
 const CUSTOM_SCI_YR={
@@ -1655,14 +1685,12 @@ function setMode(m){
   document.getElementById('mode-math').style.display=m==='math'?'block':'none';
   document.getElementById('mode-custom').style.display=m==='custom'?'block':'none';
   if(m==='custom') renderCustomSelects();
-  // Always re-sync card highlights so switching tabs never shows stale selections
+  // Only sync highlights to reflect current state — never re-derive on tab switch
   syncCardHighlights();
   render();
 }
 
 function syncCardHighlights(){
-  // Always re-sync ALL card .on states to match current S.sci and S.math
-  // This prevents stale highlights when switching modes or auto-pairing
   document.querySelectorAll('[id^="sci-"]').forEach(b=>b.classList.remove('on'));
   document.querySelectorAll('[id^="math-"]').forEach(b=>b.classList.remove('on'));
   document.getElementById(`sci-${S.sci}`)?.classList.add('on');
@@ -1671,14 +1699,14 @@ function syncCardHighlights(){
 
 function setSciMode(v){
   S.sci=v;
-  S.math=SCI_TO_MATH[v]; // auto-pair math
+  S.math=getSciToMath()[v]; // scenario-aware auto-pair
   syncCardHighlights();
   render();
 }
 
 function setMathMode(v){
   S.math=v;
-  S.sci=MATH_TO_SCI[v]; // auto-pair science
+  S.sci=getMathToSci()[v]; // scenario-aware auto-pair
   syncCardHighlights();
   render();
 }
@@ -1756,9 +1784,11 @@ function toggleBio(){
 }
 
 // ══════════ INIT ══════════
-S.mode='sci'; S.sci='apbio'; S.math='apcalc';
+S.mode='sci'; S.sci='apbio';
 S.pre = new Set(['geo','span1-ms','span2-ms']); // Alg1+Geo+Spanish1+2 done in MS
 S.msCredit = 'alg1geo';
+// Derive correct math pairing for the starting scenario (geo done → apbio pairs with calc not apcalc)
+S.math = 'calc'; // will be overridden properly after getSciToMath() is available
 
 S.el['9-1']={name:'Visual Art',icon:'🎨',type:'ca',ag:'F',cr:10,meta:'1 full year satisfies UC F'};
 S.el['10-1']={name:'AP Human Geography',icon:'🗺️',type:'cap',ag:'A',cr:10,ap:true,meta:'Good first AP, available via UC Scout'};
@@ -1775,6 +1805,9 @@ window.addEventListener('DOMContentLoaded',()=>{
   const s1=document.getElementById('pre-span1-ms'); if(s1) s1.checked=true;
   const s2=document.getElementById('pre-span2-ms'); if(s2) s2.checked=true;
 });
+
+// Derive correct scenario-aware pairing now that all functions are loaded
+S.math = getSciToMath()[S.sci];
 
 setMode('sci');
 updateMathCards();
