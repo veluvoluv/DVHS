@@ -1,0 +1,1133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>DVHS 4-Year Planner — Final</title>
+<link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,600;0,700;1,400&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ink:#0b1829;--ink2:#1a3a5c;--ink3:#2558a0;
+  --sky:#eef4fb;--sky2:#d8eaf8;
+  --gold:#d4860e;--gold2:#f5c842;--gold-pale:#fef9e7;
+  --green:#0a8f5f;--green-pale:#dcfce7;--green-mid:#16a34a;
+  --amber:#b45309;--amber-pale:#fef3c7;
+  --red:#b91c1c;--red-pale:#fee2e2;
+  --slate:#64748b;--slate-lt:#94a3b8;--slate-pale:#f8fafc;
+  --border:#e2e8f0;--bg:#f1f5fb;--white:#fff;
+  --shadow:0 1px 12px rgba(11,24,41,.08);
+  --shadow-md:0 4px 24px rgba(11,24,41,.12);
+  --r:14px;--rs:8px;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;font-size:13px}
+body{font-family:'Outfit',sans-serif;background:var(--bg);color:var(--ink);min-height:100vh}
+
+/* ─── HEADER ─── */
+.hdr{background:var(--ink);padding:0 24px;display:flex;align-items:stretch;justify-content:space-between;position:sticky;top:0;z-index:300;box-shadow:0 2px 20px rgba(0,0,0,.45)}
+.hdr-brand{display:flex;align-items:center;gap:10px;padding:12px 0}
+.hdr-logo{width:34px;height:34px;background:var(--gold2);border-radius:7px;display:flex;align-items:center;justify-content:center;font-size:1rem;flex-shrink:0}
+.hdr-text h1{font-family:'Lora',serif;color:#fff;font-size:1.15rem;line-height:1.1}
+.hdr-text p{color:rgba(255,255,255,.38);font-size:.65rem;margin-top:1px;letter-spacing:.04em}
+.hdr-tabs{display:flex;align-items:stretch}
+.ht{padding:0 16px;font-size:.7rem;font-weight:600;color:rgba(255,255,255,.4);cursor:pointer;display:flex;align-items:center;gap:5px;border-bottom:2px solid transparent;transition:all .2s;letter-spacing:.05em;text-transform:uppercase}
+.ht:hover{color:rgba(255,255,255,.75)}
+.ht.on{color:#fff;border-bottom-color:var(--gold2)}
+.hdr-right{display:flex;align-items:center;gap:8px;padding:0}
+.hbadge{background:rgba(212,134,14,.18);border:1px solid rgba(245,200,66,.4);color:var(--gold2);font-size:.62rem;font-weight:700;padding:3px 10px;border-radius:16px;letter-spacing:.06em}
+
+/* ─── PAGES ─── */
+.page{display:none;padding:18px 22px;max-width:1480px;margin:0 auto}
+.page.on{display:block}
+
+/* ─── GRID LAYOUT ─── */
+.two-col{display:grid;grid-template-columns:1fr 272px;gap:16px;align-items:start}
+
+/* ─── CARDS ─── */
+.card{background:var(--white);border-radius:var(--r);border:1px solid var(--border);box-shadow:var(--shadow);padding:16px 18px;margin-bottom:14px}
+.card-ttl{font-family:'Lora',serif;font-size:.95rem;color:var(--ink);margin-bottom:12px;display:flex;align-items:center;gap:8px}
+.card-ttl::after{content:'';flex:1;height:1px;background:var(--border)}
+.lbl{font-size:.6rem;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:var(--slate-lt);margin-bottom:6px}
+
+/* ─── PATH SELECTOR ─── */
+.path-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.pb{background:var(--slate-pale);border:1.5px solid var(--border);border-radius:var(--rs);padding:7px 10px;font-family:'Outfit',sans-serif;font-size:.72rem;font-weight:500;color:var(--ink);cursor:pointer;text-align:left;transition:all .18s;display:flex;align-items:center;gap:6px;width:100%;margin-bottom:4px}
+.pb:hover{border-color:var(--ink3);background:#eef4fb}
+.pb.on{background:var(--ink);border-color:var(--ink);color:#fff}
+.pb.on .pd{background:var(--gold2)}
+.pd{width:6px;height:6px;border-radius:50%;background:var(--border);flex-shrink:0;transition:background .15s}
+.bio-toggle{margin-top:8px;background:var(--gold-pale);border:1px solid #fbbf24;border-radius:var(--rs);padding:8px 12px;font-size:.7rem;color:#78350f;display:flex;align-items:center;gap:8px;cursor:pointer;transition:all .15s}
+.bio-toggle:hover{border-color:var(--gold)}
+.bio-toggle.on{background:#ea580c;border-color:#ea580c;color:#fff}
+
+/* ─── YEAR COLUMNS ─── */
+.yr-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-bottom:14px}
+.yc{background:var(--white);border-radius:var(--r);border:1px solid var(--border);box-shadow:var(--shadow);overflow:hidden}
+.yc-head{padding:10px 12px}
+.yc-name{font-weight:700;font-size:.82rem;color:#fff}
+.yc-sub{font-size:.6rem;color:rgba(255,255,255,.5);margin-top:1px}
+.yc-stats{font-size:.6rem;color:rgba(255,255,255,.65);margin-top:3px;display:flex;gap:6px;flex-wrap:wrap}
+.stat-chip{background:rgba(255,255,255,.12);padding:1px 6px;border-radius:8px}
+.yr9 .yc-head{background:linear-gradient(135deg,#0b1829 0%,#1a3a5c 100%)}
+.yr10 .yc-head{background:linear-gradient(135deg,#1a3a5c 0%,#24527a 100%)}
+.yr11 .yc-head{background:linear-gradient(135deg,#1e4d8c 0%,#2563eb 100%)}
+.yr12 .yc-head{background:linear-gradient(135deg,#1d4ed8 0%,#3b82f6 100%)}
+.cl{padding:7px}
+
+/* ─── COURSE ITEMS ─── */
+.ci{border-radius:var(--rs);padding:6px 8px;margin-bottom:4px;font-size:.72rem;font-weight:500;display:flex;align-items:flex-start;gap:5px;cursor:pointer;transition:all .18s;position:relative;line-height:1.3}
+.ci:hover{filter:brightness(.94);transform:translateX(1px)}
+.ci-ico{font-size:.85rem;flex-shrink:0;margin-top:1px}
+.ci-body{flex:1;min-width:0}
+.ci-nm{display:flex;align-items:center;gap:3px;flex-wrap:wrap;line-height:1.3}
+.ci-note{font-size:.6rem;opacity:.6;margin-top:1px}
+.ci-acts{display:flex;gap:2px;margin-left:auto;flex-shrink:0;opacity:0;transition:opacity .15s}
+.ci:hover .ci-acts{opacity:1}
+.act-btn{width:17px;height:17px;border-radius:3px;border:none;cursor:pointer;font-size:.6rem;display:flex;align-items:center;justify-content:center;transition:all .12s;flex-shrink:0}
+.act-edit{background:#dbeafe;color:#1e40af}.act-del{background:#fee2e2;color:#b91c1c}
+.act-btn:hover{transform:scale(1.2)}
+
+/* subject colors */
+.ch{background:#fef9c3;color:#713f12}.ce{background:#dbeafe;color:#1e3a8a}
+.cm{background:#dcfce7;color:#14532d}.cs{background:#fce7f3;color:#831843}
+.cl2{background:#ede9fe;color:#3730a3}.ca{background:#ffedd5;color:#7c2d12}
+.cp{background:#e0f2fe;color:#0c4a6e}.ck{background:#f0fdf4;color:#14532d}
+.cx{background:#f1f5f9;color:#334155}
+.cap{background:#1e3a5f;color:#bfdbfe;border:1px solid rgba(59,130,246,.25)}
+.csum{background:#fff7ed;color:#9a3412;border:1.5px dashed #fdba74}
+.cwarn{background:#fef2f2;color:#991b1b;border:1.5px dashed #fca5a5}
+
+/* badges */
+.bap{background:var(--gold2);color:var(--ink);font-size:.54rem;font-weight:800;padding:1px 4px;border-radius:3px}
+.bho{background:#bbf7d0;color:#065f46;font-size:.54rem;font-weight:800;padding:1px 4px;border-radius:3px}
+.bsu{background:#ea580c;color:#fff;font-size:.54rem;font-weight:700;padding:1px 4px;border-radius:3px}
+.breq{background:#fee2e2;color:#991b1b;font-size:.54rem;font-weight:700;padding:1px 4px;border-radius:3px}
+.bext{background:#7c3aed;color:#fff;font-size:.54rem;font-weight:700;padding:1px 4px;border-radius:3px}
+
+/* add slot */
+.add-sl{border:1.5px dashed var(--border);border-radius:var(--rs);padding:5px 8px;margin-bottom:4px;font-size:.68rem;color:var(--slate-lt);display:flex;align-items:center;gap:4px;cursor:pointer;transition:all .15s}
+.add-sl:hover{border-color:var(--ink3);color:var(--ink2);background:var(--sky)}
+
+/* ─── ADVISOR ─── */
+.adv-panel{background:var(--white);border-radius:var(--r);border:1px solid var(--border);box-shadow:var(--shadow);overflow:hidden;margin-bottom:14px}
+.adv-head{background:var(--ink2);padding:10px 14px;display:flex;align-items:center;gap:7px}
+.adv-head span{font-weight:600;font-size:.78rem;color:#fff}
+.adv-body{padding:10px 14px;max-height:280px;overflow-y:auto}
+.adv-row{display:flex;align-items:flex-start;gap:8px;padding:7px 0;border-bottom:1px solid var(--border)}
+.adv-row:last-child{border-bottom:none}
+.tl-dot{font-size:.9rem;flex-shrink:0;margin-top:1px}
+.adv-c{flex:1}
+.adv-name{font-size:.75rem;font-weight:600;color:var(--ink)}
+.adv-why{font-size:.67rem;color:var(--slate);margin-top:2px;line-height:1.45}
+
+/* ─── SIDEBAR ─── */
+.sbar{background:var(--white);border-radius:var(--r);border:1px solid var(--border);box-shadow:var(--shadow);overflow:hidden;position:sticky;top:68px}
+.sbar-head{background:var(--ink);padding:12px 14px}
+.sbar-score{display:flex;align-items:baseline;gap:5px}
+.sc-big{font-family:'Lora',serif;font-size:2.2rem;color:var(--gold2);line-height:1}
+.sc-of{font-size:.78rem;color:rgba(255,255,255,.4);font-weight:500}
+.sc-lbl{font-size:.58rem;color:rgba(255,255,255,.35);text-transform:uppercase;letter-spacing:.08em;margin-top:2px}
+.sc-bar{margin-top:8px;height:4px;background:rgba(255,255,255,.12);border-radius:2px;overflow:hidden}
+.sc-fill{height:100%;background:var(--gold2);border-radius:2px;transition:width .5s}
+.sbar-body{padding:12px 14px;max-height:calc(100vh - 150px);overflow-y:auto}
+.req-sec{margin-bottom:14px}
+.req-sec-ttl{font-size:.6rem;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:var(--slate-lt);padding-bottom:5px;border-bottom:1px solid var(--border);margin-bottom:7px}
+.rr{display:flex;align-items:center;gap:6px;margin-bottom:6px}
+.rdot{width:7px;height:7px;border-radius:50%;flex-shrink:0}
+.rn{font-size:.7rem;flex:1;color:var(--ink)}
+.rpips{display:flex;gap:2px;margin-left:auto}
+.pip{width:9px;height:9px;border-radius:2px;border:1.5px solid var(--border);background:var(--bg);transition:all .3s}
+.pip.f{background:var(--green);border-color:var(--green)}
+.pip.s{background:#ea580c;border-color:#ea580c}
+.pip.p{background:var(--amber);border-color:var(--amber)}
+.rdone{font-size:.6rem;color:var(--green);font-weight:700;white-space:nowrap}
+
+/* alert / success boxes */
+.abox{border-radius:var(--rs);padding:9px 11px;margin-top:6px;font-size:.67rem}
+.abox-warn{background:var(--amber-pale);border:1px solid #fcd34d;color:#78350f}
+.abox-ok{background:var(--green-pale);border:1px solid #86efac;color:var(--green)}
+.abox-title{font-weight:700;margin-bottom:4px;font-size:.68rem}
+.abox ul{padding-left:12px;line-height:1.7}
+
+/* ─── MILESTONE TAB ─── */
+.ml-page{padding:18px 22px;max-width:1200px;margin:0 auto}
+
+/* timeline */
+.tl-wrap{background:var(--white);border-radius:var(--r);border:1px solid var(--border);box-shadow:var(--shadow);padding:18px 22px;margin-bottom:16px}
+.tl-track{position:relative;padding:22px 0}
+.tl-spine{position:absolute;top:50%;left:5%;right:5%;height:3px;background:var(--border);transform:translateY(-50%);border-radius:2px}
+.tl-prog{position:absolute;top:50%;left:5%;height:3px;background:linear-gradient(90deg,var(--green),var(--ink3));transform:translateY(-50%);border-radius:2px;transition:width .6s ease}
+.tl-yrs{display:grid;grid-template-columns:repeat(4,1fr);position:relative;z-index:1}
+.tl-yr{display:flex;flex-direction:column;align-items:center;gap:5px}
+.tl-node{width:38px;height:38px;border-radius:50%;border:3px solid var(--border);background:var(--white);display:flex;align-items:center;justify-content:center;font-size:.72rem;font-weight:700;transition:all .3s}
+.tl-node.done{background:var(--green);border-color:var(--green);color:#fff}
+.tl-node.part{background:var(--amber);border-color:var(--amber);color:#fff}
+.tl-node.none{color:var(--slate-lt)}
+.tl-yr-lbl{font-size:.68rem;font-weight:700;color:var(--ink)}
+.tl-yr-ct{font-size:.6rem;color:var(--slate-lt)}
+.tl-tags{display:flex;flex-wrap:wrap;justify-content:center;gap:2px;max-width:130px;margin-top:3px}
+.tl-tag{font-size:.56rem;padding:1px 5px;border-radius:8px;font-weight:600;text-align:center}
+.tag-done{background:var(--green-pale);color:var(--green)}
+.tag-part{background:var(--amber-pale);color:var(--amber)}
+.tag-none{background:var(--sky2);color:var(--ink3)}
+
+/* checklist */
+.cl-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.cl-card{background:var(--white);border-radius:var(--r);border:1px solid var(--border);box-shadow:var(--shadow);overflow:hidden}
+.cl-hd{padding:10px 14px;display:flex;align-items:center;justify-content:space-between}
+.cl-hd-hs{background:linear-gradient(90deg,var(--ink),var(--ink2))}
+.cl-hd-uc{background:linear-gradient(90deg,#1a4d8c,#2563eb)}
+.cl-hd-ttl{font-weight:700;font-size:.78rem;color:#fff;display:flex;align-items:center;gap:5px}
+.cl-pct{font-size:.68rem;background:rgba(255,255,255,.15);color:#fff;padding:2px 8px;border-radius:8px;font-weight:700}
+.cl-bd{padding:12px 14px}
+.cl-item{display:flex;align-items:flex-start;gap:8px;padding:7px 0;border-bottom:1px solid var(--border)}
+.cl-item:last-child{border-bottom:none}
+.cl-chk{width:20px;height:20px;border-radius:50%;flex-shrink:0;display:flex;align-items:center;justify-content:center;font-size:.68rem;transition:all .3s;margin-top:1px}
+.chk-done{background:var(--green);color:#fff}
+.chk-part{background:var(--amber);color:#fff}
+.chk-miss{background:var(--bg);border:2px solid var(--border)}
+.cl-info{flex:1}
+.cl-req{font-size:.75rem;font-weight:600;color:var(--ink)}
+.cl-detail{font-size:.65rem;color:var(--slate);margin-top:1px}
+.cl-yr{font-size:.62rem;font-weight:700;padding:2px 7px;border-radius:8px;white-space:nowrap;margin-top:2px;display:inline-block}
+.yr-done{background:var(--green-pale);color:var(--green)}
+.yr-part{background:var(--amber-pale);color:var(--amber)}
+.yr-miss{background:var(--red-pale);color:var(--red)}
+
+/* ─── PROGRESS TAB ─── */
+.pg-page{padding:18px 22px;max-width:1200px;margin:0 auto}
+.sum-row{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-bottom:16px}
+.sum-card{border-radius:var(--r);padding:14px;text-align:center;border:1px solid transparent}
+.sum-n{font-family:'Lora',serif;font-size:1.9rem;line-height:1;margin-bottom:3px}
+.sum-l{font-size:.6rem;font-weight:700;text-transform:uppercase;letter-spacing:.07em}
+.sum-s{font-size:.65rem;margin-top:3px;opacity:.65}
+.three-col{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+
+/* gpa/rigor */
+.gprow{display:flex;align-items:center;gap:8px;margin-bottom:9px}
+.gp-yr{font-size:.72rem;font-weight:600;min-width:72px}
+.gp-inp{border:1.5px solid var(--border);border-radius:6px;padding:4px 8px;font-family:'Outfit',sans-serif;font-size:.76rem;width:62px;color:var(--ink);background:var(--slate-pale);transition:border .15s}
+.gp-inp:focus{outline:none;border-color:var(--ink3);background:#fff}
+.gp-trk{flex:1;height:7px;background:var(--sky2);border-radius:4px;overflow:hidden}
+.gp-fill{height:100%;border-radius:4px;transition:width .4s,background .4s}
+.gp-val{font-size:.68rem;font-weight:700;min-width:28px;text-align:right}
+.trend-pill{display:inline-flex;align-items:center;gap:4px;font-size:.7rem;font-weight:600;padding:4px 10px;border-radius:16px;margin-top:7px}
+.tp-up{background:var(--green-pale);color:var(--green)}
+.tp-fl{background:var(--amber-pale);color:var(--amber)}
+.tp-dn{background:var(--red-pale);color:var(--red)}
+.rigrow{display:flex;align-items:center;gap:7px;margin-bottom:7px}
+.rig-yr{font-size:.7rem;font-weight:600;min-width:72px}
+.rig-dots{display:flex;gap:2px;flex:1;flex-wrap:wrap}
+.rdot2{width:20px;height:20px;border-radius:4px;border:1.5px solid var(--border);background:var(--bg);display:flex;align-items:center;justify-content:center;font-size:.55rem;font-weight:700;transition:all .3s}
+.r-ap{background:#1e3a5f;border-color:#3b82f6;color:#bfdbfe}
+.r-ho{background:#dcfce7;border-color:#16a34a;color:#14532d}
+.r-re{background:var(--bg);border-color:var(--border);color:var(--slate-lt)}
+.rig-sc{font-size:.7rem;font-weight:700;min-width:32px;text-align:right}
+
+/* ─── SUMMER TAB ─── */
+.sum-page{padding:18px 22px;max-width:1200px;margin:0 auto}
+.sum-opt{border:1.5px solid var(--border);border-radius:var(--rs);padding:9px 11px;cursor:pointer;background:var(--slate-pale);margin-bottom:7px;transition:all .15s;display:flex;align-items:flex-start;justify-content:space-between;gap:8px}
+.sum-opt:hover{border-color:#ea580c;background:#fff7ed}
+.sum-opt.on{background:#fff7ed;border-color:#ea580c}
+.sum-opt-l .sum-nm{font-weight:600;font-size:.75rem;color:var(--ink)}
+.sum-opt-l .sum-meta{font-size:.64rem;color:var(--slate);margin-top:2px}
+.sum-sel{font-size:.62rem;font-weight:700;color:#ea580c}
+.src-tag{font-size:.58rem;font-weight:700;padding:2px 6px;border-radius:6px;white-space:nowrap}
+.st-uc{background:#dbeafe;color:#1e40af}
+.st-cc{background:#ede9fe;color:#5b21b6}
+.st-both{background:var(--green-pale);color:var(--green)}
+
+/* warning box */
+.warn-box{background:#fff7ed;border:1.5px solid #fdba74;border-radius:var(--rs);padding:10px 12px;font-size:.7rem;color:#92400e;line-height:1.55}
+.warn-box strong{font-weight:700}
+
+/* ─── MODAL ─── */
+.ov{display:none;position:fixed;inset:0;background:rgba(11,24,41,.65);backdrop-filter:blur(4px);z-index:500;align-items:center;justify-content:center;padding:16px}
+.ov.on{display:flex}
+.modal{background:var(--white);border-radius:16px;width:100%;max-width:460px;box-shadow:0 16px 48px rgba(0,0,0,.3);overflow:hidden;animation:up .22s ease}
+@keyframes up{from{transform:translateY(18px);opacity:0}to{transform:translateY(0);opacity:1}}
+.modal-hd{background:var(--ink);padding:15px 18px;display:flex;align-items:center;justify-content:space-between}
+.modal-hd h3{font-family:'Lora',serif;color:#fff;font-size:1rem}
+.modal-x{background:none;border:none;color:rgba(255,255,255,.4);cursor:pointer;font-size:1.1rem;padding:2px 6px;border-radius:3px;transition:all .15s;line-height:1;font-family:'Outfit',sans-serif}
+.modal-x:hover{color:#fff;background:rgba(255,255,255,.1)}
+.modal-bd{padding:16px 18px;max-height:68vh;overflow-y:auto}
+.modal-sec{margin-bottom:14px}
+.modal-sec-ttl{font-size:.62rem;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--slate-lt);margin-bottom:7px}
+.mopt{border:1.5px solid var(--border);border-radius:var(--rs);padding:9px 11px;font-family:'Outfit',sans-serif;font-size:.74rem;cursor:pointer;background:var(--slate-pale);width:100%;text-align:left;margin-bottom:5px;transition:all .15s;display:flex;align-items:center;justify-content:space-between;gap:8px}
+.mopt:hover{border-color:var(--ink3);background:var(--sky)}
+.mopt-l{display:flex;flex-direction:column;gap:2px}
+.mopt-nm{font-weight:600;color:var(--ink)}
+.mopt-mt{font-size:.62rem;color:var(--slate)}
+.modal-ft{padding:10px 18px;border-top:1px solid var(--border);display:flex;justify-content:flex-end}
+.btn-ghost{font-family:'Outfit',sans-serif;font-size:.72rem;font-weight:600;padding:7px 16px;border-radius:var(--rs);cursor:pointer;border:1.5px solid var(--border);background:var(--slate-pale);color:var(--slate);transition:all .15s}
+.btn-ghost:hover{border-color:var(--slate);color:var(--ink)}
+
+/* notice banner */
+.notice{background:var(--gold-pale);border:1px solid #fbbf24;border-radius:var(--rs);padding:8px 12px;font-size:.68rem;color:#78350f;line-height:1.5;margin-bottom:10px}
+.notice strong{font-weight:700}
+
+::-webkit-scrollbar{width:4px;height:4px}
+::-webkit-scrollbar-thumb{background:var(--border);border-radius:2px}
+</style>
+</head>
+<body>
+
+<div class="hdr">
+  <div class="hdr-brand">
+    <div class="hdr-logo">🎓</div>
+    <div class="hdr-text">
+      <h1>DVHS 4-Year Academic Planner</h1>
+      <p>Dougherty Valley High School · San Ramon, CA · Class of 2029</p>
+    </div>
+  </div>
+  <div class="hdr-tabs">
+    <div class="ht on" onclick="goTab('plan',this)">📅 Course Plan</div>
+    <div class="ht" onclick="goTab('milestone',this)">🏁 Milestones</div>
+    <div class="ht" onclick="goTab('progress',this)">📈 Progress</div>
+    <div class="ht" onclick="goTab('summer',this)">☀️ Summer</div>
+  </div>
+  <div class="hdr-right"><div class="hbadge">UC/CSU · STEM Track</div></div>
+</div>
+
+<!-- ════════ PLAN ════════ -->
+<div class="page on" id="tab-plan">
+<div class="two-col">
+<div>
+
+  <div class="notice">
+    <strong>📋 Counselor Note:</strong> This planner reflects DVHS course offerings and SRVUSD/UC requirements as of 2025-26. Non-district courses (summer AP, online) require <strong>prior approval</strong> from your DVHS counselor. Always confirm prerequisites with your counselor before enrolling. Course selection for 2026-27 was due via Infinite Campus Portal by March 4, 2026.
+  </div>
+
+  <!-- paths -->
+  <div class="card">
+    <div class="card-ttl">⚙️ Pathway Settings</div>
+    <div class="path-grid">
+      <div>
+        <div class="lbl">🔬 Science Pathway</div>
+        <button class="pb" onclick="setSci('std')" id="sci-std"><span class="pd"></span>Standard: Bio → Chem → Physics</button>
+        <button class="pb" onclick="setSci('hon')" id="sci-hon"><span class="pd"></span>Honors: Bio → H.Chem → AP Bio/Phys</button>
+        <button class="pb on" onclick="setSci('apbio')" id="sci-apbio"><span class="pd"></span>AP Bio Focus ⭐ (selected)</button>
+        <button class="pb" onclick="setSci('apchem')" id="sci-apchem"><span class="pd"></span>AP Chem Focus: H.Chem → AP Chem</button>
+        <button class="pb" onclick="setSci('marine')" id="sci-marine"><span class="pd"></span>Marine Bio: Bio → Marine → AP Env</button>
+      </div>
+      <div>
+        <div class="lbl">➕ Math Pathway</div>
+        <div style="font-size:.62rem;color:var(--green);background:var(--green-pale);border-radius:5px;padding:3px 7px;margin-bottom:5px;font-weight:600">✓ Algebra 1 completed in middle school</div>
+        <button class="pb" onclick="setMath('geo')" id="math-geo"><span class="pd"></span>Geometry → Alg 2 → PreCalc → Stats</button>
+        <button class="pb" onclick="setMath('calc')" id="math-calc"><span class="pd"></span>Geometry → Alg 2 → H.PreCalc → Calc</button>
+        <button class="pb on" onclick="setMath('apcalc')" id="math-apcalc"><span class="pd"></span>Accelerated → AP Calc AB/BC ⭐</button>
+        <button class="pb" onclick="setMath('apstats')" id="math-apstats"><span class="pd"></span>Geometry → Alg 2 → PreCalc → AP Stats</button>
+      </div>
+    </div>
+    <div class="bio-toggle" id="bioToggle" onclick="toggleBio()">
+      ☀️ <strong>Summer Biology option:</strong> Complete Biology before 9th via approved external course — frees a 9th grade slot. Click to toggle.
+    </div>
+  </div>
+
+  <div class="card-ttl" style="margin-bottom:8px">📅 4-Year Course Plan
+    <span style="font-size:.62rem;font-weight:400;color:var(--slate);font-family:'Outfit',sans-serif">Click any course for advisor notes · hover to edit/remove electives</span>
+  </div>
+  <div class="yr-grid" id="yrGrid"></div>
+
+  <div class="adv-panel">
+    <div class="adv-head"><span>🚦 Advisor Assessment — Traffic Light Review</span></div>
+    <div class="adv-body" id="advBody"></div>
+  </div>
+
+</div>
+
+<!-- sidebar -->
+<div>
+  <div class="sbar">
+    <div class="sbar-head">
+      <div class="sbar-score">
+        <span class="sc-big" id="scNum">0</span>
+        <span class="sc-of">/ 15 A-G</span>
+      </div>
+      <div class="sc-lbl">UC/CSU courses planned</div>
+      <div class="sc-bar"><div class="sc-fill" id="scFill" style="width:0%"></div></div>
+    </div>
+    <div class="sbar-body">
+      <div class="req-sec">
+        <div class="req-sec-ttl">UC/CSU A-G (minimum 15 courses)</div>
+        <div id="ucReqs"></div>
+      </div>
+      <div class="req-sec">
+        <div class="req-sec-ttl">SRVUSD graduation (220 credits)</div>
+        <div id="hsReqs"></div>
+      </div>
+      <div id="sideAlerts"></div>
+    </div>
+  </div>
+</div>
+</div>
+</div>
+
+<!-- ════════ MILESTONES ════════ -->
+<div class="page" id="tab-milestone">
+<div class="ml-page">
+
+  <div class="card-ttl" style="margin-bottom:12px">🏁 When Are Requirements Fully Met?</div>
+
+  <div class="tl-wrap">
+    <div class="lbl" style="margin-bottom:10px">Cumulative requirement completion by end of each year</div>
+    <div class="tl-track">
+      <div class="tl-spine"></div>
+      <div class="tl-prog" id="tlProg" style="width:0%"></div>
+      <div class="tl-yrs" id="tlYrs"></div>
+    </div>
+    <div id="tlSummary" style="margin-top:12px;font-size:.7rem;color:var(--slate);background:var(--sky);padding:8px 12px;border-radius:var(--rs)"></div>
+  </div>
+
+  <div class="cl-grid">
+    <div class="cl-card">
+      <div class="cl-hd cl-hd-hs">
+        <div class="cl-hd-ttl">🏫 SRVUSD Graduation Requirements</div>
+        <div class="cl-pct" id="hsPct">0%</div>
+      </div>
+      <div class="cl-bd" id="hsCL"></div>
+    </div>
+    <div class="cl-card">
+      <div class="cl-hd cl-hd-uc">
+        <div class="cl-hd-ttl">🎓 UC/CSU A-G Requirements</div>
+        <div class="cl-pct" id="ucPct">0%</div>
+      </div>
+      <div class="cl-bd" id="ucCL"></div>
+    </div>
+  </div>
+
+</div>
+</div>
+
+<!-- ════════ PROGRESS ════════ -->
+<div class="page" id="tab-progress">
+<div class="pg-page">
+
+  <div class="sum-row" id="sumRow"></div>
+  <div class="three-col">
+    <div class="card">
+      <div class="card-ttl">📊 GPA by Year</div>
+      <div style="font-size:.64rem;color:var(--slate);margin-bottom:10px;background:var(--sky);padding:6px 9px;border-radius:6px">
+        Enter actual or target GPA. UC requires <strong>3.0 unweighted</strong> minimum. AP/Honors add +1.0 weight (so A in AP = 5.0 weighted, counts as 4.0 unweighted for UC eligibility).
+      </div>
+      <div id="gpaRows"></div>
+      <div id="gpaTrend"></div>
+    </div>
+    <div class="card">
+      <div class="card-ttl">🏅 Rigor by Year</div>
+      <div id="rigRows"></div>
+      <div style="margin-top:9px;display:flex;gap:8px;flex-wrap:wrap;font-size:.62rem">
+        <span style="display:flex;align-items:center;gap:3px"><span style="width:9px;height:9px;background:#1e3a5f;border-radius:2px;display:inline-block"></span>AP (2pts)</span>
+        <span style="display:flex;align-items:center;gap:3px"><span style="width:9px;height:9px;background:#dcfce7;border:1px solid #16a34a;border-radius:2px;display:inline-block"></span>Honors (1pt)</span>
+        <span style="display:flex;align-items:center;gap:3px"><span style="width:9px;height:9px;background:var(--bg);border:1px solid var(--border);border-radius:2px;display:inline-block"></span>Regular</span>
+      </div>
+      <div style="margin-top:8px;font-size:.64rem;color:var(--slate);background:var(--sky);padding:6px 9px;border-radius:6px">
+        🎯 Goal: rigor score should <strong>increase</strong> 9th→11th, peaking in junior year. Colleges want to see upward trajectory.
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-ttl">🌱 A-G Accumulation</div>
+      <div id="agAccum"></div>
+      <div style="margin-top:9px;display:flex;gap:7px;font-size:.62rem">
+        <span style="display:flex;align-items:center;gap:3px"><span style="width:9px;height:9px;background:var(--green);border-radius:2px;display:inline-block"></span>Required</span>
+        <span style="display:flex;align-items:center;gap:3px"><span style="width:9px;height:9px;background:#bfdbfe;border-radius:2px;display:inline-block"></span>Beyond min</span>
+      </div>
+    </div>
+  </div>
+
+</div>
+</div>
+
+<!-- ════════ SUMMER ════════ -->
+<div class="page" id="tab-summer">
+<div class="sum-page">
+
+  <div class="card-ttl" style="margin-bottom:12px">☀️ Summer Course Planner</div>
+
+  <div class="warn-box" style="margin-bottom:14px">
+    <strong>⚠️ Important — SRVUSD Non-District Course Policy:</strong> All courses taken outside DVHS (including online AP courses and community college) must be <strong>pre-approved by your DVHS counselor</strong> before enrolling. Submit a Non-District Course Request through the counseling office. Unapproved courses may not count toward graduation or A-G requirements. <a href="https://www.srvusd.net/Students-and-Families/Resources/Personalized-Learning/Non-District-Courses/index.html" target="_blank" style="color:#ea580c">SRVUSD Non-District Course Guidelines →</a>
+  </div>
+
+  <div class="card" style="background:#fffbeb;border-color:#fde68a;margin-bottom:14px">
+    <div class="card-ttl" style="color:#92400e">🌅 Summer Before 9th Grade — Early Biology</div>
+    <p style="font-size:.72rem;color:#78350f;margin-bottom:10px">Completing Biology before 9th frees a slot for World Language or Art — accelerating A-G completion. <strong>Must be pre-approved.</strong></p>
+    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:8px" id="bio9opts"></div>
+  </div>
+
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px">
+    <div class="card">
+      <div class="card-ttl" style="color:#9a3412">☀️ After 10th Grade <span style="font-size:.62rem;font-weight:400;color:var(--slate);font-family:'Outfit',sans-serif">(max 2, must pre-approve)</span></div>
+      <div id="sum10"></div>
+    </div>
+    <div class="card">
+      <div class="card-ttl" style="color:#9a3412">☀️ After 11th Grade <span style="font-size:.62rem;font-weight:400;color:var(--slate);font-family:'Outfit',sans-serif">(max 2, must pre-approve)</span></div>
+      <div id="sum11"></div>
+    </div>
+  </div>
+
+  <div style="background:var(--sky);border:1px solid var(--sky2);border-radius:var(--r);padding:14px 16px;margin-top:14px">
+    <div style="font-weight:700;font-size:.72rem;color:var(--ink2);margin-bottom:10px">📌 Approved External Providers (verify with counselor)</div>
+    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:10px">
+      <div style="background:#fff;border-radius:var(--rs);padding:11px;border:1px solid var(--border)">
+        <div style="font-weight:700;font-size:.72rem;color:var(--ink2);margin-bottom:4px">🌐 UC Scout</div>
+        <div style="font-size:.64rem;color:var(--slate);line-height:1.55">UC-approved A-G courses. Self-paced online. ~$200/course. Best for humanities and social science APs. <strong>Check specific course approval with counselor.</strong></div>
+      </div>
+      <div style="background:#fff;border-radius:var(--rs);padding:11px;border:1px solid var(--border)">
+        <div style="font-weight:700;font-size:.72rem;color:var(--ink2);margin-bottom:4px">📘 BYU Independent Study</div>
+        <div style="font-size:.64rem;color:var(--slate);line-height:1.55">Nationally accredited. Self-paced. Accepted by most CSUs — <strong>verify with each UC campus</strong> for transferability. Some courses need counselor pre-approval.</div>
+      </div>
+      <div style="background:#fff;border-radius:var(--rs);padding:11px;border:1px solid var(--border)">
+        <div style="font-weight:700;font-size:.72rem;color:var(--ink2);margin-bottom:4px">🏛️ DVC / LMC (Diablo Valley / Los Medanos)</div>
+        <div style="font-size:.64rem;color:var(--slate);line-height:1.55">Community college. Free with dual enrollment. Courses earn college credit + may satisfy A-G. <strong>DVHS counselor must pre-approve</strong> before enrollment.</div>
+      </div>
+    </div>
+  </div>
+
+</div>
+</div>
+
+<!-- MODAL -->
+<div class="ov" id="ov">
+  <div class="modal">
+    <div class="modal-hd"><h3 id="mTitle">Add Course</h3><button class="modal-x" onclick="closeMod()">✕</button></div>
+    <div class="modal-bd" id="mBody"></div>
+    <div class="modal-ft"><button class="btn-ghost" onclick="closeMod()">Close</button></div>
+  </div>
+</div>
+
+<script>
+// ══════════════════════════════════════════
+// STATE
+// ══════════════════════════════════════════
+const S = {
+  sci:'apbio', math:'apcalc',
+  bioSum:false, bioProvider:null,
+  el:{'9-0':null,'9-1':null,'10-0':null,'10-1':null,'11-0':null,'11-1':null,'12-0':null,'12-1':null},
+  s10:new Set(), s11:new Set(),
+  gpa:{9:'',10:'',11:'',12:''},
+};
+
+// ══════════════════════════════════════════
+// COURSE DATA — verified against DVHS docs
+// ══════════════════════════════════════════
+
+// FIXED REQUIRED COURSES (per DVHS 4-Year Plan Worksheet & SRVUSD requirements)
+// Note: "World Geography" is listed as 9th grade semester in the official worksheet
+// Ethnic Studies is paired with Health as a semester course in 9th grade
+const FIXED = {
+  9:[
+    {id:'wg',name:'World Geography',type:'ch',icon:'🌐',ag:'A',note:'½ yr — req',req:true,cr:5},
+    {id:'eth',name:'Ethnic Studies',type:'ch',icon:'✊',ag:'A',note:'½ yr — req',req:true,cr:5},
+    {id:'eng9',name:'English 9',type:'ce',icon:'📖',ag:'B',req:true,cr:10},
+    {id:'pe9',name:'PE 9',type:'cp',icon:'🏃',ag:null,req:true,cr:10,note:'req — 2 yrs total'},
+    {id:'hlth',name:'Health',type:'ck',icon:'💊',ag:null,req:true,cr:5,note:'½ yr — req'},
+  ],
+  10:[
+    {id:'wh',name:'World History',type:'ch',icon:'🌍',ag:'A',req:true,cr:10},
+    {id:'eng10',name:'English 10',type:'ce',icon:'📖',ag:'B',req:true,cr:10},
+    {id:'pe10',name:'PE 10',type:'cp',icon:'🏃',ag:null,req:true,cr:10,note:'req — 2nd yr PE'},
+  ],
+  11:[
+    {id:'ush',name:'US History',type:'ch',icon:'🗽',ag:'A',req:true,cr:10,note:'or APUSH'},
+    {id:'eng11',name:'English 11',type:'ce',icon:'📖',ag:'B',req:true,cr:10,note:'or AP Lit'},
+  ],
+  12:[
+    {id:'gov',name:'Am. Government',type:'ch',icon:'⚖️',ag:'A',req:true,cr:5,note:'½ yr — req'},
+    {id:'econ',name:'Economics',type:'ch',icon:'📊',ag:'A',req:true,cr:5,note:'½ yr — req'},
+    {id:'eng12',name:'English 12',type:'ce',icon:'📖',ag:'B',req:true,cr:10,note:'or AP Lang'},
+  ],
+};
+
+// MATH PATHS — from DVHS Math Pathways doc (updated 2/20/2026)
+// All start at Geometry since Algebra 1 is done in middle school
+const MATH = {
+  geo:   [{yr:9,name:'Geometry',type:'cm',icon:'📐',ag:'C',cr:10},{yr:10,name:'Algebra 2',type:'cm',icon:'📐',ag:'C',cr:10},{yr:11,name:'Pre-Calc w/ Trig',type:'cm',icon:'📐',ag:'C',cr:10},{yr:12,name:'Statistics',type:'cm',icon:'📐',ag:'C',cr:10}],
+  calc:  [{yr:9,name:'Geometry',type:'cm',icon:'📐',ag:'C',cr:10},{yr:10,name:'Algebra 2',type:'cm',icon:'📐',ag:'C',cr:10},{yr:11,name:'Honors Pre-Calc/Trig',type:'cm',icon:'📐',ag:'C',cr:10,hon:true,prereq:'Needs A in Algebra 2'},{yr:12,name:'Calculus',type:'cm',icon:'📐',ag:'C',cr:10,prereq:'Needs C in Pre-Calc'}],
+  apcalc:[{yr:9,name:'Geometry',type:'cm',icon:'📐',ag:'C',cr:10},{yr:10,name:'Algebra 2',type:'cm',icon:'📐',ag:'C',cr:10},{yr:11,name:'AP Calculus AB',type:'cap',icon:'📐',ag:'C',cr:10,ap:true,prereq:'A in Pre-Calc or B in Honors Pre-Calc'},{yr:12,name:'AP Calculus BC',type:'cap',icon:'📐',ag:'C',cr:10,ap:true,prereq:'C in AP Calc AB, or A in regular Calc'}],
+  apstats:[{yr:9,name:'Geometry',type:'cm',icon:'📐',ag:'C',cr:10},{yr:10,name:'Algebra 2',type:'cm',icon:'📐',ag:'C',cr:10},{yr:11,name:'Pre-Calc w/ Trig',type:'cm',icon:'📐',ag:'C',cr:10},{yr:12,name:'AP Statistics',type:'cap',icon:'📐',ag:'C',cr:10,ap:true,prereq:'B or better in Algebra 2'}],
+};
+
+// SCIENCE PATHS — from DVHS Science Pathways doc (updated 2/20/2026)
+const SCI = {
+  std:   [{yr:9,name:'Biology',type:'cs',icon:'🔬',ag:'D',cr:10,prereq:'Concurrent Algebra 1 (done)'},{yr:10,name:'Chemistry',type:'cs',icon:'⚗️',ag:'D',cr:10,prereq:'C in Algebra 1 + completion of Bio'},{yr:11,name:'Physics',type:'cs',icon:'⚡',ag:'D',cr:10,prereq:'C in Geometry + concurrent Algebra 2'},{yr:12,name:'Anatomy & Physiology',type:'cs',icon:'🫀',ag:'D',cr:10,prereq:'C in Biology'}],
+  hon:   [{yr:9,name:'Biology',type:'cs',icon:'🔬',ag:'D',cr:10},{yr:10,name:'Honors Chemistry',type:'cs',icon:'⚗️',ag:'D',cr:10,hon:true,prereq:'B in Algebra 1 + B in Biology'},{yr:11,name:'AP Biology',type:'cap',icon:'🔬',ag:'D',cr:10,ap:true,prereq:'B in Bio + B in Chem (C in H.Chem)'},{yr:12,name:'AP Physics C',type:'cap',icon:'⚡',ag:'D',cr:10,ap:true,prereq:'A in Physics + CONCURRENT Calculus required'}],
+  apbio: [{yr:9,name:'Biology',type:'cs',icon:'🔬',ag:'D',cr:10},{yr:10,name:'Honors Chemistry',type:'cs',icon:'⚗️',ag:'D',cr:10,hon:true,prereq:'B in Algebra 1 + B in Biology'},{yr:11,name:'AP Biology',type:'cap',icon:'🔬',ag:'D',cr:10,ap:true,prereq:'B in Bio + B in Chem (C in H.Chem)'},{yr:12,name:'H. Anatomy & Physiology',type:'cs',icon:'🫀',ag:'D',cr:10,hon:true,prereq:'B in Bio + B in Chem (C in H.Chem)'}],
+  apchem:[{yr:9,name:'Biology',type:'cs',icon:'🔬',ag:'D',cr:10},{yr:10,name:'Honors Chemistry',type:'cs',icon:'⚗️',ag:'D',cr:10,hon:true,prereq:'B in Algebra 1 + B in Biology'},{yr:11,name:'AP Chemistry',type:'cap',icon:'⚗️',ag:'D',cr:10,ap:true,prereq:'A in Chem OR B in H.Chem; B in Alg 2 recommended'},{yr:12,name:'AP Env. Science',type:'cap',icon:'🌍',ag:'D',cr:10,ap:true,prereq:'B in Bio + B in Chem + concurrent Algebra 2'}],
+  marine:[{yr:9,name:'Biology',type:'cs',icon:'🔬',ag:'D',cr:10},{yr:10,name:'Marine Biology',type:'cs',icon:'🌊',ag:'D',cr:10,prereq:'C in Bio + Geometry completed'},{yr:11,name:'Chemistry',type:'cs',icon:'⚗️',ag:'D',cr:10,prereq:'C in Alg 1 + completion of Bio'},{yr:12,name:'AP Env. Science',type:'cap',icon:'🌍',ag:'D',cr:10,ap:true,prereq:'B in Bio + B in Chem + concurrent Algebra 2'}],
+};
+
+// ELECTIVE MENU
+const EMENU = [
+  {grp:'World Language (UC A-G: E)', items:[
+    {name:'Spanish 1',icon:'🌎',type:'cl2',ag:'E',cr:10,meta:'Start of 2-yr sequence required for UC'},
+    {name:'Spanish 2',icon:'🌎',type:'cl2',ag:'E',cr:10,meta:'Fulfills UC E with Spanish 1'},
+    {name:'Spanish 3',icon:'🌎',type:'cl2',ag:'E',cr:10,meta:'3rd year — UC recommends 3'},
+    {name:'French 1',icon:'🌎',type:'cl2',ag:'E',cr:10,meta:'Must continue same language to UC level 2'},
+    {name:'French 2',icon:'🌎',type:'cl2',ag:'E',cr:10,meta:''},
+    {name:'Mandarin 1',icon:'🌎',type:'cl2',ag:'E',cr:10,meta:''},
+    {name:'Mandarin 2',icon:'🌎',type:'cl2',ag:'E',cr:10,meta:''},
+  ]},
+  {grp:'Fine Art / VAPA (UC A-G: F — 1 yr required)', items:[
+    {name:'Visual Art',icon:'🎨',type:'ca',ag:'F',cr:10,meta:'1 full year satisfies UC F'},
+    {name:'Performing Arts / Drama',icon:'🎭',type:'ca',ag:'F',cr:10,meta:'1 full year satisfies UC F'},
+    {name:'Music',icon:'🎵',type:'ca',ag:'F',cr:10,meta:'Band, Orchestra, Choir'},
+  ]},
+  {grp:'AP Electives (UC A-G: G or subject area)', items:[
+    {name:'AP Computer Science A',icon:'💻',type:'cap',ag:'G',cr:10,ap:true,meta:'Strong STEM signal. No specific prereq listed at DVHS.'},
+    {name:'AP Psychology',icon:'🧠',type:'cap',ag:'G',cr:10,ap:true,meta:'Popular, manageable workload, no hard prereqs'},
+    {name:'AP Macro Economics',icon:'📈',type:'cap',ag:'G',cr:10,ap:true,meta:'Complements 12th grade Gov/Econ'},
+  ]},
+  {grp:'CTE / Vocational (satisfies grad requirement)', items:[
+    {name:'CTE Course (Year 1)',icon:'🔧',type:'cx',ag:null,cr:10,meta:'CTE courses can satisfy the Voc/Applied Arts grad req'},
+    {name:'CTE Course (Year 2)',icon:'🔧',type:'cx',ag:null,cr:10,meta:'2nd year CTE strengthens pathway'},
+    {name:'Computer Science Principles',icon:'💻',type:'cx',ag:'G',cr:10,meta:'Counts as UC G elective'},
+  ]},
+  {grp:'Other Electives', items:[
+    {name:'Psychology',icon:'🧠',type:'cx',ag:'G',cr:10,meta:'Counts as UC G elective'},
+    {name:'Personal Finance w/ Business Apps',icon:'💰',type:'cx',ag:null,cr:10,meta:'Requires Algebra 1 — graduation elective'},
+    {name:'Additional Science',icon:'🌿',type:'cs',ag:'D',cr:10,meta:'Environmental Chemistry, Marine Bio, etc.'},
+    {name:'Study Hall / Support',icon:'📚',type:'cx',ag:null,cr:10,meta:'No UC credit'},
+  ]},
+];
+
+const SUMMER_APS = [
+  {id:'aphug',name:'AP Human Geography',icon:'🗺️',ag:'A',note:'No hard prerequisites. Good first AP. Available via UC Scout.',years:[10],src:'st-uc'},
+  {id:'appsych',name:'AP Psychology',icon:'🧠',ag:'G',note:'Manageable workload. No hard prereqs. UC Scout or BYU.',years:[10,11],src:'st-both'},
+  {id:'apecon',name:'AP Macro Economics',icon:'📈',ag:'G',note:'Pairs with 12th grade Econ. UC Scout recommended.',years:[10,11],src:'st-uc'},
+  {id:'apenvs',name:'AP Environmental Science',icon:'🌍',ag:'D',note:'Requires Biology background. Best after 10th.',years:[11],src:'st-both'},
+  {id:'apstats',name:'AP Statistics',icon:'📊',ag:'C',note:'Prereq: Algebra 2 (C or better). UC Scout or DVC.',years:[10,11],src:'st-both'},
+];
+
+// ══════════════════════════════════════════
+// COURSE HELPERS
+// ══════════════════════════════════════════
+function yrCourses(yr) {
+  const base = FIXED[yr].map(c=>({...c}));
+  const math = MATH[S.math].find(c=>c.yr===yr);
+  let sci = SCI[S.sci].find(c=>c.yr===yr);
+  if(S.bioSum && yr===9) sci=null;
+  if(math) base.push({...math,id:`m${yr}`,editable:false});
+  if(sci)  base.push({...sci, id:`s${yr}`,editable:false});
+  // summer bio in 9th
+  if(S.bioSum && yr===9) base.push({id:'bio-s',name:'Biology',icon:'🔬',type:'cs',ag:'D',cr:10,isSummer:true,note:'Summer — external (pre-approval req)'});
+  // electives
+  [0,1].forEach(i=>{
+    const k=`${yr}-${i}`, v=S.el[k];
+    if(v) base.push({...v,id:`e-${k}`,isEl:true});
+  });
+  // summer APs
+  const ss = yr===10?S.s10:yr===11?S.s11:null;
+  if(ss) ss.forEach(id=>{const o=SUMMER_APS.find(x=>x.id===id);if(o) base.push({...o,type:'cx',isSummer:true,cr:10,note:'Summer AP — external (pre-approval req)'});});
+  return base;
+}
+function allC() {
+  let a=[];
+  for(let y=9;y<=12;y++) a=[...a,...yrCourses(y)];
+  return a;
+}
+
+// A-G counting (deduped by category caps from UC requirements)
+const UC_DEFS=[
+  {key:'A',lbl:'History/Social Science',needed:2,icon:'🌍',desc:'2 years: World History + US History + Gov'},
+  {key:'B',lbl:'English',needed:4,icon:'📖',desc:'4 years college-prep English'},
+  {key:'C',lbl:'Math',needed:3,icon:'📐',desc:'3 years (Alg1+Geo+Alg2 min); 4 recommended'},
+  {key:'D',lbl:'Lab Science',needed:2,icon:'🔬',desc:'2 years (1 life + 1 physical); 3 recommended'},
+  {key:'E',lbl:'World Language',needed:2,icon:'🌎',desc:'2 years same language; 3 recommended'},
+  {key:'F',lbl:'Fine Art (VAPA)',needed:1,icon:'🎨',desc:'1 full year visual/performing art'},
+  {key:'G',lbl:'College Prep Elective',needed:1,icon:'🎓',desc:'1 year from A-F or approved elective'},
+];
+const SCI_ICONS=['🔬','⚗️','⚡','🌍','🫀','🌊'];
+function cAG(key,cs){
+  return {
+    A:cs.filter(c=>c.type==='ch'||c.ag==='A').length,
+    B:cs.filter(c=>c.type==='ce').length,
+    C:cs.filter(c=>c.type==='cm'||(c.type==='cap'&&c.icon==='📐')||c.ag==='C').length,
+    D:cs.filter(c=>c.type==='cs'||(c.type==='cap'&&SCI_ICONS.includes(c.icon))||c.ag==='D').length,
+    E:cs.filter(c=>c.ag==='E').length,
+    F:cs.filter(c=>c.ag==='F').length,
+    G:cs.filter(c=>c.ag==='G').length,
+  }[key]||0;
+}
+
+const HS_DEFS=[
+  {lbl:'Social Science',req:35,fn:cs=>cs.filter(c=>c.type==='ch').reduce((a,c)=>a+(c.cr||10),0)},
+  {lbl:'English',req:40,fn:cs=>cs.filter(c=>c.type==='ce').reduce((a,c)=>a+(c.cr||10),0)},
+  {lbl:'Science (1 life + 1 physical)',req:20,fn:cs=>cs.filter(c=>c.type==='cs'||(c.type==='cap'&&SCI_ICONS.includes(c.icon))).reduce((a,c)=>a+(c.cr||10),0)},
+  {lbl:'Math (Alg 1 req)',req:20,fn:cs=>cs.filter(c=>c.type==='cm'||(c.type==='cap'&&c.icon==='📐')).reduce((a,c)=>a+(c.cr||10),0)},
+  {lbl:'PE',req:20,fn:cs=>cs.filter(c=>c.type==='cp').reduce((a,c)=>a+(c.cr||10),0)},
+  {lbl:'Health',req:5,fn:cs=>cs.filter(c=>c.type==='ck').reduce((a,c)=>a+(c.cr||5),0)},
+  {lbl:'World Lang / Fine Art / CTE (2 of 3)',req:20,fn:cs=>{
+    const lang=cs.filter(c=>c.type==='cl2').length*10;
+    const art=cs.filter(c=>c.type==='ca').length*10;
+    const cte=cs.filter(c=>c.type==='cx'&&c.id&&c.id.includes('CTE')).length*10;
+    return Math.min(lang,20)+Math.min(art,20)+Math.min(cte,20)>0?20:0; // simplified
+  }},
+];
+
+// ══════════════════════════════════════════
+// RENDER
+// ══════════════════════════════════════════
+function render(){renderGrid();renderAdvisor();renderSidebar();renderMilestones();renderProgress();renderSummer();}
+
+// ── GRID
+function renderGrid(){
+  const g=document.getElementById('yrGrid');
+  g.innerHTML='';
+  const YL=['9th Grade','10th Grade','11th Grade','12th Grade'];
+  const YS=['2025–26','2026–27','2027–28','2028–29'];
+  for(let yr=9;yr<=12;yr++){
+    const cs=yrCourses(yr);
+    const ap=cs.filter(c=>c.ap).length, hon=cs.filter(c=>c.hon&&!c.ap).length;
+    const chips=[ap?`${ap} AP`:'',hon?`${hon} Hon`:''].filter(Boolean).join(' · ')||'Foundation year';
+    const col=document.createElement('div');
+    col.className=`yc yr${yr}`;
+    col.innerHTML=`<div class="yc-head"><div class="yc-name">${YL[yr-9]}</div><div class="yc-sub">${YS[yr-9]}</div><div class="yc-stats"><span class="stat-chip">${cs.length} courses</span>${chips?`<span class="stat-chip">${chips}</span>`:''}</div></div><div class="cl" id="cl${yr}"></div>`;
+    g.appendChild(col);
+  }
+  for(let yr=9;yr<=12;yr++){
+    const list=document.getElementById(`cl${yr}`);
+    yrCourses(yr).forEach(c=>list.appendChild(mkCI(c,yr)));
+    const usedEl=yrCourses(yr).filter(c=>c.isEl).length;
+    for(let i=usedEl;i<2;i++){
+      const sl=document.createElement('div');
+      sl.className='add-sl';
+      sl.innerHTML='＋ Add elective / language / art';
+      sl.onclick=()=>openAddMod(yr);
+      list.appendChild(sl);
+    }
+  }
+}
+
+function mkCI(c,yr){
+  const el=document.createElement('div');
+  el.className=`ci ${c.isSummer?'csum':c.type}`;
+  const badges=[
+    c.ap?'<span class="bap">AP</span>':'',
+    c.hon&&!c.ap?'<span class="bho">HON</span>':'',
+    c.isSummer?'<span class="bsu">SUMMER</span>':'',
+    c.req?'<span class="breq">REQ</span>':'',
+  ].join('');
+  let acts='';
+  if(c.isEl){
+    const k=c.id.replace('e-','');
+    acts=`<div class="ci-acts"><button class="act-btn act-edit" onclick="editEl(event,'${k}',${yr})" title="Change">✏</button><button class="act-btn act-del" onclick="delEl(event,'${k}')" title="Remove">✕</button></div>`;
+  }
+  el.innerHTML=`<span class="ci-ico">${c.icon}</span><div class="ci-body"><div class="ci-nm">${c.name} ${badges}</div>${c.note?`<div class="ci-note">${c.note}</div>`:''}</div>${acts}`;
+  el.onclick=(e)=>{if(!e.target.classList.contains('act-btn'))showDetail(c);};
+  return el;
+}
+
+// ── ADVISOR
+function mkRules(){
+  const cs=allC(), rules=[];
+  // Algebra 1 done
+  rules.push({l:'🟢',n:'Algebra 1 (completed in middle school)',w:'Great foundation. Entering with Algebra 1 done unlocks Geometry in 9th — a full year ahead of students starting Algebra 1 in HS.'});
+  // Math
+  if(S.math==='apcalc') rules.push({l:'🟢',n:'AP Calculus AB → BC path',w:'Excellent STEM trajectory. Prereq: needs A in Pre-Calc or B in Honors Pre-Calc for AB; then C in AB for BC. This is the strongest signal for STEM UC apps.'});
+  if(S.math==='calc')  rules.push({l:'🟡',n:'Honors Pre-Calc → Calculus path',w:'Solid. If aiming for STEM majors, note that AP Calc AB would provide college credit and a stronger application signal with similar workload.'});
+  if(S.math==='geo')   rules.push({l:'🟡',n:'Pre-Calc → Statistics path',w:'Meets UC C requirement (3 yrs) but Statistics without Calculus may limit STEM major options. UC recommends 4 years of math — consider adding a 4th year.'});
+  if(S.math==='apstats') rules.push({l:'🟡',n:'AP Statistics path',w:'Good choice for data/social science interests. However STEM majors at UC require Calculus. Consider adding Calculus if STEM is the goal.'});
+
+  // Science
+  if(S.sci==='apbio')  {
+    rules.push({l:'🟢',n:'Biology (9th)',w:'Correct placement. Concurrent Algebra 1 is required — satisfied since Algebra 1 is already done. Strong start.'});
+    rules.push({l:'🟢',n:'Honors Chemistry (10th)',w:'Right path for AP Bio. Requires B in both Algebra 1 (done ✓) and Biology. Prepares well for AP Bio in 11th.'});
+    rules.push({l:'🟢',n:'AP Biology (11th)',w:'Strong UC signal for bio/pre-med/life sciences. Requires B in Biology + B in Chemistry (C in Honors Chem). Pairs excellently with AP Calc AB.'});
+    rules.push({l:'🟡',n:'H. Anatomy & Physiology (12th)',w:'Good for bio/health-focused students. Requires B in Bio + B in Chem. Heavy senior year if combined with other APs — manage total AP load carefully.'});
+  }
+  if(S.sci==='hon'){
+    rules.push({l:'🔴',n:'AP Physics C (12th) — CAUTION',w:'Requires A in Physics AND concurrent enrollment in Calculus. This means AP Calc AB or BC must be running simultaneously in 12th grade. Verify math path supports this before selecting.'});
+  }
+  if(S.sci==='apchem'){
+    rules.push({l:'🔴',n:'AP Chemistry (11th) — high difficulty',w:'One of the most demanding AP courses. Requires A in regular Chemistry OR B in Honors Chemistry, plus B in Algebra 2 recommended. Do not pair with other demanding APs in same year without counselor guidance.'});
+  }
+  if(S.sci==='marine'){
+    rules.push({l:'🟡',n:'Marine Biology (10th)',w:'Interesting elective but weaker for UC science requirement vs. Chemistry. Note: Marine Bio requires C in Bio + completed Geometry. Consider adding Chemistry in 11th or 12th to strengthen the physical science year.'});
+  }
+  if(S.sci==='std'){
+    rules.push({l:'🟡',n:'Standard Science path',w:'Meets all requirements but less competitive for STEM UC apps. Consider upgrading Chemistry or Physics to Honors level if grades allow.'});
+  }
+
+  // Summer bio
+  if(S.bioSum) rules.push({l:'🟡',n:'Summer Biology (external)',w:'Smart strategy to free a 9th grade slot — BUT requires counselor pre-approval before enrolling. Submit Non-District Course Request. Confirm course is on UC A-G approved list.'});
+
+  // A-G gaps
+  const lang=cAG('E',cs), art=cAG('F',cs), g=cAG('G',cs);
+  if(lang<2) rules.push({l:'🔴',n:`World Language: ${lang}/2 years`,w:`UC requires 2 years of the SAME language. Missing ${2-lang} year(s). Add via elective slots. Important: must be same language both years to count.`});
+  else if(lang>=3) rules.push({l:'🟢',n:`World Language: ${lang} years`,w:`3+ years of same language. Excellent — this is above UC minimum and strengthens apps significantly.`});
+  else rules.push({l:'🟢',n:`World Language: ${lang}/2 years`,w:`UC minimum met. Consider adding a 3rd year of the same language — UC recommends it and it strengthens competitive apps.`});
+
+  if(art<1) rules.push({l:'🔴',n:'Fine Art (VAPA): 0/1 year',w:'UC requires 1 full year of Fine Art. Missing! Add Visual Art, Drama, or Music via elective slots.'});
+  else rules.push({l:'🟢',n:'Fine Art (VAPA): requirement met',w:'1 year of fine art planned. UC F requirement satisfied. ✓'});
+
+  // AP count
+  const apc=cs.filter(c=>c.ap).length;
+  if(apc>=5)      rules.push({l:'🟢',n:`AP Load: ${apc} AP courses total`,w:`Strong AP load across 4 years. UC holistic review rewards breadth + depth. Aim for B+ or better in each — a B in an AP outweighs an A in regular for UC consideration.`});
+  else if(apc>=3) rules.push({l:'🟡',n:`AP Load: ${apc} AP courses total`,w:`Decent AP load. For competitive UC campuses (Berkeley, UCLA, UCSD), aim for 5–8 APs across HS. Consider adding summer AP courses with counselor approval.`});
+  else            rules.push({l:'🔴',n:`AP Load: ${apc} AP courses — too few for competitive UCs`,w:`Competitive UCs expect significant AP/Honors coursework. Add AP courses via elective slots or approved summer courses.`});
+
+  // PE note
+  rules.push({l:'🟢',n:'PE Requirement',w:'2 full years of PE required for SRVUSD graduation (9th and 10th grade). Both are included in the plan. Note: PE does NOT count toward UC A-G requirements.'});
+
+  // Health note
+  rules.push({l:'🟢',n:'Health (½ year)',w:'Required for SRVUSD graduation. Paired with Ethnic Studies in 9th grade. Does not count toward UC A-G but is required for diploma.'});
+
+  // Total credits
+  const totalCr=cs.reduce((a,c)=>a+(c.cr||10),0);
+  if(totalCr>=220) rules.push({l:'🟢',n:`Graduation credits: ${totalCr}/220`,w:`On track for graduation credit total. Remember: electives, CTE, and additional courses also count toward the 220 credit minimum.`});
+  else rules.push({l:'🟡',n:`Graduation credits: ${totalCr}/220 estimated`,w:`Add more elective courses to reach the 220 credit requirement. Electives, CTE, and additional classes all count.`});
+
+  return rules;
+}
+
+function renderAdvisor(){
+  const rules=mkRules();
+  document.getElementById('advBody').innerHTML=rules.map(r=>`
+    <div class="adv-row">
+      <span class="tl-dot">${r.l}</span>
+      <div class="adv-c"><div class="adv-name">${r.n}</div><div class="adv-why">${r.w}</div></div>
+    </div>`).join('');
+}
+
+// ── SIDEBAR
+function renderSidebar(){
+  const cs=allC();
+  let tot=0;
+  UC_DEFS.forEach(d=>tot+=Math.min(cAG(d.key,cs),d.needed));
+  document.getElementById('scNum').textContent=tot;
+  document.getElementById('scFill').style.width=`${(tot/15)*100}%`;
+
+  const ud=document.getElementById('ucReqs');
+  ud.innerHTML='';
+  const gaps=[];
+  UC_DEFS.forEach(d=>{
+    const c=cAG(d.key,cs), done=c>=d.needed;
+    if(!done) gaps.push(`${d.lbl}: ${c}/${d.needed}`);
+    const pips=Array.from({length:d.needed},(_,i)=>`<div class="pip ${i<c?'f':''}"></div>`).join('');
+    const row=document.createElement('div');
+    row.className='rr';
+    row.innerHTML=`<div class="rdot" style="background:${done?'var(--green)':c>0?'var(--amber)':'#e2e8f0'}"></div><span class="rn">${d.icon} ${d.lbl}</span><div class="rpips">${pips}</div>${done?'<span class="rdone">✓</span>':`<span style="font-size:.58rem;color:var(--slate-lt)">${c}/${d.needed}</span>`}`;
+    ud.appendChild(row);
+  });
+
+  const hd=document.getElementById('hsReqs');
+  hd.innerHTML='';
+  HS_DEFS.forEach(d=>{
+    const earned=d.fn(cs), done=earned>=d.req;
+    const row=document.createElement('div');
+    row.className='rr';
+    row.innerHTML=`<div class="rdot" style="background:${done?'var(--green)':earned>0?'var(--amber)':'#e2e8f0'}"></div><span class="rn">${d.lbl}</span><span style="font-size:.6rem;font-weight:700;color:${done?'var(--green)':earned>0?'var(--amber)':'var(--slate-lt)'};margin-left:auto">${earned}/${d.req}</span>`;
+    hd.appendChild(row);
+  });
+
+  const sa=document.getElementById('sideAlerts');
+  if(gaps.length){
+    sa.innerHTML=`<div class="abox abox-warn"><div class="abox-title">⚠️ A-G gaps</div><ul>${gaps.map(g=>`<li>${g}</li>`).join('')}</ul></div>`;
+  } else {
+    sa.innerHTML=`<div class="abox abox-ok"><strong>🎉 All 7 A-G categories covered!</strong></div>`;
+  }
+}
+
+// ── MILESTONES
+function getReqYr(key){
+  for(let yr=9;yr<=12;yr++){
+    let cum=[];for(let y=9;y<=yr;y++)cum=[...cum,...yrCourses(y)];
+    if(cAG(key,cum)>=UC_DEFS.find(d=>d.key===key).needed) return yr;
+  }return null;
+}
+function getHSYr(def){
+  for(let yr=9;yr<=12;yr++){
+    let cum=[];for(let y=9;y<=yr;y++)cum=[...cum,...yrCourses(y)];
+    if(def.fn(cum)>=def.req) return yr;
+  }return null;
+}
+
+function renderMilestones(){
+  const allReqs=[
+    ...UC_DEFS.map(d=>({lbl:d.lbl,yr:getReqYr(d.key),cat:'uc'})),
+    ...HS_DEFS.map(d=>({lbl:d.lbl,yr:getHSYr(d),cat:'hs'})),
+  ];
+  const perYr={9:[],10:[],11:[],12:[]};
+  allReqs.forEach(r=>{if(r.yr) perYr[r.yr].push(r.lbl);});
+
+  // cumulative done at end of each yr
+  const cumDone={};
+  [9,10,11,12].forEach(yr=>cumDone[yr]=allReqs.filter(r=>r.yr&&r.yr<=yr).length);
+  const total=allReqs.length;
+  const pct11=(cumDone[11]/total)*100;
+
+  document.getElementById('tlProg').style.width=`${Math.min(pct11*0.9,90)}%`;
+
+  const tlYrs=document.getElementById('tlYrs');
+  tlYrs.innerHTML='';
+  [9,10,11,12].forEach(yr=>{
+    const done=cumDone[yr]===total, part=cumDone[yr]>0&&cumDone[yr]<total;
+    const tags=perYr[yr].map(l=>`<div class="tl-tag ${done?'tag-done':part?'tag-part':'tag-none'}">${l}</div>`).join('');
+    const div=document.createElement('div');
+    div.className='tl-yr';
+    div.innerHTML=`<div class="tl-node ${done?'done':part?'part':'none'}">${yr}th</div><div class="tl-yr-lbl">${['9th','10th','11th','12th'][yr-9]}</div><div class="tl-yr-ct">${cumDone[yr]}/${total} met</div><div class="tl-tags">${tags}</div>`;
+    tlYrs.appendChild(div);
+  });
+
+  // summary note
+  const doneBy11=cumDone[11]===total, doneBy12=cumDone[12]===total;
+  document.getElementById('tlSummary').innerHTML = doneBy11
+    ? `✅ <strong>All requirements completed by end of 11th grade!</strong> This is excellent — you're maximally prepared entering senior year for UC applications.`
+    : doneBy12
+    ? `🟡 <strong>All requirements completed by end of 12th grade.</strong> Try to fill World Language or Fine Art gaps earlier (by end of 11th) so they appear on the UC application, which is submitted during fall of 12th grade.`
+    : `🔴 <strong>Some requirements not yet met by 12th grade.</strong> Review gaps in the A-G checklist below and add courses via elective slots on the Course Plan tab.`;
+
+  // HS checklist
+  let hsDone=0;
+  const hsCL=document.getElementById('hsCL');
+  hsCL.innerHTML='';
+  HS_DEFS.forEach(d=>{
+    const yr=getHSYr(d);
+    let cum=[];for(let y=9;y<=12;y++)cum=[...cum,...yrCourses(y)];
+    const earned=d.fn(cum), done=yr!==null;
+    if(done) hsDone++;
+    const item=document.createElement('div');
+    item.className='cl-item';
+    item.innerHTML=`<div class="cl-chk ${done?'chk-done':earned>0?'chk-part':'chk-miss'}">${done?'✓':earned>0?'~':''}</div>
+      <div class="cl-info"><div class="cl-req">${d.lbl}</div><div class="cl-detail">${earned} / ${d.req} credits planned</div>
+      <span class="cl-yr ${done?'yr-done':earned>0?'yr-part':'yr-miss'}">${done?`✓ Done by ${yr}th grade`:earned>0?'In progress':'Not yet planned'}</span></div>`;
+    hsCL.appendChild(item);
+  });
+  document.getElementById('hsPct').textContent=Math.round(hsDone/HS_DEFS.length*100)+'%';
+
+  // UC checklist
+  let ucDone=0;
+  const ucCL=document.getElementById('ucCL');
+  ucCL.innerHTML='';
+  UC_DEFS.forEach(d=>{
+    const yr=getReqYr(d.key);
+    const c=cAG(d.key,allC()), done=yr!==null;
+    if(done) ucDone++;
+    const item=document.createElement('div');
+    item.className='cl-item';
+    item.innerHTML=`<div class="cl-chk ${done?'chk-done':c>0?'chk-part':'chk-miss'}">${done?'✓':c>0?'~':''}</div>
+      <div class="cl-info"><div class="cl-req">${d.icon} ${d.lbl}</div><div class="cl-detail">${d.desc}</div><div class="cl-detail">${c} of ${d.needed} yr(s) planned</div>
+      <span class="cl-yr ${done?'yr-done':c>0?'yr-part':'yr-miss'}">${done?`✓ Complete by ${yr}th grade`:c>0?`${c}/${d.needed} — add more`:'❌ Missing — add elective'}</span></div>`;
+    ucCL.appendChild(item);
+  });
+  document.getElementById('ucPct').textContent=Math.round(ucDone/UC_DEFS.length*100)+'%';
+}
+
+// ── PROGRESS
+function renderProgress(){
+  const cs=allC();
+  const ap=cs.filter(c=>c.ap).length, hon=cs.filter(c=>c.hon&&!c.ap).length;
+  let tot=0; UC_DEFS.forEach(d=>tot+=Math.min(cAG(d.key,cs),d.needed));
+  const totalCr=cs.reduce((a,c)=>a+(c.cr||10),0);
+
+  const sr=document.getElementById('sumRow');
+  [{n:tot,mx:15,l:'A-G Courses',s:'of 15 UC/CSU min',bg:'#fef9e7',bc:'#d4860e',tc:'#92400e'},
+   {n:ap,mx:10,l:'AP Courses',s:'across all 4 years',bg:'#dbeafe',bc:'#2558a0',tc:'#1e3a8a'},
+   {n:hon,mx:8,l:'Honors Courses',s:'non-AP honors',bg:'#dcfce7',bc:'#0a8f5f',tc:'#14532d'},
+   {n:totalCr,mx:240,l:'Est. Grad Credits',s:'220 required',bg:'#f1f5f9',bc:'#64748b',tc:'#334155'},
+  ].forEach(s=>{
+    const d=document.createElement('div');
+    d.className='sum-card';
+    d.style.cssText=`background:${s.bg};border-color:${s.bc}30`;
+    d.innerHTML=`<div class="sum-n" style="color:${s.bc}">${s.n}</div><div class="sum-l" style="color:${s.tc}">${s.l}</div><div class="sum-s" style="color:${s.tc}">${s.s}</div>`;
+    sr.appendChild(d);
+  });
+
+  // GPA
+  const gDiv=document.getElementById('gpaRows');
+  gDiv.innerHTML='';
+  ['9th','10th','11th','12th'].forEach((lbl,i)=>{
+    const yr=i+9, val=parseFloat(S.gpa[yr])||0;
+    const pct=Math.min(val/4.5,1)*100;
+    const col=val>=3.7?'var(--green)':val>=3.0?'var(--amber)':val>0?'var(--red)':'var(--border)';
+    const row=document.createElement('div');
+    row.className='gprow';
+    row.innerHTML=`<span class="gp-yr">${lbl}</span>
+      <input class="gp-inp" type="number" min="0" max="5" step="0.01" placeholder="0.00" value="${S.gpa[yr]}" oninput="upGPA(${yr},this.value)">
+      <div class="gp-trk"><div class="gp-fill" style="width:${pct}%;background:${col}"></div></div>
+      <span class="gp-val" style="color:${col}">${val>0?val.toFixed(2):'—'}</span>`;
+    gDiv.appendChild(row);
+  });
+  const vals=[9,10,11].map(yr=>parseFloat(S.gpa[yr])).filter(v=>v>0);
+  const td=document.getElementById('gpaTrend');
+  td.innerHTML=vals.length>=2
+    ? `<div class="trend-pill ${vals[vals.length-1]-vals[0]>0.05?'tp-up':vals[vals.length-1]-vals[0]<-0.05?'tp-dn':'tp-fl'}">${vals[vals.length-1]-vals[0]>0.05?'↑ Improving':vals[vals.length-1]-vals[0]<-0.05?'↓ Declining':'→ Stable'} trend</div>`
+    : '<div style="font-size:.64rem;color:var(--slate-lt);margin-top:5px">Enter GPA values to see trend analysis</div>';
+
+  // Rigor
+  const rd=document.getElementById('rigRows');
+  rd.innerHTML='';
+  ['9th','10th','11th','12th'].forEach((lbl,i)=>{
+    const yr=i+9, yc=yrCourses(yr);
+    const ap2=yc.filter(c=>c.ap).length, hon2=yc.filter(c=>c.hon&&!c.ap).length, reg=yc.length-ap2-hon2;
+    const sc=ap2*2+hon2;
+    const dots=[...Array(ap2).fill('<div class="rdot2 r-ap">AP</div>'),...Array(hon2).fill('<div class="rdot2 r-ho">H</div>'),...Array(Math.max(0,reg)).fill('<div class="rdot2 r-re"></div>')].join('');
+    const row=document.createElement('div');
+    row.className='rigrow';
+    row.innerHTML=`<span class="rig-yr">${lbl}</span><div class="rig-dots">${dots}</div><span class="rig-sc" style="color:${sc>=4?'#2558a0':sc>=2?'var(--green)':'var(--slate-lt)'}">${sc>0?sc+'pts':'—'}</span>`;
+    rd.appendChild(row);
+  });
+
+  // A-G accumulation
+  const ad=document.getElementById('agAccum');
+  ad.innerHTML='';
+  UC_DEFS.forEach(d=>{
+    let cum=0;const pips=[];
+    for(let yr=9;yr<=12;yr++){
+      const gained=cAG(d.key,yrCourses(yr));
+      for(let g=0;g<gained;g++){
+        pips.push(`<div class="pip ${cum<d.needed?'f':'p'}" title="${['9th','10th','11th','12th'][yr-9]} grade"></div>`);
+        cum++;
+      }
+    }
+    while(pips.length<d.needed) pips.push('<div class="pip"></div>');
+    const row=document.createElement('div');
+    row.className='rr';
+    row.innerHTML=`<span style="font-size:.6rem;font-weight:800;background:var(--ink2);color:#fff;width:16px;height:16px;border-radius:3px;display:flex;align-items:center;justify-content:center;flex-shrink:0">${d.key}</span><span class="rn">${d.lbl}</span><div class="rpips">${pips.join('')}</div>`;
+    ad.appendChild(row);
+  });
+}
+
+// ── SUMMER
+function renderSummer(){
+  // bio9
+  const b9=document.getElementById('bio9opts');
+  b9.innerHTML='';
+  [{id:'uc',nm:'UC Scout — Biology',ic:'🌐',mt:'~$200, UC A-G approved, self-paced online'},
+   {id:'byu',nm:'BYU Independent Study',ic:'📘',mt:'Accredited, self-paced, verify UC acceptance'},
+   {id:'dvc',nm:'DVC / LMC Community College',ic:'🏛️',mt:'Free w/ dual enrollment, DVHS pre-approval required'}
+  ].forEach(o=>{
+    const sel=S.bioProvider===o.id;
+    const d=document.createElement('div');
+    d.style.cssText=`border:1.5px solid ${sel?'#ea580c':'#fde68a'};border-radius:var(--rs);padding:10px;cursor:pointer;background:${sel?'#ea580c':'#fff'};color:${sel?'#fff':'#78350f'};transition:all .15s`;
+    d.innerHTML=`<div style="font-weight:700;font-size:.73rem;margin-bottom:3px">${o.ic} ${o.nm}</div><div style="font-size:.62rem;opacity:.8">${o.mt}</div>${sel?'<div style="margin-top:5px;font-size:.62rem;font-weight:700">✓ Selected — Biology moves to summer</div>':''}`;
+    d.onclick=()=>{S.bioProvider=S.bioProvider===o.id?null:o.id;S.bioSum=S.bioProvider!==null;updateBioToggle();render();};
+    b9.appendChild(d);
+  });
+  // summer 10/11
+  [10,11].forEach(yr=>{
+    const div=document.getElementById(`sum${yr}`);
+    div.innerHTML='';
+    const set=yr===10?S.s10:S.s11;
+    SUMMER_APS.filter(o=>o.years.includes(yr)).forEach(opt=>{
+      const sel=set.has(opt.id);
+      const el=document.createElement('div');
+      el.className=`sum-opt${sel?' on':''}`;
+      el.innerHTML=`<div class="sum-opt-l"><div class="sum-nm">${opt.icon} ${opt.name}</div><div class="sum-meta">${opt.note}</div></div><div style="display:flex;flex-direction:column;align-items:flex-end;gap:3px"><span class="src-tag ${opt.src}">${opt.src==='st-uc'?'UC Scout':opt.src==='st-cc'?'Comm. College':'UC Scout/DVC'}</span>${sel?'<span class="sum-sel">✓ Selected</span>':''}</div>`;
+      el.onclick=()=>{
+        if(set.has(opt.id)) set.delete(opt.id);
+        else if(set.size<2) set.add(opt.id);
+        render();
+      };
+      div.appendChild(el);
+    });
+    if(set.size>=2){
+      const w=document.createElement('div');
+      w.className='warn-box';w.style.marginTop='6px';
+      w.innerHTML='Max 2 summer courses. Remove one to swap.';
+      div.appendChild(w);
+    }
+  });
+}
+
+function updateBioToggle(){
+  const t=document.getElementById('bioToggle');
+  t.className='bio-toggle'+(S.bioSum?' on':'');
+  t.innerHTML=S.bioSum
+    ? '☀️ <strong>Summer Biology: ON</strong> — Biology will show as summer credit. Click to turn off.'
+    : '☀️ <strong>Summer Biology option:</strong> Complete Biology before 9th via approved external course — frees a 9th grade slot. Click to toggle.';
+}
+
+// ── MODAL
+function openAddMod(yr){
+  const used=yrCourses(yr).filter(c=>c.isEl).length;
+  const k=`${yr}-${used}`;
+  document.getElementById('mTitle').textContent=`Add Course — ${['','9th','10th','11th','12th'][yr]} Grade`;
+  const mb=document.getElementById('mBody');
+  mb.innerHTML='';
+  EMENU.forEach(grp=>{
+    const sec=document.createElement('div');
+    sec.className='modal-sec';
+    sec.innerHTML=`<div class="modal-sec-ttl">${grp.grp}</div>`;
+    grp.items.forEach(item=>{
+      const btn=document.createElement('button');
+      btn.className='mopt';
+      btn.innerHTML=`<div class="mopt-l"><div class="mopt-nm">${item.icon} ${item.name}${item.ap?' <span class="bap">AP</span>':''}</div>${item.meta?`<div class="mopt-mt">${item.meta}</div>`:''}</div>${item.ag?`<span style="font-size:.58rem;background:var(--sky2);color:var(--ink2);padding:1px 6px;border-radius:5px;font-weight:700;white-space:nowrap">UC ${item.ag}</span>`:''}`;
+      btn.onclick=()=>{S.el[k]={...item};closeMod();render();};
+      sec.appendChild(btn);
+    });
+    mb.appendChild(sec);
+  });
+  document.getElementById('ov').classList.add('on');
+}
+function editEl(e,k,yr){e.stopPropagation();S.el[k]=null;openAddMod(yr);}
+function delEl(e,k){e.stopPropagation();S.el[k]=null;render();}
+
+function showDetail(c){
+  document.getElementById('mTitle').textContent=`${c.icon} ${c.name}`;
+  const rules=mkRules();
+  const nm=c.name.split(' ')[0].toLowerCase();
+  const match=rules.find(r=>r.n.toLowerCase().includes(nm));
+  document.getElementById('mBody').innerHTML=`
+    <div style="display:flex;flex-wrap:wrap;gap:4px;margin-bottom:12px">
+      ${c.ap?'<span class="bap" style="font-size:.7rem;padding:2px 7px">AP</span>':''}
+      ${c.hon&&!c.ap?'<span class="bho" style="font-size:.7rem;padding:2px 7px">HONORS</span>':''}
+      ${c.req?'<span class="breq" style="font-size:.7rem;padding:2px 7px">REQUIRED</span>':''}
+      ${c.ag?`<span style="font-size:.7rem;background:var(--sky2);color:var(--ink2);padding:2px 8px;border-radius:5px;font-weight:700">UC A-G: ${c.ag}</span>`:''}
+      ${c.isSummer?'<span class="bsu" style="font-size:.7rem;padding:2px 7px">SUMMER/EXTERNAL</span>':''}
+    </div>
+    ${c.prereq?`<div style="background:var(--amber-pale);border:1px solid #fcd34d;border-radius:6px;padding:9px 11px;margin-bottom:10px;font-size:.7rem;color:#78350f"><strong>📋 Prerequisites:</strong> ${c.prereq}</div>`:''}
+    ${match?`<div style="background:var(--sky);border-radius:8px;padding:10px 12px;margin-bottom:10px"><div style="font-size:.78rem;font-weight:700;margin-bottom:4px">${match.l} Advisor Note</div><div style="font-size:.7rem;color:var(--ink2);line-height:1.5">${match.w}</div></div>`:''}
+    ${c.isSummer?`<div class="warn-box" style="font-size:.68rem"><strong>⚠️ External course:</strong> Must be pre-approved by your DVHS counselor before enrolling. Submit Non-District Course Request to counseling office.</div>`:''}
+    ${c.note?`<div style="font-size:.68rem;color:var(--slate);margin-top:8px">${c.note}</div>`:''}`;
+  document.getElementById('ov').classList.add('on');
+}
+function closeMod(){document.getElementById('ov').classList.remove('on');}
+document.getElementById('ov').addEventListener('click',e=>{if(e.target===document.getElementById('ov'))closeMod();});
+
+// ── TABS
+function goTab(name,el){
+  document.querySelectorAll('.page').forEach(p=>p.classList.remove('on'));
+  document.querySelectorAll('.ht').forEach(t=>t.classList.remove('on'));
+  document.getElementById(`tab-${name}`).classList.add('on');
+  el.classList.add('on');
+}
+
+function upGPA(yr,v){S.gpa[yr]=v;renderProgress();}
+function setSci(v){
+  S.sci=v;
+  document.querySelectorAll('[id^="sci-"]').forEach(b=>b.classList.remove('on'));
+  document.getElementById(`sci-${v}`)?.classList.add('on');
+  render();
+}
+function setMath(v){
+  S.math=v;
+  document.querySelectorAll('[id^="math-"]').forEach(b=>b.classList.remove('on'));
+  document.getElementById(`math-${v}`)?.classList.add('on');
+  render();
+}
+function toggleBio(){
+  S.bioSum=!S.bioSum;
+  S.bioProvider=S.bioSum?'uc':null;
+  updateBioToggle();
+  render();
+}
+
+// ══════════ DEFAULT SAMPLE PLAN ══════════
+// Pre-fill with a strong, realistic UC/CSU-targeted plan for STEM
+// Spanish 1 + Visual Art in 9th (covers UC E and F)
+// Spanish 2 + AP Human Geography in 10th
+// Spanish 3 + AP Psychology in 11th
+// AP Macro Economics in 12th
+S.el['9-0']={name:'Spanish 1',icon:'🌎',type:'cl2',ag:'E',cr:10,meta:'Start of 2-yr sequence required for UC'};
+S.el['9-1']={name:'Visual Art',icon:'🎨',type:'ca',ag:'F',cr:10,meta:'1 full year satisfies UC F'};
+S.el['10-0']={name:'Spanish 2',icon:'🌎',type:'cl2',ag:'E',cr:10,meta:'Fulfills UC E with Spanish 1'};
+S.el['10-1']={name:'AP Human Geography',icon:'🗺️',type:'cap',ag:'A',cr:10,ap:true,meta:'Good first AP, available via UC Scout'};
+S.el['11-0']={name:'Spanish 3',icon:'🌎',type:'cl2',ag:'E',cr:10,meta:'3rd year — UC recommends 3'};
+S.el['11-1']={name:'AP Psychology',icon:'🧠',type:'cap',ag:'G',cr:10,ap:true,meta:'Popular, manageable load'};
+S.el['12-0']={name:'AP Macro Economics',icon:'📈',type:'cap',ag:'G',cr:10,ap:true,meta:'Pairs well with Gov/Econ'};
+
+render();
+</script>
+</body>
+</html>
