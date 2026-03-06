@@ -4,270 +4,307 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>DVHS 4-Year Planner — Final</title>
-<link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,600;0,700;1,400&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
 :root{
-  --ink:#0b1829;--ink2:#1a3a5c;--ink3:#2558a0;
-  --sky:#eef4fb;--sky2:#d8eaf8;
-  --gold:#d4860e;--gold2:#f5c842;--gold-pale:#fef9e7;
-  --green:#0a8f5f;--green-pale:#dcfce7;--green-mid:#16a34a;
-  --amber:#b45309;--amber-pale:#fef3c7;
-  --red:#b91c1c;--red-pale:#fee2e2;
-  --slate:#64748b;--slate-lt:#94a3b8;--slate-pale:#f8fafc;
-  --border:#e2e8f0;--bg:#f1f5fb;--white:#fff;
-  --shadow:0 1px 12px rgba(11,24,41,.08);
-  --shadow-md:0 4px 24px rgba(11,24,41,.12);
-  --r:14px;--rs:8px;
+  --navy:#0d1b2a;--navy-mid:#1b3150;--navy-lt:#274472;
+  --gold:#c8922a;--gold-lt:#e8b455;--gold-pale:#fdf6e9;
+  --cream:#faf8f4;--cream-dk:#f2ede4;
+  --ink:#1a1a2e;--ink2:#2d3561;
+  --slate:#5c6b8a;--slate-lt:#8a9bbf;
+  --mist:#eef2f9;--mist-dk:#dde4f0;
+  --green:#1a7a4a;--green-pale:#edfaf3;--green-mid:#22a066;
+  --amber:#b05e0a;--amber-pale:#fef5e7;
+  --red:#b91c1c;--red-pale:#fef2f2;
+  --bg:#f4f1eb;--white:#fff;--border:#ddd8cf;--border-dk:#c8c0b4;
+  --font-display:'DM Serif Display',Georgia,serif;
+  --font-body:'DM Sans',system-ui,sans-serif;
+  --font-mono:'DM Mono',monospace;
+  --r:16px;--rs:10px;--rsx:6px;
+  --shadow-sm:0 1px 4px rgba(13,27,42,.06),0 0 0 1px rgba(13,27,42,.04);
+  --shadow:0 2px 12px rgba(13,27,42,.08),0 0 0 1px rgba(13,27,42,.05);
+  --shadow-md:0 8px 32px rgba(13,27,42,.14),0 0 0 1px rgba(13,27,42,.06);
+  --shadow-lg:0 16px 48px rgba(13,27,42,.18);
 }
-*{box-sizing:border-box;margin:0;padding:0}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth;font-size:13px}
-body{font-family:'Outfit',sans-serif;background:var(--bg);color:var(--ink);min-height:100vh}
+body{font-family:var(--font-body);background:var(--bg);color:var(--ink);min-height:100vh;-webkit-font-smoothing:antialiased}
 
-/* ─── HEADER ─── */
-.hdr{background:var(--ink);padding:0 24px;display:flex;align-items:stretch;justify-content:space-between;position:sticky;top:0;z-index:300;box-shadow:0 2px 20px rgba(0,0,0,.45)}
-.hdr-brand{display:flex;align-items:center;gap:10px;padding:12px 0}
-.hdr-logo{width:34px;height:34px;background:var(--gold2);border-radius:7px;display:flex;align-items:center;justify-content:center;font-size:1rem;flex-shrink:0}
-.hdr-text h1{font-family:'Lora',serif;color:#fff;font-size:1.15rem;line-height:1.1}
-.hdr-text p{color:rgba(255,255,255,.38);font-size:.65rem;margin-top:1px;letter-spacing:.04em}
-.hdr-tabs{display:flex;align-items:stretch}
-.ht{padding:0 16px;font-size:.7rem;font-weight:600;color:rgba(255,255,255,.4);cursor:pointer;display:flex;align-items:center;gap:5px;border-bottom:2px solid transparent;transition:all .2s;letter-spacing:.05em;text-transform:uppercase}
-.ht:hover{color:rgba(255,255,255,.75)}
-.ht.on{color:#fff;border-bottom-color:var(--gold2)}
-.hdr-right{display:flex;align-items:center;gap:8px;padding:0}
-.hbadge{background:rgba(212,134,14,.18);border:1px solid rgba(245,200,66,.4);color:var(--gold2);font-size:.62rem;font-weight:700;padding:3px 10px;border-radius:16px;letter-spacing:.06em}
+/* HEADER */
+.hdr{background:var(--navy);padding:0 28px;display:flex;align-items:stretch;justify-content:space-between;position:sticky;top:0;z-index:300;box-shadow:0 2px 24px rgba(0,0,0,.5);border-bottom:1px solid rgba(200,146,42,.2)}
+.hdr-brand{display:flex;align-items:center;gap:12px;padding:13px 0}
+.hdr-logo{width:36px;height:36px;background:linear-gradient(135deg,var(--gold),var(--gold-lt));border-radius:9px;display:flex;align-items:center;justify-content:center;font-size:1.1rem;flex-shrink:0;box-shadow:0 2px 8px rgba(200,146,42,.4)}
+.hdr-text h1{font-family:var(--font-display);color:#fff;font-size:1.15rem;line-height:1.1;letter-spacing:-.01em}
+.hdr-text p{color:rgba(255,255,255,.32);font-size:.63rem;margin-top:2px;letter-spacing:.06em;font-weight:300}
+.hdr-tabs{display:flex;align-items:stretch;margin-left:8px}
+.ht{padding:0 18px;font-size:.68rem;font-weight:600;color:rgba(255,255,255,.38);cursor:pointer;display:flex;align-items:center;gap:6px;border-bottom:2.5px solid transparent;transition:all .2s;letter-spacing:.07em;text-transform:uppercase;position:relative}
+.ht:hover{color:rgba(255,255,255,.7)}
+.ht.on{color:#fff;border-bottom-color:var(--gold-lt)}
+.hdr-right{display:flex;align-items:center;gap:8px}
+.hbadge{background:rgba(200,146,42,.12);border:1px solid rgba(232,180,85,.3);color:var(--gold-lt);font-size:.6rem;font-weight:700;padding:4px 11px;border-radius:20px;letter-spacing:.08em}
 
-/* ─── PAGES ─── */
-.page{display:none;padding:18px 22px;max-width:1480px;margin:0 auto}
-.page.on{display:block}
+/* PAGES */
+.page{display:none;padding:22px 26px;max-width:1520px;margin:0 auto}
+.page.on{display:block;animation:fadeIn .25s ease}
+@keyframes fadeIn{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:translateY(0)}}
 
-/* ─── GRID LAYOUT ─── */
-.two-col{display:grid;grid-template-columns:1fr 272px;gap:16px;align-items:start}
+/* LAYOUT */
+.two-col{display:grid;grid-template-columns:1fr 280px;gap:18px;align-items:start}
 
-/* ─── CARDS ─── */
-.card{background:var(--white);border-radius:var(--r);border:1px solid var(--border);box-shadow:var(--shadow);padding:16px 18px;margin-bottom:14px}
-.card-ttl{font-family:'Lora',serif;font-size:.95rem;color:var(--ink);margin-bottom:12px;display:flex;align-items:center;gap:8px}
-.card-ttl::after{content:'';flex:1;height:1px;background:var(--border)}
-.lbl{font-size:.6rem;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:var(--slate-lt);margin-bottom:6px}
+/* CARDS */
+.card{background:var(--white);border-radius:var(--r);border:1px solid var(--border);box-shadow:var(--shadow);padding:18px 20px;margin-bottom:16px}
+.card-ttl{font-family:var(--font-display);font-size:1rem;color:var(--navy);margin-bottom:14px;display:flex;align-items:center;gap:10px;letter-spacing:-.01em}
+.card-ttl::after{content:'';flex:1;height:1px;background:linear-gradient(to right,var(--border),transparent)}
+.lbl{font-size:.59rem;font-weight:700;text-transform:uppercase;letter-spacing:.12em;color:var(--slate-lt);margin-bottom:6px}
 
-/* ─── PATH SELECTOR ─── */
-.path-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
-.pb{background:var(--slate-pale);border:1.5px solid var(--border);border-radius:var(--rs);padding:7px 10px;font-family:'Outfit',sans-serif;font-size:.72rem;font-weight:500;color:var(--ink);cursor:pointer;text-align:left;transition:all .18s;display:flex;align-items:center;gap:6px;width:100%;margin-bottom:4px}
-.pb:hover{border-color:var(--ink3);background:#eef4fb}
-.pb.on{background:var(--ink);border-color:var(--ink);color:#fff}
-.pb.on .pd{background:var(--gold2)}
-.pd{width:6px;height:6px;border-radius:50%;background:var(--border);flex-shrink:0;transition:background .15s}
-.bio-toggle{margin-top:8px;background:var(--gold-pale);border:1px solid #fbbf24;border-radius:var(--rs);padding:8px 12px;font-size:.7rem;color:#78350f;display:flex;align-items:center;gap:8px;cursor:pointer;transition:all .15s}
-.bio-toggle:hover{border-color:var(--gold)}
-.bio-toggle.on{background:#ea580c;border-color:#ea580c;color:#fff}
+/* STARTING POINT CONFIGURATOR */
+.spc-wrap{background:linear-gradient(145deg,#eef9f3,#eef3fb);border:1.5px solid #a8d8be;border-radius:var(--r);padding:16px 18px;margin-bottom:16px;position:relative;overflow:hidden}
+.spc-wrap::before{content:'✓';position:absolute;top:-14px;right:20px;font-size:5rem;font-weight:700;color:rgba(26,122,74,.06);line-height:1;pointer-events:none}
+.spc-title{font-family:var(--font-display);font-size:.95rem;color:var(--navy);margin-bottom:3px}
+.spc-subtitle{font-size:.65rem;color:var(--slate);margin-bottom:14px}
+.spc-cols{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:12px}
+.spc-col{background:rgba(255,255,255,.75);border-radius:var(--rs);border:1px solid rgba(255,255,255,.9);box-shadow:var(--shadow-sm);padding:12px 14px;backdrop-filter:blur(4px)}
+.spc-col-hd{font-size:.72rem;font-weight:700;color:var(--navy-mid);margin-bottom:10px;padding-bottom:7px;border-bottom:1px solid var(--border);display:flex;align-items:center;gap:5px}
+.spc-group-lbl{font-size:.57rem;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:var(--slate-lt);margin-bottom:5px;margin-top:2px}
+.spc-check{display:flex;align-items:flex-start;gap:9px;padding:7px 9px;border-radius:8px;cursor:pointer;transition:all .15s;margin-bottom:4px;border:1.5px solid transparent}
+.spc-check:hover{background:rgba(26,122,74,.06);border-color:rgba(26,122,74,.15)}
+.spc-check input[type=checkbox]{width:16px;height:16px;margin-top:1px;flex-shrink:0;accent-color:var(--green-mid);cursor:pointer}
+.spc-chk-body{flex:1}
+.spc-chk-name{font-size:.74rem;font-weight:600;color:var(--ink);display:flex;align-items:center;gap:5px;flex-wrap:wrap}
+.spc-check input:checked~.spc-chk-body .spc-chk-name{color:var(--green)}
+.spc-chk-sub{font-size:.61rem;color:var(--slate);margin-top:1px;line-height:1.4}
+.spc-tag{font-size:.54rem;font-weight:700;padding:1px 6px;border-radius:5px}
+.spc-tag-req{background:#fee2e2;color:#991b1b}
+.spc-tag-adv{background:#dbeafe;color:#1e40af}
+.spc-tag-sum{background:#ffedd5;color:#9a3412}
+.spc-result{border-radius:var(--rs);padding:12px 14px;font-size:.7rem;line-height:1.6;display:flex;gap:12px;flex-wrap:wrap;align-items:flex-start}
+.spc-result-math,.spc-result-sci{flex:1;min-width:150px}
+.spc-result-hd{font-size:.58rem;font-weight:700;text-transform:uppercase;letter-spacing:.1em;margin-bottom:4px}
+.spc-ok{background:var(--green-pale);border:1px solid #a7f3d0;color:#14532d}
+.spc-warn{background:var(--amber-pale);border:1px solid #fcd34d;color:#78350f}
 
-/* ─── YEAR COLUMNS ─── */
-.yr-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-bottom:14px}
-.yc{background:var(--white);border-radius:var(--r);border:1px solid var(--border);box-shadow:var(--shadow);overflow:hidden}
-.yc-head{padding:10px 12px}
-.yc-name{font-weight:700;font-size:.82rem;color:#fff}
-.yc-sub{font-size:.6rem;color:rgba(255,255,255,.5);margin-top:1px}
-.yc-stats{font-size:.6rem;color:rgba(255,255,255,.65);margin-top:3px;display:flex;gap:6px;flex-wrap:wrap}
-.stat-chip{background:rgba(255,255,255,.12);padding:1px 6px;border-radius:8px}
-.yr9 .yc-head{background:linear-gradient(135deg,#0b1829 0%,#1a3a5c 100%)}
-.yr10 .yc-head{background:linear-gradient(135deg,#1a3a5c 0%,#24527a 100%)}
-.yr11 .yc-head{background:linear-gradient(135deg,#1e4d8c 0%,#2563eb 100%)}
-.yr12 .yc-head{background:linear-gradient(135deg,#1d4ed8 0%,#3b82f6 100%)}
-.cl{padding:7px}
+/* MODE TABS */
+.mode-tab{background:transparent;border:1.5px solid var(--border);border-radius:24px;padding:6px 16px;font-family:var(--font-body);font-size:.68rem;font-weight:600;color:var(--slate);cursor:pointer;transition:all .18s;letter-spacing:.02em}
+.mode-tab:hover{border-color:var(--navy-lt);color:var(--navy);background:var(--mist)}
+.mode-tab.on{background:var(--navy);border-color:var(--navy);color:#fff;box-shadow:0 2px 8px rgba(13,27,42,.2)}
 
-/* ─── COURSE ITEMS ─── */
-.ci{border-radius:var(--rs);padding:6px 8px;margin-bottom:4px;font-size:.72rem;font-weight:500;display:flex;align-items:flex-start;gap:5px;cursor:pointer;transition:all .18s;position:relative;line-height:1.3}
-.ci:hover{filter:brightness(.94);transform:translateX(1px)}
-.ci-ico{font-size:.85rem;flex-shrink:0;margin-top:1px}
-.ci-body{flex:1;min-width:0}
-.ci-nm{display:flex;align-items:center;gap:3px;flex-wrap:wrap;line-height:1.3}
-.ci-note{font-size:.6rem;opacity:.6;margin-top:1px}
-.ci-acts{display:flex;gap:2px;margin-left:auto;flex-shrink:0;opacity:0;transition:opacity .15s}
-.ci:hover .ci-acts{opacity:1}
-.act-btn{width:17px;height:17px;border-radius:3px;border:none;cursor:pointer;font-size:.6rem;display:flex;align-items:center;justify-content:center;transition:all .12s;flex-shrink:0}
-.act-edit{background:#dbeafe;color:#1e40af}.act-del{background:#fee2e2;color:#b91c1c}
-.act-btn:hover{transform:scale(1.2)}
+/* PATHWAY CARDS */
+.pcard{background:var(--cream);border:2px solid var(--border);border-radius:12px;padding:12px 14px;cursor:pointer;text-align:left;transition:all .22s;display:flex;align-items:flex-start;gap:11px;font-family:var(--font-body);width:100%}
+.pcard:hover{border-color:var(--navy-lt);background:var(--white);transform:translateY(-2px);box-shadow:0 6px 20px rgba(13,27,42,.1)}
+.pcard.on{background:var(--navy);border-color:var(--navy);color:#fff;box-shadow:0 6px 20px rgba(13,27,42,.25);transform:translateY(-1px)}
+.pcard.on .pc-seq,.pcard.on .pc-math{color:rgba(255,255,255,.5)}
+.pc-icon{font-size:1.5rem;flex-shrink:0;margin-top:1px}
+.pc-body{flex:1;min-width:0}
+.pc-name{font-weight:700;font-size:.8rem;color:var(--ink);margin-bottom:3px}
+.pcard.on .pc-name{color:#fff}
+.pc-seq{font-size:.67rem;color:var(--slate);margin-bottom:4px;line-height:1.4}
+.pc-math{font-size:.62rem;color:var(--slate-lt);margin-bottom:6px;line-height:1.3}
+.pc-tags{display:flex;flex-wrap:wrap;gap:3px}
+.ptag{font-size:.58rem;font-weight:700;padding:2px 7px;border-radius:10px}
+.ptag-ok{background:var(--green-pale);color:var(--green)}
+.pcard.on .ptag-ok{background:rgba(26,122,74,.25);color:#6ee7b7}
+.ptag-warn{background:var(--amber-pale);color:var(--amber)}
+.pcard.on .ptag-warn{background:rgba(176,94,10,.3);color:#fbbf24}
 
-/* subject colors */
-.ch{background:#fef9c3;color:#713f12}.ce{background:#dbeafe;color:#1e3a8a}
-.cm{background:#dcfce7;color:#14532d}.cs{background:#fce7f3;color:#831843}
-.cl2{background:#ede9fe;color:#3730a3}.ca{background:#ffedd5;color:#7c2d12}
-.cp{background:#e0f2fe;color:#0c4a6e}.ck{background:#f0fdf4;color:#14532d}
-.cx{background:#f1f5f9;color:#334155}
-.cap{background:#1e3a5f;color:#bfdbfe;border:1px solid rgba(59,130,246,.25)}
-.csum{background:#fff7ed;color:#9a3412;border:1.5px dashed #fdba74}
-.cwarn{background:#fef2f2;color:#991b1b;border:1.5px dashed #fca5a5}
+/* MS CREDIT BUTTONS — hidden (replaced by SPC) */
+.ms-btn{display:none}
 
-/* badges */
-.bap{background:var(--gold2);color:var(--ink);font-size:.54rem;font-weight:800;padding:1px 4px;border-radius:3px}
-.bho{background:#bbf7d0;color:#065f46;font-size:.54rem;font-weight:800;padding:1px 4px;border-radius:3px}
-.bsu{background:#ea580c;color:#fff;font-size:.54rem;font-weight:700;padding:1px 4px;border-radius:3px}
-.breq{background:#fee2e2;color:#991b1b;font-size:.54rem;font-weight:700;padding:1px 4px;border-radius:3px}
-.bext{background:#7c3aed;color:#fff;font-size:.54rem;font-weight:700;padding:1px 4px;border-radius:3px}
+/* CUSTOM SELECTS */
+.csel-row{display:flex;align-items:center;gap:8px;margin-bottom:8px}
+.csel-yr{font-size:.7rem;font-weight:700;min-width:54px;color:var(--ink2)}
+.csel{flex:1;border:1.5px solid var(--border);border-radius:7px;padding:6px 9px;font-family:var(--font-body);font-size:.7rem;color:var(--ink);background:var(--white);cursor:pointer;transition:border .15s}
+.csel:focus{outline:none;border-color:var(--navy-lt);box-shadow:0 0 0 3px rgba(27,49,80,.1)}
+.csel-warn{font-size:.6rem;color:var(--red);background:var(--red-pale);padding:3px 9px;border-radius:5px;margin-bottom:7px;display:none;border-left:3px solid var(--red)}
+.csel-warn.show{display:block}
 
-/* add slot */
-.add-sl{border:1.5px dashed var(--border);border-radius:var(--rs);padding:5px 8px;margin-bottom:4px;font-size:.68rem;color:var(--slate-lt);display:flex;align-items:center;gap:4px;cursor:pointer;transition:all .15s}
-.add-sl:hover{border-color:var(--ink3);color:var(--ink2);background:var(--sky)}
+/* YEAR COLUMNS */
+.yr-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-bottom:16px}
+.yc{background:var(--white);border-radius:var(--r);border:1px solid var(--border);box-shadow:var(--shadow);overflow:hidden;transition:box-shadow .2s}
+.yc:hover{box-shadow:var(--shadow-md)}
+.yc-head{padding:12px 14px}
+.yc-name{font-family:var(--font-display);font-weight:400;font-size:.95rem;color:#fff;letter-spacing:-.01em}
+.yc-sub{font-size:.59rem;color:rgba(255,255,255,.45);margin-top:2px;letter-spacing:.05em;font-weight:300}
+.yc-stats{font-size:.59rem;color:rgba(255,255,255,.6);margin-top:5px;display:flex;gap:6px;flex-wrap:wrap}
+.stat-chip{background:rgba(255,255,255,.12);padding:2px 8px;border-radius:10px}
+.yr9 .yc-head{background:linear-gradient(135deg,#0d1b2a,#1b3150)}
+.yr10 .yc-head{background:linear-gradient(135deg,#1b3150,#274472)}
+.yr11 .yc-head{background:linear-gradient(135deg,#1e4a8c,#2563eb)}
+.yr12 .yc-head{background:linear-gradient(135deg,#c8922a,#e8b455)}
+.yr12 .yc-name{color:rgba(13,27,42,.85)}
+.yr12 .yc-sub,.yr12 .yc-stats{color:rgba(13,27,42,.5)}
+.yr12 .stat-chip{background:rgba(13,27,42,.12)}
+.cl{padding:10px;display:flex;flex-direction:column;gap:6px}
 
-/* ─── ADVISOR ─── */
-.adv-panel{background:var(--white);border-radius:var(--r);border:1px solid var(--border);box-shadow:var(--shadow);overflow:hidden;margin-bottom:14px}
-.adv-head{background:var(--ink2);padding:10px 14px;display:flex;align-items:center;gap:7px}
-.adv-head span{font-weight:600;font-size:.78rem;color:#fff}
-.adv-body{padding:10px 14px;max-height:280px;overflow-y:auto}
-.adv-row{display:flex;align-items:flex-start;gap:8px;padding:7px 0;border-bottom:1px solid var(--border)}
+/* COURSE ITEMS */
+.ci{border-radius:var(--rs);padding:9px 11px;border:1px solid var(--border);background:var(--white);cursor:pointer;transition:all .18s;position:relative;overflow:hidden}
+.ci::before{content:'';position:absolute;left:0;top:0;bottom:0;width:3px;border-radius:4px 0 0 4px}
+.ci:hover{box-shadow:var(--shadow);transform:translateX(2px)}
+.ci-top{display:flex;align-items:flex-start;justify-content:space-between;gap:6px}
+.ci-name{font-weight:600;font-size:.74rem;color:var(--ink);line-height:1.3}
+.ci-badges{display:flex;gap:3px;flex-shrink:0;flex-wrap:wrap;justify-content:flex-end}
+.ci-note{font-size:.6rem;color:var(--slate);margin-top:3px;line-height:1.3}
+.ci-acts{display:flex;gap:3px;margin-top:5px}
+.act-btn{font-size:.65rem;padding:2px 8px;border-radius:5px;border:1px solid var(--border);background:var(--cream);color:var(--slate);cursor:pointer;font-family:var(--font-body);transition:all .15s}
+.act-btn:hover{border-color:var(--slate);color:var(--ink);background:var(--white)}
+.act-del:hover{border-color:var(--red);color:var(--red);background:var(--red-pale)}
+
+/* Course stripes */
+.ch::before{background:linear-gradient(to bottom,#4f46e5,#818cf8)}
+.ce::before{background:linear-gradient(to bottom,#0369a1,#38bdf8)}
+.ce2::before{background:linear-gradient(to bottom,#7c3aed,#c084fc)}
+.cm::before{background:linear-gradient(to bottom,var(--navy),var(--navy-lt))}
+.cap::before{background:linear-gradient(to bottom,var(--gold),var(--gold-lt))}
+.cs::before{background:linear-gradient(to bottom,#059669,#34d399)}
+.cp::before{background:linear-gradient(to bottom,#dc2626,#f87171)}
+.ck::before{background:linear-gradient(to bottom,#db2777,#f472b6)}
+.cl2::before{background:linear-gradient(to bottom,#d97706,#fbbf24)}
+.ca::before{background:linear-gradient(to bottom,#7c3aed,#a78bfa)}
+.cx::before{background:linear-gradient(to bottom,var(--slate),var(--slate-lt))}
+.csum::before{background:linear-gradient(to bottom,#ea580c,#fb923c)}
+
+/* Course tints */
+.ch{background:#f5f4ff;border-color:#c7d2fe}
+.ce{background:#f0f9ff;border-color:#bae6fd}
+.ce2{background:#faf5ff;border-color:#e9d5ff}
+.cm{background:var(--mist);border-color:var(--mist-dk)}
+.cap{background:var(--gold-pale);border-color:#f5d98b}
+.cs{background:var(--green-pale);border-color:#a7f3d0}
+.cp{background:#fef2f2;border-color:#fecaca}
+.ck{background:#fdf2f8;border-color:#fbcfe8}
+.cl2{background:#fffbeb;border-color:#fde68a}
+.ca{background:#faf5ff;border-color:#e9d5ff}
+.csum{background:#fff7ed;border-color:#fdba74}
+
+/* BADGES */
+.bap{font-size:.55rem;font-weight:700;background:var(--navy);color:var(--gold-lt);padding:1px 6px;border-radius:4px;letter-spacing:.04em}
+.bho{font-size:.55rem;font-weight:700;background:var(--green-pale);color:var(--green);padding:1px 6px;border-radius:4px}
+.bsu{font-size:.55rem;font-weight:700;background:#fff7ed;color:#ea580c;padding:1px 6px;border-radius:4px}
+.breq{font-size:.55rem;font-weight:700;background:var(--mist);color:var(--slate);padding:1px 6px;border-radius:4px}
+
+/* ADD SLOT */
+.add-sl{border:1.5px dashed var(--border-dk);border-radius:var(--rs);padding:10px 12px;text-align:center;font-size:.67rem;color:var(--slate-lt);cursor:pointer;transition:all .18s;background:transparent}
+.add-sl:hover{border-color:var(--navy-lt);color:var(--navy);background:var(--mist)}
+
+/* SIDEBAR */
+.sidebar-sticky{position:sticky;top:76px}
+.ag-item{display:flex;align-items:center;gap:8px;padding:9px 0;border-bottom:1px solid var(--cream-dk)}
+.ag-item:last-child{border-bottom:none}
+.ag-key{width:26px;height:26px;background:var(--navy);color:var(--gold-lt);border-radius:6px;font-family:var(--font-display);font-size:.8rem;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.ag-info{flex:1;min-width:0}
+.ag-lbl{font-size:.7rem;font-weight:600;color:var(--ink)}
+.ag-sub{font-size:.6rem;color:var(--slate);margin-top:1px}
+.ag-bar{height:5px;background:var(--cream-dk);border-radius:3px;margin-top:4px;overflow:hidden}
+.ag-fill{height:100%;border-radius:3px;transition:width .5s cubic-bezier(.4,0,.2,1)}
+.ag-count{font-size:.65rem;font-weight:700;min-width:22px;text-align:right}
+.adv-row{display:flex;gap:8px;align-items:flex-start;padding:9px 0;border-bottom:1px solid var(--cream-dk);animation:fadeIn .2s ease}
 .adv-row:last-child{border-bottom:none}
-.tl-dot{font-size:.9rem;flex-shrink:0;margin-top:1px}
-.adv-c{flex:1}
-.adv-name{font-size:.75rem;font-weight:600;color:var(--ink)}
-.adv-why{font-size:.67rem;color:var(--slate);margin-top:2px;line-height:1.45}
+.adv-dot{width:8px;height:8px;border-radius:50%;flex-shrink:0;margin-top:4px}
+.adv-dot-g{background:var(--green-mid)}
+.adv-dot-y{background:var(--gold)}
+.adv-dot-r{background:var(--red)}
+.adv-body{flex:1}
+.adv-name{font-size:.72rem;font-weight:600;color:var(--ink)}
+.adv-note{font-size:.64rem;color:var(--slate);margin-top:2px;line-height:1.4}
 
-/* ─── SIDEBAR ─── */
-.sbar{background:var(--white);border-radius:var(--r);border:1px solid var(--border);box-shadow:var(--shadow);overflow:hidden;position:sticky;top:68px}
-.sbar-head{background:var(--ink);padding:12px 14px}
-.sbar-score{display:flex;align-items:baseline;gap:5px}
-.sc-big{font-family:'Lora',serif;font-size:2.2rem;color:var(--gold2);line-height:1}
-.sc-of{font-size:.78rem;color:rgba(255,255,255,.4);font-weight:500}
-.sc-lbl{font-size:.58rem;color:rgba(255,255,255,.35);text-transform:uppercase;letter-spacing:.08em;margin-top:2px}
-.sc-bar{margin-top:8px;height:4px;background:rgba(255,255,255,.12);border-radius:2px;overflow:hidden}
-.sc-fill{height:100%;background:var(--gold2);border-radius:2px;transition:width .5s}
-.sbar-body{padding:12px 14px;max-height:calc(100vh - 150px);overflow-y:auto}
-.req-sec{margin-bottom:14px}
-.req-sec-ttl{font-size:.6rem;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:var(--slate-lt);padding-bottom:5px;border-bottom:1px solid var(--border);margin-bottom:7px}
-.rr{display:flex;align-items:center;gap:6px;margin-bottom:6px}
-.rdot{width:7px;height:7px;border-radius:50%;flex-shrink:0}
-.rn{font-size:.7rem;flex:1;color:var(--ink)}
-.rpips{display:flex;gap:2px;margin-left:auto}
-.pip{width:9px;height:9px;border-radius:2px;border:1.5px solid var(--border);background:var(--bg);transition:all .3s}
-.pip.f{background:var(--green);border-color:var(--green)}
-.pip.s{background:#ea580c;border-color:#ea580c}
-.pip.p{background:var(--amber);border-color:var(--amber)}
-.rdone{font-size:.6rem;color:var(--green);font-weight:700;white-space:nowrap}
-
-/* alert / success boxes */
-.abox{border-radius:var(--rs);padding:9px 11px;margin-top:6px;font-size:.67rem}
-.abox-warn{background:var(--amber-pale);border:1px solid #fcd34d;color:#78350f}
-.abox-ok{background:var(--green-pale);border:1px solid #86efac;color:var(--green)}
-.abox-title{font-weight:700;margin-bottom:4px;font-size:.68rem}
-.abox ul{padding-left:12px;line-height:1.7}
-
-/* ─── MILESTONE TAB ─── */
-.ml-page{padding:18px 22px;max-width:1200px;margin:0 auto}
-
-/* timeline */
-.tl-wrap{background:var(--white);border-radius:var(--r);border:1px solid var(--border);box-shadow:var(--shadow);padding:18px 22px;margin-bottom:16px}
-.tl-track{position:relative;padding:22px 0}
-.tl-spine{position:absolute;top:50%;left:5%;right:5%;height:3px;background:var(--border);transform:translateY(-50%);border-radius:2px}
-.tl-prog{position:absolute;top:50%;left:5%;height:3px;background:linear-gradient(90deg,var(--green),var(--ink3));transform:translateY(-50%);border-radius:2px;transition:width .6s ease}
-.tl-yrs{display:grid;grid-template-columns:repeat(4,1fr);position:relative;z-index:1}
-.tl-yr{display:flex;flex-direction:column;align-items:center;gap:5px}
-.tl-node{width:38px;height:38px;border-radius:50%;border:3px solid var(--border);background:var(--white);display:flex;align-items:center;justify-content:center;font-size:.72rem;font-weight:700;transition:all .3s}
-.tl-node.done{background:var(--green);border-color:var(--green);color:#fff}
-.tl-node.part{background:var(--amber);border-color:var(--amber);color:#fff}
-.tl-node.none{color:var(--slate-lt)}
-.tl-yr-lbl{font-size:.68rem;font-weight:700;color:var(--ink)}
-.tl-yr-ct{font-size:.6rem;color:var(--slate-lt)}
-.tl-tags{display:flex;flex-wrap:wrap;justify-content:center;gap:2px;max-width:130px;margin-top:3px}
-.tl-tag{font-size:.56rem;padding:1px 5px;border-radius:8px;font-weight:600;text-align:center}
-.tag-done{background:var(--green-pale);color:var(--green)}
-.tag-part{background:var(--amber-pale);color:var(--amber)}
-.tag-none{background:var(--sky2);color:var(--ink3)}
-
-/* checklist */
-.cl-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px}
-.cl-card{background:var(--white);border-radius:var(--r);border:1px solid var(--border);box-shadow:var(--shadow);overflow:hidden}
-.cl-hd{padding:10px 14px;display:flex;align-items:center;justify-content:space-between}
-.cl-hd-hs{background:linear-gradient(90deg,var(--ink),var(--ink2))}
-.cl-hd-uc{background:linear-gradient(90deg,#1a4d8c,#2563eb)}
-.cl-hd-ttl{font-weight:700;font-size:.78rem;color:#fff;display:flex;align-items:center;gap:5px}
-.cl-pct{font-size:.68rem;background:rgba(255,255,255,.15);color:#fff;padding:2px 8px;border-radius:8px;font-weight:700}
-.cl-bd{padding:12px 14px}
-.cl-item{display:flex;align-items:flex-start;gap:8px;padding:7px 0;border-bottom:1px solid var(--border)}
+/* MILESTONE TAB */
+.mil-page{padding:22px 26px;max-width:1200px;margin:0 auto}
+.mil-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.pct-ring{position:relative;display:inline-flex;align-items:center;justify-content:center}
+.pct-ring svg{transform:rotate(-90deg)}
+.pct-text{position:absolute;font-family:var(--font-display);font-size:1.4rem;color:var(--navy)}
+.cl-item{display:flex;gap:10px;padding:10px 0;border-bottom:1px solid var(--cream-dk);align-items:flex-start}
 .cl-item:last-child{border-bottom:none}
-.cl-chk{width:20px;height:20px;border-radius:50%;flex-shrink:0;display:flex;align-items:center;justify-content:center;font-size:.68rem;transition:all .3s;margin-top:1px}
-.chk-done{background:var(--green);color:#fff}
-.chk-part{background:var(--amber);color:#fff}
-.chk-miss{background:var(--bg);border:2px solid var(--border)}
+.cl-chk{width:22px;height:22px;border-radius:6px;flex-shrink:0;display:flex;align-items:center;justify-content:center;font-size:.7rem;font-weight:700}
+.chk-done{background:var(--navy);color:var(--gold-lt)}
+.chk-part{background:var(--amber-pale);color:var(--amber);border:1.5px solid #fcd34d}
+.chk-miss{background:var(--cream-dk);border:1.5px solid var(--border-dk)}
 .cl-info{flex:1}
 .cl-req{font-size:.75rem;font-weight:600;color:var(--ink)}
-.cl-detail{font-size:.65rem;color:var(--slate);margin-top:1px}
-.cl-yr{font-size:.62rem;font-weight:700;padding:2px 7px;border-radius:8px;white-space:nowrap;margin-top:2px;display:inline-block}
-.yr-done{background:var(--green-pale);color:var(--green)}
+.cl-detail{font-size:.64rem;color:var(--slate);margin-top:2px}
+.cl-yr{font-size:.61rem;font-weight:700;padding:2px 8px;border-radius:10px;white-space:nowrap;margin-top:3px;display:inline-block}
+.yr-done{background:var(--navy);color:var(--gold-lt)}
 .yr-part{background:var(--amber-pale);color:var(--amber)}
 .yr-miss{background:var(--red-pale);color:var(--red)}
 
-/* ─── PROGRESS TAB ─── */
-.pg-page{padding:18px 22px;max-width:1200px;margin:0 auto}
-.sum-row{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-bottom:16px}
-.sum-card{border-radius:var(--r);padding:14px;text-align:center;border:1px solid transparent}
-.sum-n{font-family:'Lora',serif;font-size:1.9rem;line-height:1;margin-bottom:3px}
-.sum-l{font-size:.6rem;font-weight:700;text-transform:uppercase;letter-spacing:.07em}
-.sum-s{font-size:.65rem;margin-top:3px;opacity:.65}
-.three-col{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
-
-/* gpa/rigor */
-.gprow{display:flex;align-items:center;gap:8px;margin-bottom:9px}
-.gp-yr{font-size:.72rem;font-weight:600;min-width:72px}
-.gp-inp{border:1.5px solid var(--border);border-radius:6px;padding:4px 8px;font-family:'Outfit',sans-serif;font-size:.76rem;width:62px;color:var(--ink);background:var(--slate-pale);transition:border .15s}
-.gp-inp:focus{outline:none;border-color:var(--ink3);background:#fff}
-.gp-trk{flex:1;height:7px;background:var(--sky2);border-radius:4px;overflow:hidden}
-.gp-fill{height:100%;border-radius:4px;transition:width .4s,background .4s}
-.gp-val{font-size:.68rem;font-weight:700;min-width:28px;text-align:right}
-.trend-pill{display:inline-flex;align-items:center;gap:4px;font-size:.7rem;font-weight:600;padding:4px 10px;border-radius:16px;margin-top:7px}
+/* PROGRESS TAB */
+.pg-page{padding:22px 26px;max-width:1200px;margin:0 auto}
+.sum-row{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-bottom:18px}
+.sum-card{border-radius:var(--r);padding:18px 16px;text-align:center;border:1px solid transparent;box-shadow:var(--shadow-sm);transition:transform .2s,box-shadow .2s}
+.sum-card:hover{transform:translateY(-2px);box-shadow:var(--shadow)}
+.sum-n{font-family:var(--font-display);font-size:2.2rem;line-height:1;margin-bottom:4px}
+.sum-l{font-size:.59rem;font-weight:700;text-transform:uppercase;letter-spacing:.09em}
+.sum-s{font-size:.64rem;margin-top:4px;opacity:.65}
+.three-col{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.gprow{display:flex;align-items:center;gap:9px;margin-bottom:10px}
+.gp-yr{font-size:.72rem;font-weight:600;min-width:72px;color:var(--ink2)}
+.gp-inp{border:1.5px solid var(--border);border-radius:7px;padding:5px 9px;font-family:var(--font-body);font-size:.75rem;width:64px;color:var(--ink);background:var(--cream);transition:all .15s}
+.gp-inp:focus{outline:none;border-color:var(--navy-lt);background:var(--white);box-shadow:0 0 0 3px rgba(27,49,80,.1)}
+.gp-trk{flex:1;height:7px;background:var(--cream-dk);border-radius:4px;overflow:hidden}
+.gp-fill{height:100%;border-radius:4px;transition:width .5s,background .5s}
+.gp-val{font-size:.68rem;font-weight:700;min-width:30px;text-align:right}
+.trend-pill{display:inline-flex;align-items:center;gap:5px;font-size:.7rem;font-weight:600;padding:4px 12px;border-radius:20px;margin-top:8px}
 .tp-up{background:var(--green-pale);color:var(--green)}
 .tp-fl{background:var(--amber-pale);color:var(--amber)}
 .tp-dn{background:var(--red-pale);color:var(--red)}
-.rigrow{display:flex;align-items:center;gap:7px;margin-bottom:7px}
-.rig-yr{font-size:.7rem;font-weight:600;min-width:72px}
-.rig-dots{display:flex;gap:2px;flex:1;flex-wrap:wrap}
-.rdot2{width:20px;height:20px;border-radius:4px;border:1.5px solid var(--border);background:var(--bg);display:flex;align-items:center;justify-content:center;font-size:.55rem;font-weight:700;transition:all .3s}
-.r-ap{background:#1e3a5f;border-color:#3b82f6;color:#bfdbfe}
-.r-ho{background:#dcfce7;border-color:#16a34a;color:#14532d}
-.r-re{background:var(--bg);border-color:var(--border);color:var(--slate-lt)}
-.rig-sc{font-size:.7rem;font-weight:700;min-width:32px;text-align:right}
+.rigrow{display:flex;align-items:center;gap:8px;margin-bottom:8px}
+.rig-yr{font-size:.7rem;font-weight:600;min-width:72px;color:var(--ink2)}
+.rig-dots{display:flex;gap:3px;flex:1;flex-wrap:wrap}
+.rdot2{width:22px;height:22px;border-radius:5px;border:1.5px solid var(--border);background:var(--bg);display:flex;align-items:center;justify-content:center;font-size:.54rem;font-weight:700;transition:all .3s}
+.r-ap{background:var(--navy);border-color:var(--navy-lt);color:var(--gold-lt)}
+.r-ho{background:var(--green-pale);border-color:#86efac;color:var(--green)}
+.r-re{background:var(--cream);border-color:var(--border-dk);color:var(--slate-lt)}
+.rig-sc{font-size:.7rem;font-weight:700;min-width:34px;text-align:right}
+#agAccum .ag-row{display:flex;align-items:center;gap:8px;margin-bottom:7px}
+#agAccum .ag-row-key{font-size:.68rem;font-weight:700;min-width:22px;color:var(--navy);font-family:var(--font-display)}
+#agAccum .ag-row-bar{flex:1;height:10px;background:var(--cream-dk);border-radius:5px;overflow:hidden;display:flex}
+#agAccum .ag-seg{height:100%;transition:width .4s}
+#agAccum .ag-seg-req{background:var(--navy)}
+#agAccum .ag-seg-ext{background:var(--mist-dk)}
+#agAccum .ag-row-val{font-size:.65rem;font-weight:700;color:var(--slate);min-width:28px;text-align:right}
 
-/* ─── SUMMER TAB ─── */
-.sum-page{padding:18px 22px;max-width:1200px;margin:0 auto}
-.sum-opt{border:1.5px solid var(--border);border-radius:var(--rs);padding:9px 11px;cursor:pointer;background:var(--slate-pale);margin-bottom:7px;transition:all .15s;display:flex;align-items:flex-start;justify-content:space-between;gap:8px}
-.sum-opt:hover{border-color:#ea580c;background:#fff7ed}
-.sum-opt.on{background:#fff7ed;border-color:#ea580c}
-.sum-opt-l .sum-nm{font-weight:600;font-size:.75rem;color:var(--ink)}
-.sum-opt-l .sum-meta{font-size:.64rem;color:var(--slate);margin-top:2px}
-.sum-sel{font-size:.62rem;font-weight:700;color:#ea580c}
-.src-tag{font-size:.58rem;font-weight:700;padding:2px 6px;border-radius:6px;white-space:nowrap}
+/* SUMMER TAB */
+.sum-page{padding:22px 26px;max-width:1200px;margin:0 auto}
+.sum-opt{border:1.5px solid var(--border);border-radius:var(--rs);padding:11px 13px;cursor:pointer;background:var(--white);margin-bottom:8px;transition:all .18s;display:flex;align-items:flex-start;justify-content:space-between;gap:10px;box-shadow:var(--shadow-sm)}
+.sum-opt:hover{border-color:var(--gold);background:var(--gold-pale);transform:translateX(2px)}
+.sum-opt.on{background:var(--gold-pale);border-color:var(--gold)}
+.sum-opt-l .sum-nm{font-weight:600;font-size:.76rem;color:var(--ink)}
+.sum-opt-l .sum-meta{font-size:.63rem;color:var(--slate);margin-top:3px}
+.sum-sel{font-size:.62rem;font-weight:700;color:var(--gold)}
+.src-tag{font-size:.57rem;font-weight:700;padding:2px 7px;border-radius:7px;white-space:nowrap}
 .st-uc{background:#dbeafe;color:#1e40af}
 .st-cc{background:#ede9fe;color:#5b21b6}
 .st-both{background:var(--green-pale);color:var(--green)}
-
-/* warning box */
-.warn-box{background:#fff7ed;border:1.5px solid #fdba74;border-radius:var(--rs);padding:10px 12px;font-size:.7rem;color:#92400e;line-height:1.55}
+.warn-box{background:#fffbeb;border:1.5px solid #fbbf24;border-radius:var(--rs);padding:11px 13px;font-size:.7rem;color:#92400e;line-height:1.55}
 .warn-box strong{font-weight:700}
+.notice{background:var(--gold-pale);border:1px solid #f5d98b;border-radius:var(--rs);padding:10px 14px;font-size:.68rem;color:#78350f;line-height:1.55;margin-bottom:14px;display:flex;gap:10px;align-items:flex-start}
+.notice strong{font-weight:700}
 
-/* ─── MODAL ─── */
-.ov{display:none;position:fixed;inset:0;background:rgba(11,24,41,.65);backdrop-filter:blur(4px);z-index:500;align-items:center;justify-content:center;padding:16px}
+/* MODAL */
+.ov{display:none;position:fixed;inset:0;background:rgba(13,27,42,.7);backdrop-filter:blur(6px);z-index:500;align-items:center;justify-content:center;padding:16px}
 .ov.on{display:flex}
-.modal{background:var(--white);border-radius:16px;width:100%;max-width:460px;box-shadow:0 16px 48px rgba(0,0,0,.3);overflow:hidden;animation:up .22s ease}
-@keyframes up{from{transform:translateY(18px);opacity:0}to{transform:translateY(0);opacity:1}}
-.modal-hd{background:var(--ink);padding:15px 18px;display:flex;align-items:center;justify-content:space-between}
-.modal-hd h3{font-family:'Lora',serif;color:#fff;font-size:1rem}
-.modal-x{background:none;border:none;color:rgba(255,255,255,.4);cursor:pointer;font-size:1.1rem;padding:2px 6px;border-radius:3px;transition:all .15s;line-height:1;font-family:'Outfit',sans-serif}
-.modal-x:hover{color:#fff;background:rgba(255,255,255,.1)}
-.modal-bd{padding:16px 18px;max-height:68vh;overflow-y:auto}
-.modal-sec{margin-bottom:14px}
-.modal-sec-ttl{font-size:.62rem;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--slate-lt);margin-bottom:7px}
-.mopt{border:1.5px solid var(--border);border-radius:var(--rs);padding:9px 11px;font-family:'Outfit',sans-serif;font-size:.74rem;cursor:pointer;background:var(--slate-pale);width:100%;text-align:left;margin-bottom:5px;transition:all .15s;display:flex;align-items:center;justify-content:space-between;gap:8px}
-.mopt:hover{border-color:var(--ink3);background:var(--sky)}
+.modal{background:var(--white);border-radius:18px;width:100%;max-width:480px;box-shadow:var(--shadow-lg);overflow:hidden;animation:up .22s cubic-bezier(.34,1.56,.64,1)}
+@keyframes up{from{transform:translateY(20px) scale(.97);opacity:0}to{transform:none;opacity:1}}
+.modal-hd{background:var(--navy);padding:16px 20px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid rgba(200,146,42,.2)}
+.modal-hd h3{font-family:var(--font-display);color:#fff;font-size:1rem;letter-spacing:-.01em}
+.modal-x{background:none;border:none;color:rgba(255,255,255,.4);cursor:pointer;font-size:1.1rem;padding:3px 8px;border-radius:5px;transition:all .15s;font-family:var(--font-body)}
+.modal-x:hover{color:#fff;background:rgba(255,255,255,.12)}
+.modal-bd{padding:18px 20px;max-height:68vh;overflow-y:auto}
+.modal-sec{margin-bottom:16px}
+.modal-sec-ttl{font-size:.6rem;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:var(--slate-lt);margin-bottom:8px}
+.mopt{border:1.5px solid var(--border);border-radius:var(--rs);padding:10px 12px;font-family:var(--font-body);font-size:.74rem;cursor:pointer;background:var(--white);width:100%;text-align:left;margin-bottom:6px;transition:all .15s;display:flex;align-items:center;justify-content:space-between;gap:10px;box-shadow:var(--shadow-sm)}
+.mopt:hover{border-color:var(--navy-lt);background:var(--mist);transform:translateX(3px)}
 .mopt-l{display:flex;flex-direction:column;gap:2px}
 .mopt-nm{font-weight:600;color:var(--ink)}
 .mopt-mt{font-size:.62rem;color:var(--slate)}
-.modal-ft{padding:10px 18px;border-top:1px solid var(--border);display:flex;justify-content:flex-end}
-.btn-ghost{font-family:'Outfit',sans-serif;font-size:.72rem;font-weight:600;padding:7px 16px;border-radius:var(--rs);cursor:pointer;border:1.5px solid var(--border);background:var(--slate-pale);color:var(--slate);transition:all .15s}
-.btn-ghost:hover{border-color:var(--slate);color:var(--ink)}
+.modal-ft{padding:12px 20px;border-top:1px solid var(--border);display:flex;justify-content:flex-end}
+.btn-ghost{font-family:var(--font-body);font-size:.72rem;font-weight:600;padding:8px 18px;border-radius:var(--rs);cursor:pointer;border:1.5px solid var(--border);background:var(--cream);color:var(--slate);transition:all .15s}
+.btn-ghost:hover{border-color:var(--navy-lt);color:var(--navy);background:var(--mist)}
 
-/* notice banner */
-.notice{background:var(--gold-pale);border:1px solid #fbbf24;border-radius:var(--rs);padding:8px 12px;font-size:.68rem;color:#78350f;line-height:1.5;margin-bottom:10px}
-.notice strong{font-weight:700}
-
-::-webkit-scrollbar{width:4px;height:4px}
-::-webkit-scrollbar-thumb{background:var(--border);border-radius:2px}
+/* SCROLLBAR */
+::-webkit-scrollbar{width:5px;height:5px}
+::-webkit-scrollbar-track{background:transparent}
+::-webkit-scrollbar-thumb{background:var(--border-dk);border-radius:3px}
+::-webkit-scrollbar-thumb:hover{background:var(--slate-lt)}
 </style>
 </head>
 <body>
@@ -299,27 +336,222 @@ body{font-family:'Outfit',sans-serif;background:var(--bg);color:var(--ink);min-h
   </div>
 
   <!-- paths -->
-  <div class="card">
+  <div class="card" id="pathCard">
     <div class="card-ttl">⚙️ Pathway Settings</div>
-    <div class="path-grid">
-      <div>
-        <div class="lbl">🔬 Science Pathway</div>
-        <button class="pb" onclick="setSci('std')" id="sci-std"><span class="pd"></span>Standard: Bio → Chem → Physics</button>
-        <button class="pb" onclick="setSci('hon')" id="sci-hon"><span class="pd"></span>Honors: Bio → H.Chem → AP Bio/Phys</button>
-        <button class="pb on" onclick="setSci('apbio')" id="sci-apbio"><span class="pd"></span>AP Bio Focus ⭐ (selected)</button>
-        <button class="pb" onclick="setSci('apchem')" id="sci-apchem"><span class="pd"></span>AP Chem Focus: H.Chem → AP Chem</button>
-        <button class="pb" onclick="setSci('marine')" id="sci-marine"><span class="pd"></span>Marine Bio: Bio → Marine → AP Env</button>
+
+    <!-- ══ STARTING POINT CONFIGURATOR ══ -->
+    <div class="spc-wrap">
+      <div class="spc-title">📋 Starting Point — What's Already Done?</div>
+      <div class="spc-subtitle">Check everything completed before 9th grade begins. The plan will start from exactly the right place.</div>
+
+      <div class="spc-cols">
+
+        <!-- LEFT: Middle School -->
+        <div class="spc-col">
+          <div class="spc-col-hd">🏫 Middle School Courses</div>
+
+          <div class="spc-group-lbl">Math</div>
+          <label class="spc-check" id="chk-alg1">
+            <input type="checkbox" checked disabled>
+            <div class="spc-chk-body">
+              <div class="spc-chk-name">Algebra 1 <span class="spc-tag spc-tag-req">Required</span></div>
+              <div class="spc-chk-sub">All students enter with Alg 1 done</div>
+            </div>
+          </label>
+          <label class="spc-check" id="chk-geo" onclick="togglePre('geo')">
+            <input type="checkbox" id="pre-geo">
+            <div class="spc-chk-body">
+              <div class="spc-chk-name">Geometry <span class="spc-tag spc-tag-adv">Advanced</span></div>
+              <div class="spc-chk-sub">Enters 9th at Algebra 2</div>
+            </div>
+          </label>
+
+          <div class="spc-group-lbl" style="margin-top:10px">Science</div>
+          <label class="spc-check" id="chk-bio-ms" onclick="togglePre('bio-ms')">
+            <input type="checkbox" id="pre-bio-ms">
+            <div class="spc-chk-body">
+              <div class="spc-chk-name">Biology <span class="spc-tag spc-tag-adv">Advanced</span></div>
+              <div class="spc-chk-sub">Rare — frees 9th sci slot. Must be UC-approved.</div>
+            </div>
+          </label>
+
+          <div class="spc-group-lbl" style="margin-top:10px">World Language</div>
+          <label class="spc-check" onclick="togglePre('span1-ms')">
+            <input type="checkbox" id="pre-span1-ms">
+            <div class="spc-chk-body">
+              <div class="spc-chk-name">Spanish 1 <span class="spc-tag spc-tag-adv">Advanced</span></div>
+              <div class="spc-chk-sub">Enters 9th at Spanish 2. Counts as UC A-G E yr 1.</div>
+            </div>
+          </label>
+          <label class="spc-check" onclick="togglePre('span2-ms')">
+            <input type="checkbox" id="pre-span2-ms">
+            <div class="spc-chk-body">
+              <div class="spc-chk-name">Spanish 2 <span class="spc-tag spc-tag-adv">Advanced</span></div>
+              <div class="spc-chk-sub">Requires Spanish 1 done. UC E minimum already met! Enters 9th at Spanish 3.</div>
+            </div>
+          </label>
+        </div>
+
+        <!-- RIGHT: Summer Before 9th -->
+        <div class="spc-col">
+          <div class="spc-col-hd">☀️ Summer Before 9th Grade</div>
+
+          <div class="spc-group-lbl">Math</div>
+          <label class="spc-check" id="chk-geo-sum" onclick="togglePre('geo-sum')">
+            <input type="checkbox" id="pre-geo-sum">
+            <div class="spc-chk-body">
+              <div class="spc-chk-name">Geometry (summer) <span class="spc-tag spc-tag-sum">Summer</span></div>
+              <div class="spc-chk-sub">Via approved external (UC Scout / DVC). Enters 9th at Alg 2.</div>
+            </div>
+          </label>
+          <label class="spc-check" id="chk-alg2-sum" onclick="togglePre('alg2-sum')">
+            <input type="checkbox" id="pre-alg2-sum">
+            <div class="spc-chk-body">
+              <div class="spc-chk-name">Algebra 2 (summer) <span class="spc-tag spc-tag-sum">Summer</span></div>
+              <div class="spc-chk-sub">Only if Geo already done. Enters 9th at Pre-Calc.</div>
+            </div>
+          </label>
+
+          <div class="spc-group-lbl" style="margin-top:10px">Science</div>
+          <label class="spc-check" id="chk-bio-sum" onclick="togglePre('bio-sum')">
+            <input type="checkbox" id="pre-bio-sum">
+            <div class="spc-chk-body">
+              <div class="spc-chk-name">Biology (summer) <span class="spc-tag spc-tag-sum">Summer</span></div>
+              <div class="spc-chk-sub">Via UC Scout / BYU / DVC. Pre-approval required. Enters 9th at Chem.</div>
+            </div>
+          </label>
+        </div>
+
+      </div><!-- end spc-cols -->
+
+      <!-- Result Banner -->
+      <div class="spc-result" id="spc-result"></div>
+    </div><!-- end spc-wrap -->
+    <div style="display:flex;gap:6px;margin-bottom:14px" id="modeTabs">
+      <button class="mode-tab on" id="mt-sci" onclick="setMode('sci')">🔬 Science Pathway</button>
+      <button class="mode-tab" id="mt-math" onclick="setMode('math')">➕ Math Pathway</button>
+      <button class="mode-tab" id="mt-custom" onclick="setMode('custom')">✏️ Custom Pathway</button>
+    </div>
+
+    <!-- SCIENCE MODE -->
+    <div id="mode-sci">
+      <div style="font-size:.65rem;color:var(--slate);margin-bottom:10px;background:var(--sky);padding:7px 10px;border-radius:6px">
+        Choose a <strong>Science pathway</strong>. Math will automatically be set to the <strong>recommended pairing</strong> based on your choice (shown below each option). You can fine-tune math in Custom mode.
       </div>
-      <div>
-        <div class="lbl">➕ Math Pathway</div>
-        <div style="font-size:.62rem;color:var(--green);background:var(--green-pale);border-radius:5px;padding:3px 7px;margin-bottom:5px;font-weight:600">✓ Algebra 1 completed in middle school</div>
-        <button class="pb" onclick="setMath('geo')" id="math-geo"><span class="pd"></span>Geometry → Alg 2 → PreCalc → Stats</button>
-        <button class="pb" onclick="setMath('calc')" id="math-calc"><span class="pd"></span>Geometry → Alg 2 → H.PreCalc → Calc</button>
-        <button class="pb on" onclick="setMath('apcalc')" id="math-apcalc"><span class="pd"></span>Accelerated → AP Calc AB/BC ⭐</button>
-        <button class="pb" onclick="setMath('apstats')" id="math-apstats"><span class="pd"></span>Geometry → Alg 2 → PreCalc → AP Stats</button>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:6px">
+        <button class="pcard" id="sci-std" onclick="setSciMode('std')">
+          <div class="pc-icon">🔬</div>
+          <div class="pc-body">
+            <div class="pc-name">Standard Science</div>
+            <div class="pc-seq">Biology → Chemistry → Physics → Anatomy</div>
+            <div class="pc-math">📐 Math pairing: Geometry → Alg 2 → PreCalc → Stats</div>
+            <div class="pc-tags"><span class="ptag ptag-ok">Meets UC D</span><span class="ptag ptag-ok">HS Req ✓</span></div>
+          </div>
+        </button>
+        <button class="pcard" id="sci-hon" onclick="setSciMode('hon')">
+          <div class="pc-icon">⚗️</div>
+          <div class="pc-body">
+            <div class="pc-name">Honors Track</div>
+            <div class="pc-seq">Biology → H.Chemistry → AP Biology → AP Physics C</div>
+            <div class="pc-math">📐 Math pairing: Accelerated → AP Calc AB/BC <span class="ptag ptag-warn" style="margin-left:4px">Calc required for AP Phys C</span></div>
+            <div class="pc-tags"><span class="ptag ptag-ok">Strong STEM</span><span class="ptag ptag-ok">2 APs</span></div>
+          </div>
+        </button>
+        <button class="pcard on" id="sci-apbio" onclick="setSciMode('apbio')">
+          <div class="pc-icon">🧬</div>
+          <div class="pc-body">
+            <div class="pc-name">AP Bio Focus ⭐ <span style="font-size:.6rem;opacity:.7">(selected)</span></div>
+            <div class="pc-seq">Biology → H.Chemistry → AP Biology → H.Anatomy</div>
+            <div class="pc-math">📐 Math pairing: Geometry → Alg 2 → AP Calc AB → AP Calc BC</div>
+            <div class="pc-tags"><span class="ptag ptag-ok">Pre-med/Bio</span><span class="ptag ptag-ok">2 APs</span><span class="ptag ptag-ok">UC recommended</span></div>
+          </div>
+        </button>
+        <button class="pcard" id="sci-apchem" onclick="setSciMode('apchem')">
+          <div class="pc-icon">⚗️</div>
+          <div class="pc-body">
+            <div class="pc-name">AP Chem Focus</div>
+            <div class="pc-seq">Biology → H.Chemistry → AP Chemistry → AP Env. Sci</div>
+            <div class="pc-math">📐 Math pairing: Geometry → Alg 2 → H.PreCalc → Calculus</div>
+            <div class="pc-tags"><span class="ptag ptag-warn">Very demanding</span><span class="ptag ptag-ok">2 APs</span></div>
+          </div>
+        </button>
+        <button class="pcard" id="sci-marine" onclick="setSciMode('marine')">
+          <div class="pc-icon">🌊</div>
+          <div class="pc-body">
+            <div class="pc-name">Marine Bio Track</div>
+            <div class="pc-seq">Biology → Marine Biology → Chemistry → AP Env. Sci</div>
+            <div class="pc-math">📐 Math pairing: Geometry → Alg 2 → PreCalc → AP Stats</div>
+            <div class="pc-tags"><span class="ptag ptag-ok">Meets UC D</span><span class="ptag ptag-ok">Exploratory</span></div>
+          </div>
+        </button>
       </div>
     </div>
-    <div class="bio-toggle" id="bioToggle" onclick="toggleBio()">
+
+    <!-- MATH MODE -->
+    <div id="mode-math" style="display:none">
+      <div style="font-size:.65rem;color:var(--slate);margin-bottom:10px;background:var(--sky);padding:7px 10px;border-radius:6px">
+        Choose a <strong>Math pathway</strong>. Science will automatically be set to the <strong>recommended pairing</strong> for your math level. You can fine-tune science in Custom mode.
+        <br><span id="math-ms-note"></span>
+      </div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:6px">
+        <button class="pcard" id="math-geo" onclick="setMathMode('geo')">
+          <div class="pc-icon">📐</div>
+          <div class="pc-body">
+            <div class="pc-name">Standard Math</div>
+            <div class="pc-seq" id="seq-geo"></div>
+            <div class="pc-math" id="pair-geo">🔬 Science pairing: Standard (Bio → Chem → Physics)</div>
+            <div class="pc-tags"><span class="ptag ptag-ok">Meets UC C ✓</span><span class="ptag ptag-ok">HS Req ✓</span></div>
+          </div>
+        </button>
+        <button class="pcard" id="math-calc" onclick="setMathMode('calc')">
+          <div class="pc-icon">📐</div>
+          <div class="pc-body">
+            <div class="pc-name">Pre-Calc / Calculus</div>
+            <div class="pc-seq" id="seq-calc"></div>
+            <div class="pc-math" id="pair-calc">🔬 Science pairing: AP Bio Focus</div>
+            <div class="pc-tags"><span class="ptag ptag-ok">4 yrs math</span><span class="ptag ptag-ok">UC recommended</span></div>
+          </div>
+        </button>
+        <button class="pcard on" id="math-apcalc" onclick="setMathMode('apcalc')">
+          <div class="pc-icon">📐</div>
+          <div class="pc-body">
+            <div class="pc-name">AP Calculus ⭐ <span style="font-size:.6rem;opacity:.7">(selected)</span></div>
+            <div class="pc-seq" id="seq-apcalc"></div>
+            <div class="pc-math" id="pair-apcalc">🔬 Science pairing: AP Bio Focus</div>
+            <div class="pc-tags" id="tags-apcalc"><span class="ptag ptag-ok">Correct sequence ✓</span><span class="ptag ptag-ok">4 yrs math</span></div>
+          </div>
+        </button>
+        <button class="pcard" id="math-apstats" onclick="setMathMode('apstats')">
+          <div class="pc-icon">📊</div>
+          <div class="pc-body">
+            <div class="pc-name">AP Statistics</div>
+            <div class="pc-seq" id="seq-apstats"></div>
+            <div class="pc-math" id="pair-apstats">🔬 Science pairing: Standard or Marine Bio</div>
+            <div class="pc-tags"><span class="ptag ptag-ok">Data/social sci</span><span class="ptag ptag-warn">Limits STEM majors</span></div>
+          </div>
+        </button>
+      </div>
+    </div>
+
+    <!-- CUSTOM MODE -->
+    <div id="mode-custom" style="display:none">
+      <div style="font-size:.65rem;color:var(--slate);margin-bottom:10px;background:var(--gold-pale);border:1px solid #fbbf24;padding:7px 10px;border-radius:6px;color:#78350f">
+        ✏️ <strong>Custom mode:</strong> Pick your Science and Math courses independently per year. Check the advisor panel below for compatibility warnings when mixing paths. Confirm prerequisite chains with your DVHS counselor.
+      </div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px">
+        <div>
+          <div class="lbl" style="margin-bottom:8px">🔬 Science — choose per year</div>
+          <div id="custom-sci-rows"></div>
+        </div>
+        <div>
+          <div class="lbl" style="margin-bottom:8px">➕ Math — choose per year</div>
+          <div style="font-size:.6rem;color:var(--green);background:var(--green-pale);border-radius:4px;padding:3px 7px;margin-bottom:6px;font-weight:600">✓ Algebra 1 done in MS — all paths start at Geometry</div>
+          <div id="custom-math-rows"></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="bio-toggle" id="bioToggle" onclick="toggleBio()" style="margin-top:12px">
       ☀️ <strong>Summer Biology option:</strong> Complete Biology before 9th via approved external course — frees a 9th grade slot. Click to toggle.
     </div>
   </div>
@@ -502,6 +734,8 @@ body{font-family:'Outfit',sans-serif;background:var(--bg);color:var(--ink);min-h
 const S = {
   sci:'apbio', math:'apcalc',
   bioSum:false, bioProvider:null,
+  // msCredit: 'alg1' = only Alg1 done in MS (original), 'alg1geo' = Alg1+Geometry done in MS (new option)
+  msCredit: 'alg1geo',
   el:{'9-0':null,'9-1':null,'10-0':null,'10-1':null,'11-0':null,'11-1':null,'12-0':null,'12-1':null},
   s10:new Set(), s11:new Set(),
   gpa:{9:'',10:'',11:'',12:''},
@@ -514,38 +748,85 @@ const S = {
 // FIXED REQUIRED COURSES (per DVHS 4-Year Plan Worksheet & SRVUSD requirements)
 // Note: "World Geography" is listed as 9th grade semester in the official worksheet
 // Ethnic Studies is paired with Health as a semester course in 9th grade
+// ── CREDIT & A-G NOTES from official docs ──
+// Social Science: 3.5 yrs HS (35cr). UC A-G "A" counts: World History + US History = 2 yrs
+//   World Geography (½yr, 5cr): counts toward HS SS but NOT UC A (per UC A-G list)
+//   Ethnic Studies (½yr, 5cr): DVHS-only req paired with Health — NOT UC A-G History
+//   Gov+Econ together = 1 UC A-G "A" year (each is ½ yr)
+// Math: Algebra 1 done in MS counts as UC C year 1.
+//   So Geo(9)=UC C yr2, Alg2(10)=UC C yr3 → UC min already met after 10th!
+// apcalc path: Doc requires A in PreCalc/Trig OR B in Honors PreCalc for AP Calc AB.
+//   Cannot jump Alg2→AP Calc AB. Corrected path: Geo→Alg2→H.PreCalc→AP Calc AB (no BC in 4yr)
+//   OR treat as: student takes Pre-Calc concurrently/summer before 11th.
+//   Realistic 4-year path shown: Geo(9)→Alg2(10)→H.PreCalc(11)→AP Calc AB(12)
+//   For the "accelerated" path with AP Calc BC: must note it requires summer/outside Pre-Calc.
 const FIXED = {
   9:[
-    {id:'wg',name:'World Geography',type:'ch',icon:'🌐',ag:'A',note:'½ yr — req',req:true,cr:5},
-    {id:'eth',name:'Ethnic Studies',type:'ch',icon:'✊',ag:'A',note:'½ yr — req',req:true,cr:5},
+    {id:'wg',name:'World Geography',type:'ch',icon:'🌐',ag:null,agHs:true,note:'½ yr — HS req only (not UC A-G)',req:true,cr:5},
+    // Ethnic Studies: DVHS-required, paired with Health. NOT UC A-G History.
+    {id:'eth',name:'Ethnic Studies',type:'ce2',icon:'✊',ag:null,agHs:true,note:'½ yr — DVHS req, paired w/ Health',req:true,cr:5},
     {id:'eng9',name:'English 9',type:'ce',icon:'📖',ag:'B',req:true,cr:10},
-    {id:'pe9',name:'PE 9',type:'cp',icon:'🏃',ag:null,req:true,cr:10,note:'req — 2 yrs total'},
-    {id:'hlth',name:'Health',type:'ck',icon:'💊',ag:null,req:true,cr:5,note:'½ yr — req'},
+    {id:'pe9',name:'PE 9',type:'cp',icon:'🏃',ag:null,note:'req — 2 yrs total',req:true,cr:10},
+    {id:'hlth',name:'Health',type:'ck',icon:'💊',ag:null,note:'½ yr — paired w/ Ethnic Studies',req:true,cr:5},
   ],
   10:[
-    {id:'wh',name:'World History',type:'ch',icon:'🌍',ag:'A',req:true,cr:10},
+    {id:'wh',name:'World History',type:'ch',icon:'🌍',ag:'A',req:true,cr:10,note:'UC A-G: A (yr 1 of 2)'},
     {id:'eng10',name:'English 10',type:'ce',icon:'📖',ag:'B',req:true,cr:10},
-    {id:'pe10',name:'PE 10',type:'cp',icon:'🏃',ag:null,req:true,cr:10,note:'req — 2nd yr PE'},
+    {id:'pe10',name:'PE 10',type:'cp',icon:'🏃',ag:null,note:'req — 2nd yr PE',req:true,cr:10},
   ],
   11:[
-    {id:'ush',name:'US History',type:'ch',icon:'🗽',ag:'A',req:true,cr:10,note:'or APUSH'},
-    {id:'eng11',name:'English 11',type:'ce',icon:'📖',ag:'B',req:true,cr:10,note:'or AP Lit'},
+    {id:'ush',name:'US History',type:'ch',icon:'🗽',ag:'A',req:true,cr:10,note:'UC A-G: A (yr 2 of 2) — or APUSH'},
+    {id:'eng11',name:'English 11',type:'ce',icon:'📖',ag:'B',req:true,cr:10,note:'or AP English Lit'},
   ],
   12:[
-    {id:'gov',name:'Am. Government',type:'ch',icon:'⚖️',ag:'A',req:true,cr:5,note:'½ yr — req'},
-    {id:'econ',name:'Economics',type:'ch',icon:'📊',ag:'A',req:true,cr:5,note:'½ yr — req'},
-    {id:'eng12',name:'English 12',type:'ce',icon:'📖',ag:'B',req:true,cr:10,note:'or AP Lang'},
+    // Gov + Econ together = 1 full UC A-G "A" year (each is a semester)
+    {id:'gov',name:'Am. Government',type:'ch',icon:'⚖️',ag:'A',req:true,cr:5,note:'½ yr — with Econ = 1 UC A yr'},
+    {id:'econ',name:'Economics',type:'ch',icon:'📊',ag:'A',req:true,cr:5,note:'½ yr — with Gov = 1 UC A yr'},
+    {id:'eng12',name:'English 12',type:'ce',icon:'📖',ag:'B',req:true,cr:10,note:'or AP English Lang'},
   ],
 };
 
-// MATH PATHS — from DVHS Math Pathways doc (updated 2/20/2026)
-// All start at Geometry since Algebra 1 is done in middle school
-const MATH = {
-  geo:   [{yr:9,name:'Geometry',type:'cm',icon:'📐',ag:'C',cr:10},{yr:10,name:'Algebra 2',type:'cm',icon:'📐',ag:'C',cr:10},{yr:11,name:'Pre-Calc w/ Trig',type:'cm',icon:'📐',ag:'C',cr:10},{yr:12,name:'Statistics',type:'cm',icon:'📐',ag:'C',cr:10}],
-  calc:  [{yr:9,name:'Geometry',type:'cm',icon:'📐',ag:'C',cr:10},{yr:10,name:'Algebra 2',type:'cm',icon:'📐',ag:'C',cr:10},{yr:11,name:'Honors Pre-Calc/Trig',type:'cm',icon:'📐',ag:'C',cr:10,hon:true,prereq:'Needs A in Algebra 2'},{yr:12,name:'Calculus',type:'cm',icon:'📐',ag:'C',cr:10,prereq:'Needs C in Pre-Calc'}],
-  apcalc:[{yr:9,name:'Geometry',type:'cm',icon:'📐',ag:'C',cr:10},{yr:10,name:'Algebra 2',type:'cm',icon:'📐',ag:'C',cr:10},{yr:11,name:'AP Calculus AB',type:'cap',icon:'📐',ag:'C',cr:10,ap:true,prereq:'A in Pre-Calc or B in Honors Pre-Calc'},{yr:12,name:'AP Calculus BC',type:'cap',icon:'📐',ag:'C',cr:10,ap:true,prereq:'C in AP Calc AB, or A in regular Calc'}],
-  apstats:[{yr:9,name:'Geometry',type:'cm',icon:'📐',ag:'C',cr:10},{yr:10,name:'Algebra 2',type:'cm',icon:'📐',ag:'C',cr:10},{yr:11,name:'Pre-Calc w/ Trig',type:'cm',icon:'📐',ag:'C',cr:10},{yr:12,name:'AP Statistics',type:'cap',icon:'📐',ag:'C',cr:10,ap:true,prereq:'B or better in Algebra 2'}],
+// MATH PATHS — per DVHS Math Pathways doc (updated 2/20/2026)
+// Two scenarios depending on what was completed in middle school:
+//
+// Scenario A: Only Algebra 1 done in MS → starts 9th with Geometry
+//   UC C: Alg1(MS)=yr1, Geo(9)=yr2, Alg2(10)=yr3 → UC min met after 10th
+//
+// Scenario B: Algebra 1 + Geometry done in MS → starts 9th with Algebra 2
+//   UC C: Alg1(MS)=yr1, Geo(MS)=yr2 → UC min ALREADY MET entering 9th!
+//   Every HS math course is above UC minimum — can reach AP Calc BC in 4 yrs.
+
+const MATH_ALG1 = { // Only Algebra 1 done in MS
+  geo:    [{yr:9,name:'Geometry',type:'cm',icon:'📐',ag:'C',cr:10,prereq:'C in Algebra 1 (done ✓)'},{yr:10,name:'Algebra 2',type:'cm',icon:'📐',ag:'C',cr:10,prereq:'C in Geometry'},{yr:11,name:'Pre-Calc w/ Trig',type:'cm',icon:'📐',ag:'C',cr:10,prereq:'C in Algebra 2'},{yr:12,name:'Statistics',type:'cm',icon:'📐',ag:'C',cr:10,prereq:'C in Algebra 2'}],
+  calc:   [{yr:9,name:'Geometry',type:'cm',icon:'📐',ag:'C',cr:10,prereq:'C in Algebra 1 (done ✓)'},{yr:10,name:'Algebra 2',type:'cm',icon:'📐',ag:'C',cr:10,prereq:'C in Geometry'},{yr:11,name:'Honors Pre-Calc/Trig',type:'cm',icon:'📐',ag:'C',cr:10,hon:true,prereq:'A in Algebra 2'},{yr:12,name:'Calculus',type:'cm',icon:'📐',ag:'C',cr:10,prereq:'C in Pre-Calc w/ Trig'}],
+  apcalc: [{yr:9,name:'Geometry',type:'cm',icon:'📐',ag:'C',cr:10,prereq:'C in Algebra 1 (done ✓)'},{yr:10,name:'Algebra 2',type:'cm',icon:'📐',ag:'C',cr:10,prereq:'C in Geometry'},{yr:11,name:'Honors Pre-Calc/Trig',type:'cm',icon:'📐',ag:'C',cr:10,hon:true,prereq:'A in Algebra 2'},{yr:12,name:'AP Calculus AB',type:'cap',icon:'📐',ag:'C',cr:10,ap:true,prereq:'B in Honors Pre-Calc/Trig (or A in regular PreCalc)'}],
+  apstats:[{yr:9,name:'Geometry',type:'cm',icon:'📐',ag:'C',cr:10,prereq:'C in Algebra 1 (done ✓)'},{yr:10,name:'Algebra 2',type:'cm',icon:'📐',ag:'C',cr:10,prereq:'C in Geometry'},{yr:11,name:'Pre-Calc w/ Trig',type:'cm',icon:'📐',ag:'C',cr:10,prereq:'C in Algebra 2'},{yr:12,name:'AP Statistics',type:'cap',icon:'📐',ag:'C',cr:10,ap:true,prereq:'B or better in Algebra 2'}],
 };
+
+const MATH_ALG1GEO = { // Algebra 1 + Geometry done in MS — starts at Algebra 2 in 9th
+  // Standard: Alg2→PreCalc→Calculus→Stats (freeing 12th for Stats or another course)
+  geo:    [{yr:9,name:'Algebra 2',type:'cm',icon:'📐',ag:'C',cr:10,prereq:'C in Geometry (done ✓)'},{yr:10,name:'Pre-Calc w/ Trig',type:'cm',icon:'📐',ag:'C',cr:10,prereq:'C in Algebra 2'},{yr:11,name:'Calculus',type:'cm',icon:'📐',ag:'C',cr:10,prereq:'C in Pre-Calc w/ Trig'},{yr:12,name:'Statistics',type:'cm',icon:'📐',ag:'C',cr:10,prereq:'C in Algebra 2'}],
+  // H.PreCalc → Calculus → AP Stats
+  calc:   [{yr:9,name:'Algebra 2',type:'cm',icon:'📐',ag:'C',cr:10,prereq:'C in Geometry (done ✓)'},{yr:10,name:'Honors Pre-Calc/Trig',type:'cm',icon:'📐',ag:'C',cr:10,hon:true,prereq:'A in Algebra 2'},{yr:11,name:'Calculus',type:'cm',icon:'📐',ag:'C',cr:10,prereq:'C in Pre-Calc w/ Trig'},{yr:12,name:'AP Statistics',type:'cap',icon:'📐',ag:'C',cr:10,ap:true,prereq:'B or better in Algebra 2'}],
+  // Full accelerated: Alg2→H.PreCalc→AP Calc AB→AP Calc BC ✅ — now fits in 4 years!
+  apcalc: [{yr:9,name:'Algebra 2',type:'cm',icon:'📐',ag:'C',cr:10,prereq:'C in Geometry (done ✓)'},{yr:10,name:'Honors Pre-Calc/Trig',type:'cm',icon:'📐',ag:'C',cr:10,hon:true,prereq:'A in Algebra 2'},{yr:11,name:'AP Calculus AB',type:'cap',icon:'📐',ag:'C',cr:10,ap:true,prereq:'B in Honors Pre-Calc/Trig'},{yr:12,name:'AP Calculus BC',type:'cap',icon:'📐',ag:'C',cr:10,ap:true,prereq:'C in AP Calculus AB'}],
+  // AP Stats path: Alg2→PreCalc→AP Calc AB→AP Stats (stats alongside or after calc)
+  apstats:[{yr:9,name:'Algebra 2',type:'cm',icon:'📐',ag:'C',cr:10,prereq:'C in Geometry (done ✓)'},{yr:10,name:'Pre-Calc w/ Trig',type:'cm',icon:'📐',ag:'C',cr:10,prereq:'C in Algebra 2'},{yr:11,name:'AP Calculus AB',type:'cap',icon:'📐',ag:'C',cr:10,ap:true,prereq:'A in Pre-Calc w/ Trig'},{yr:12,name:'AP Statistics',type:'cap',icon:'📐',ag:'C',cr:10,ap:true,prereq:'B or better in Algebra 2'}],
+};
+
+// SUPER accelerated: Alg1+Geo+Alg2 all done before 9th → starts at Pre-Calc in 9th!
+const MATH_ALG2DONE = {
+  geo:    [{yr:9,name:'Pre-Calc w/ Trig',type:'cm',icon:'📐',ag:'C',cr:10,prereq:'C in Algebra 2 (done ✓)'},{yr:10,name:'Calculus',type:'cm',icon:'📐',ag:'C',cr:10,prereq:'C in Pre-Calc'},{yr:11,name:'Statistics',type:'cm',icon:'📐',ag:'C',cr:10,prereq:'C in Algebra 2'},{yr:12,name:'AP Statistics',type:'cap',icon:'📐',ag:'C',cr:10,ap:true,prereq:'B in Algebra 2 (done ✓)'}],
+  calc:   [{yr:9,name:'Honors Pre-Calc/Trig',type:'cm',icon:'📐',ag:'C',cr:10,hon:true,prereq:'A in Algebra 2 (done ✓)'},{yr:10,name:'Calculus',type:'cm',icon:'📐',ag:'C',cr:10,prereq:'C in Pre-Calc'},{yr:11,name:'AP Statistics',type:'cap',icon:'📐',ag:'C',cr:10,ap:true,prereq:'B in Algebra 2'},{yr:12,name:'AP Computer Science / Elective',type:'cm',icon:'📐',ag:'C',cr:10,prereq:'Advanced math placement'}],
+  // 🚀 AP Calc BC reachable by 11th grade!
+  apcalc: [{yr:9,name:'Honors Pre-Calc/Trig',type:'cm',icon:'📐',ag:'C',cr:10,hon:true,prereq:'A in Algebra 2 (done ✓)'},{yr:10,name:'AP Calculus AB',type:'cap',icon:'📐',ag:'C',cr:10,ap:true,prereq:'B in Honors Pre-Calc'},{yr:11,name:'AP Calculus BC',type:'cap',icon:'📐',ag:'C',cr:10,ap:true,prereq:'C in AP Calc AB'},{yr:12,name:'AP Statistics',type:'cap',icon:'📐',ag:'C',cr:10,ap:true,prereq:'B in Algebra 2'}],
+  apstats:[{yr:9,name:'Pre-Calc w/ Trig',type:'cm',icon:'📐',ag:'C',cr:10,prereq:'C in Algebra 2 (done ✓)'},{yr:10,name:'AP Calculus AB',type:'cap',icon:'📐',ag:'C',cr:10,ap:true,prereq:'A in Pre-Calc'},{yr:11,name:'AP Calculus BC',type:'cap',icon:'📐',ag:'C',cr:10,ap:true,prereq:'C in AP Calc AB'},{yr:12,name:'AP Statistics',type:'cap',icon:'📐',ag:'C',cr:10,ap:true,prereq:'B in Algebra 2'}],
+};
+function getMATH(){
+  if(hasAlg2Done()) return MATH_ALG2DONE;   // starts at Pre-Calc in 9th
+  if(hasGeoDone())  return MATH_ALG1GEO;    // starts at Alg2 in 9th
+  return MATH_ALG1;                          // starts at Geometry in 9th
+}
 
 // SCIENCE PATHS — from DVHS Science Pathways doc (updated 2/20/2026)
 const SCI = {
@@ -560,8 +841,9 @@ const SCI = {
 const EMENU = [
   {grp:'World Language (UC A-G: E)', items:[
     {name:'Spanish 1',icon:'🌎',type:'cl2',ag:'E',cr:10,meta:'Start of 2-yr sequence required for UC'},
-    {name:'Spanish 2',icon:'🌎',type:'cl2',ag:'E',cr:10,meta:'Fulfills UC E with Spanish 1'},
-    {name:'Spanish 3',icon:'🌎',type:'cl2',ag:'E',cr:10,meta:'3rd year — UC recommends 3'},
+    {name:'Spanish 2',icon:'🌎',type:'cl2',ag:'E',cr:10,meta:'Fulfills UC E minimum with Spanish 1'},
+    {name:'Spanish 3',icon:'🌎',type:'cl2',ag:'E',cr:10,meta:'3rd year — UC recommends 3 yrs'},
+    {name:'Spanish 4',icon:'🌎',type:'cl2',ag:'E',cr:10,meta:'4th year — strong signal for competitive UCs'},
     {name:'French 1',icon:'🌎',type:'cl2',ag:'E',cr:10,meta:'Must continue same language to UC level 2'},
     {name:'French 2',icon:'🌎',type:'cl2',ag:'E',cr:10,meta:''},
     {name:'Mandarin 1',icon:'🌎',type:'cl2',ag:'E',cr:10,meta:''},
@@ -577,9 +859,9 @@ const EMENU = [
     {name:'AP Psychology',icon:'🧠',type:'cap',ag:'G',cr:10,ap:true,meta:'Popular, manageable workload, no hard prereqs'},
     {name:'AP Macro Economics',icon:'📈',type:'cap',ag:'G',cr:10,ap:true,meta:'Complements 12th grade Gov/Econ'},
   ]},
-  {grp:'CTE / Vocational (satisfies grad requirement)', items:[
-    {name:'CTE Course (Year 1)',icon:'🔧',type:'cx',ag:null,cr:10,meta:'CTE courses can satisfy the Voc/Applied Arts grad req'},
-    {name:'CTE Course (Year 2)',icon:'🔧',type:'cx',ag:null,cr:10,meta:'2nd year CTE strengthens pathway'},
+  {grp:'CTE / Vocational (satisfies 2-of-3 grad requirement)', items:[
+    {name:'CTE Course (Year 1)',icon:'🔧',type:'cx',ag:null,cr:10,cte:true,meta:'CTE satisfies the Vocational/Applied Arts category in the 2-of-3 rule'},
+    {name:'CTE Course (Year 2)',icon:'🔧',type:'cx',ag:null,cr:10,cte:true,meta:'2nd year CTE strengthens pathway'},
     {name:'Computer Science Principles',icon:'💻',type:'cx',ag:'G',cr:10,meta:'Counts as UC G elective'},
   ]},
   {grp:'Other Electives', items:[
@@ -603,13 +885,34 @@ const SUMMER_APS = [
 // ══════════════════════════════════════════
 function yrCourses(yr) {
   const base = FIXED[yr].map(c=>({...c}));
-  const math = MATH[S.math].find(c=>c.yr===yr);
-  let sci = SCI[S.sci].find(c=>c.yr===yr);
-  if(S.bioSum && yr===9) sci=null;
+  let math, sci;
+  if(S.mode==='custom'){
+    // Build course objects from custom selections
+    const sciName=S.customSci[yr]; const mathName=S.customMath[yr];
+    const sciIcoMap={'Biology':'🔬','Honors Chemistry':'⚗️','Chemistry':'⚗️','Physics':'⚡','AP Biology':'🔬','AP Chemistry':'⚗️','AP Physics C':'⚡','H. Anatomy & Physiology':'🫀','Anatomy & Physiology':'🫀','Marine Biology':'🌊','AP Environmental Science':'🌍','Environmental Chemistry':'🧪','Honors Physics':'⚡','AP Statistics':'📊','— (none)':null};
+    const mathIcoMap={'Geometry':'📐','Algebra 2':'📐','Pre-Calc w/Trig':'📐','Honors Pre-Calc/Trig':'📐','Calculus':'📐','AP Calculus AB':'📐','AP Calculus BC':'📐','AP Statistics':'📊','Statistics':'📊','Honors Pre-Calc/Trig':'📐'};
+    const apSci=['AP Biology','AP Chemistry','AP Physics C','AP Environmental Science'];
+    const honSci=['Honors Chemistry','H. Anatomy & Physiology','Honors Physics'];
+    const apMath=['AP Calculus AB','AP Calculus BC','AP Statistics'];
+    const honMath=['Honors Pre-Calc/Trig'];
+    if(sciName && sciName!=='— (none)' && sciIcoMap[sciName]){
+      sci={yr,name:sciName,type:apSci.includes(sciName)?'cap':'cs',icon:sciIcoMap[sciName]||'🔬',ag:'D',cr:10,ap:apSci.includes(sciName)||undefined,hon:honSci.includes(sciName)||undefined};
+    }
+    if(mathName && mathIcoMap[mathName]){
+      math={yr,name:mathName,type:apMath.includes(mathName)?'cap':'cm',icon:mathIcoMap[mathName]||'📐',ag:'C',cr:10,ap:apMath.includes(mathName)||undefined,hon:honMath.includes(mathName)||undefined};
+    }
+  } else {
+    math = getMATH()[S.math].find(c=>c.yr===yr);
+    sci = SCI[S.sci].find(c=>c.yr===yr);
+  }
+  if((S.bioSum||hasBioDone()) && yr===9) sci=null;
   if(math) base.push({...math,id:`m${yr}`,editable:false});
   if(sci)  base.push({...sci, id:`s${yr}`,editable:false});
-  // summer bio in 9th
-  if(S.bioSum && yr===9) base.push({id:'bio-s',name:'Biology',icon:'🔬',type:'cs',ag:'D',cr:10,isSummer:true,note:'Summer — external (pre-approval req)'});
+  // Show bio credit note in 9th if bio was done before 9th
+  if(hasBioDone() && yr===9) base.push({id:'bio-pre',name:'Biology',icon:'🔬',type:'cs',ag:'D',cr:10,
+    isSummer:S.pre.has('bio-sum'), isMs:S.pre.has('bio-ms'),
+    note: S.pre.has('bio-ms') ? 'Done in middle school' : 'Done summer before 9th (ext. pre-approved)',
+  });
   // electives
   [0,1].forEach(i=>{
     const k=`${yr}-${i}`, v=S.el[k];
@@ -628,40 +931,60 @@ function allC() {
 
 // A-G counting (deduped by category caps from UC requirements)
 const UC_DEFS=[
-  {key:'A',lbl:'History/Social Science',needed:2,icon:'🌍',desc:'2 years: World History + US History + Gov'},
-  {key:'B',lbl:'English',needed:4,icon:'📖',desc:'4 years college-prep English'},
-  {key:'C',lbl:'Math',needed:3,icon:'📐',desc:'3 years (Alg1+Geo+Alg2 min); 4 recommended'},
-  {key:'D',lbl:'Lab Science',needed:2,icon:'🔬',desc:'2 years (1 life + 1 physical); 3 recommended'},
-  {key:'E',lbl:'World Language',needed:2,icon:'🌎',desc:'2 years same language; 3 recommended'},
+  {key:'A',lbl:'History/Social Science',needed:2,icon:'🌍',desc:'World History (yr 1) + US History (yr 2). Gov+Econ together = 1 bonus yr. World Geography & Ethnic Studies do NOT count.'},
+  {key:'B',lbl:'English',needed:4,icon:'📖',desc:'4 years college-prep English (Eng 9, 10, 11, 12)'},
+  {key:'C',lbl:'Math',needed:3,icon:'📐',get desc(){const b=ucCMSBonus();return b>=3?'All 3 UC C yrs done before 9th! Every HS math course is above & beyond minimum.':b===2?'Alg1+Geo done (2/3 UC C yrs). Alg2 in 9th = UC min met after 9th!':'Alg1 done (1/3 UC C yrs). UC min met after Geo+Alg2 at DVHS. 4th yr recommended.'}},
+  {key:'D',lbl:'Lab Science',needed:2,icon:'🔬',desc:'2 yrs: 1 life science (Bio) + 1 physical (Chem/Physics). 3 yrs recommended.'},
+  {key:'E',lbl:'World Language',needed:2,icon:'🌎',desc:'2 yrs same language through level 2. 3 yrs recommended.'},
   {key:'F',lbl:'Fine Art (VAPA)',needed:1,icon:'🎨',desc:'1 full year visual/performing art'},
-  {key:'G',lbl:'College Prep Elective',needed:1,icon:'🎓',desc:'1 year from A-F or approved elective'},
+  {key:'G',lbl:'College Prep Elective',needed:1,icon:'🎓',desc:'1 yr from A-F areas or UC-approved elective'},
 ];
-const SCI_ICONS=['🔬','⚗️','⚡','🌍','🫀','🌊'];
+const SCI_ICONS=['🔬','⚗️','⚡','🌍','🫀','🌊','🧪'];
 function cAG(key,cs){
-  return {
-    A:cs.filter(c=>c.type==='ch'||c.ag==='A').length,
-    B:cs.filter(c=>c.type==='ce').length,
-    C:cs.filter(c=>c.type==='cm'||(c.type==='cap'&&c.icon==='📐')||c.ag==='C').length,
-    D:cs.filter(c=>c.type==='cs'||(c.type==='cap'&&SCI_ICONS.includes(c.icon))||c.ag==='D').length,
-    E:cs.filter(c=>c.ag==='E').length,
-    F:cs.filter(c=>c.ag==='F').length,
-    G:cs.filter(c=>c.ag==='G').length,
-  }[key]||0;
+  if(key==='A'){
+    // UC A-G "A": World History=1yr, US History=1yr, Gov+Econ together=1yr (max 2 needed)
+    // World Geography and Ethnic Studies do NOT count for UC A-G "A"
+    const wh=cs.filter(c=>c.id==='wh'||c.name==='World History').length;              // 1yr
+    const ush=cs.filter(c=>c.id==='ush'||c.name==='US History').length;               // 1yr
+    const govEcon=cs.filter(c=>c.id==='gov'||c.id==='econ').length>=2?1:0;            // ½+½=1yr
+    const apush=cs.filter(c=>c.name&&c.name.includes('APUSH')).length;
+    const extraA=cs.filter(c=>c.ag==='A'&&!['wg','eth','gov','econ','wh','ush'].includes(c.id)).length;
+    return Math.min(wh+ush+govEcon+apush+extraA, 99); // no cap needed, max naturally ~3
+  }
+  if(key==='B') return cs.filter(c=>c.type==='ce').length; // English only — Ethnic Studies (ce2) excluded
+  if(key==='C'){
+    const hsmath=cs.filter(c=>c.type==='cm'||(c.type==='cap'&&c.icon==='📐')).length;
+    return hsmath + ucCMSBonus();
+  }
+  if(key==='D') return cs.filter(c=>c.type==='cs'||(c.type==='cap'&&SCI_ICONS.includes(c.icon))||c.ag==='D').length;
+  if(key==='E') return cs.filter(c=>c.ag==='E').length + (hasSpan2Done()?2:hasSpan1Done()?1:0);
+  if(key==='F') return cs.filter(c=>c.ag==='F').length;
+  if(key==='G') return cs.filter(c=>c.ag==='G').length;
+  return 0;
 }
 
 const HS_DEFS=[
-  {lbl:'Social Science',req:35,fn:cs=>cs.filter(c=>c.type==='ch').reduce((a,c)=>a+(c.cr||10),0)},
-  {lbl:'English',req:40,fn:cs=>cs.filter(c=>c.type==='ce').reduce((a,c)=>a+(c.cr||10),0)},
+  // Social Science: 3.5 yrs = 35cr (World Geo ½ + Ethnic Studies ½ + World Hist + US Hist + Gov ½ + Econ ½)
+  {lbl:'Social Science (3.5 yrs)',req:35,fn:cs=>cs.filter(c=>c.type==='ch'||c.id==='eth'||c.id==='wg').reduce((a,c)=>a+(c.cr||10),0)},
+  {lbl:'English (4 yrs)',req:40,fn:cs=>cs.filter(c=>c.type==='ce').reduce((a,c)=>a+(c.cr||10),0)},
+  // Science: 1 life (Bio) + 1 physical (Chem/Physics) = 2 yrs = 20cr
   {lbl:'Science (1 life + 1 physical)',req:20,fn:cs=>cs.filter(c=>c.type==='cs'||(c.type==='cap'&&SCI_ICONS.includes(c.icon))).reduce((a,c)=>a+(c.cr||10),0)},
-  {lbl:'Math (Alg 1 req)',req:20,fn:cs=>cs.filter(c=>c.type==='cm'||(c.type==='cap'&&c.icon==='📐')).reduce((a,c)=>a+(c.cr||10),0)},
-  {lbl:'PE',req:20,fn:cs=>cs.filter(c=>c.type==='cp').reduce((a,c)=>a+(c.cr||10),0)},
-  {lbl:'Health',req:5,fn:cs=>cs.filter(c=>c.type==='ck').reduce((a,c)=>a+(c.cr||5),0)},
-  {lbl:'World Lang / Fine Art / CTE (2 of 3)',req:20,fn:cs=>{
-    const lang=cs.filter(c=>c.type==='cl2').length*10;
-    const art=cs.filter(c=>c.type==='ca').length*10;
-    const cte=cs.filter(c=>c.type==='cx'&&c.id&&c.id.includes('CTE')).length*10;
-    return Math.min(lang,20)+Math.min(art,20)+Math.min(cte,20)>0?20:0; // simplified
+  // Math: HS requires 2 yrs total including Alg1. With Alg1 done in MS, need 1 more yr (10cr).
+  // With Alg1+Geo done in MS, HS math graduation req is already met — every HS math is bonus.
+  {lbl:'Math (HS req — met via MS)',req:0,fn:cs=>cs.filter(c=>c.type==='cm'||(c.type==='cap'&&c.icon==='📐')).reduce((a,c)=>a+(c.cr||10),0),hsAlreadyMet:true},
+  {lbl:'PE (2 yrs)',req:20,fn:cs=>cs.filter(c=>c.type==='cp').reduce((a,c)=>a+(c.cr||10),0)},
+  {lbl:'Health (½ yr)',req:5,fn:cs=>cs.filter(c=>c.type==='ck').reduce((a,c)=>a+(c.cr||5),0)},
+  // "2 of 3" rule: need 1 yr (10cr) in at least 2 of: World Language, Fine Art, CTE
+  {lbl:'2 of 3: Lang / Art / CTE',req:20,fn:cs=>{
+    const hasLang = cs.filter(c=>c.ag==='E').length >= 1 ? 10 : 0;
+    const hasArt  = cs.filter(c=>c.ag==='F').length >= 1 ? 10 : 0;
+    const hasCte  = cs.filter(c=>c.type==='cx'&&c.cte).length >= 1 ? 10 : 0;
+    // Count how many categories are satisfied
+    const cats = [hasLang>0, hasArt>0, hasCte>0].filter(Boolean).length;
+    return cats >= 2 ? 20 : cats === 1 ? 10 : 0;
   }},
+  // Electives: 60cr needed (anything beyond required subjects)
+  {lbl:'Electives (60 cr needed)',req:60,fn:cs=>cs.filter(c=>c.isEl||c.isSummer).reduce((a,c)=>a+(c.cr||10),0)},
 ];
 
 // ══════════════════════════════════════════
@@ -722,11 +1045,21 @@ function mkRules(){
   const cs=allC(), rules=[];
   // Algebra 1 done
   rules.push({l:'🟢',n:'Algebra 1 (completed in middle school)',w:'Great foundation. Entering with Algebra 1 done unlocks Geometry in 9th — a full year ahead of students starting Algebra 1 in HS.'});
-  // Math
-  if(S.math==='apcalc') rules.push({l:'🟢',n:'AP Calculus AB → BC path',w:'Excellent STEM trajectory. Prereq: needs A in Pre-Calc or B in Honors Pre-Calc for AB; then C in AB for BC. This is the strongest signal for STEM UC apps.'});
-  if(S.math==='calc')  rules.push({l:'🟡',n:'Honors Pre-Calc → Calculus path',w:'Solid. If aiming for STEM majors, note that AP Calc AB would provide college credit and a stronger application signal with similar workload.'});
-  if(S.math==='geo')   rules.push({l:'🟡',n:'Pre-Calc → Statistics path',w:'Meets UC C requirement (3 yrs) but Statistics without Calculus may limit STEM major options. UC recommends 4 years of math — consider adding a 4th year.'});
-  if(S.math==='apstats') rules.push({l:'🟡',n:'AP Statistics path',w:'Good choice for data/social science interests. However STEM majors at UC require Calculus. Consider adding Calculus if STEM is the goal.'});
+  // Math path notes — scenario aware
+  const g2=S.msCredit==='alg1geo';
+  if(S.math==='apcalc' && g2) rules.push({l:'🟢',n:'AP Calc AB → BC path (Alg1+Geo in MS)',w:'With both Alg1 and Geometry done in MS, this path now correctly fits in 4 years: Alg2(9)→H.PreCalc(10)→AP Calc AB(11)→AP Calc BC(12). Prerequisites: A in Alg2 for H.PreCalc; B in H.PreCalc for AP Calc AB; C in AP Calc AB for BC. This is the strongest possible STEM math signal for UC apps.'});
+  if(S.math==='apcalc' && !g2) rules.push({l:'🟢',n:'AP Calc AB path (Alg1 in MS)',w:'4-year path: Geo(9)→Alg2(10)→H.PreCalc(11)→AP Calc AB(12). Requires A in Alg2 for H.PreCalc, then B in H.PreCalc for AP Calc AB. Note: AP Calc BC is not reachable in 4 years with only Alg1 done in MS.'});
+  if(S.math==='calc' && g2) rules.push({l:'🟢',n:'H.PreCalc → Calculus → AP Stats path',w:'Solid 4-year path: Alg2(9)→H.PreCalc(10)→Calculus(11)→AP Stats(12). Requires A in Alg2. Good for students who want Calculus without the AP Calc AB exam pressure.'});
+  if(S.math==='calc' && !g2) rules.push({l:'🟢',n:'H.PreCalc → Calculus path',w:'Solid 4-year path: Geo(9)→Alg2(10)→H.PreCalc(11)→Calculus(12). Requires A in Alg2 for H.PreCalc.'});
+  if(S.math==='geo')   rules.push({l:'🟡',n:'Standard math path',w:g2?'Alg2(9)→PreCalc(10)→Calculus(11)→Stats(12). Meets all requirements comfortably. Less competitive for STEM UC majors than the AP Calc path.':'Geo(9)→Alg2(10)→PreCalc(11)→Stats(12). Meets UC C minimum. Less competitive for STEM UC majors.'});
+  if(S.math==='apstats') rules.push({l:'🟡',n:'AP Statistics path',w:g2?'Alg2(9)→PreCalc(10)→AP Calc AB(11)→AP Stats(12). Smart combo — gets AP Calc AB AND AP Stats. Best of both worlds for data/STEM balance.':'Geo(9)→Alg2(10)→PreCalc(11)→AP Stats(12). Good for data/social science. STEM majors at UC generally expect Calculus; consider adding it if STEM is the goal.'});
+
+  // MS credit effect note
+  rules.push({l:'🟢',n:`Middle School Math: ${g2?'Algebra 1 + Geometry (2 yrs ahead)':'Algebra 1 (1 yr ahead)'}`,w:g2?'UC C minimum (3 yrs starting Alg1) is FULLY MET before 9th grade. Every HS math course is above and beyond the UC minimum. AP Calc BC is reachable in 4 years.':'UC C year 1 complete. After Geo(9th)+Alg2(10th), UC C minimum will be met. All further math is above minimum and strengthens the application.'});
+
+  // UC A-G History clarification
+  rules.push({l:'🟢',n:'UC A-G "A" History — correctly counted',w:'World History (10th) = yr 1. US History (11th) = yr 2. Gov+Econ (12th, ½+½) = bonus yr 3. Min of 2 yrs met. Note: World Geography (9th) and Ethnic Studies (9th) are DVHS graduation requirements but do NOT count as UC A-G "A" History.'});
+  rules.push({l:'🟡',n:'Ethnic Studies (9th) — DVHS-only requirement',w:'Ethnic Studies is a DVHS graduation requirement paired with Health in 9th grade. It does NOT count toward UC A-G History. It contributes to the 35-credit HS Social Science requirement only.'});
 
   // Science
   if(S.sci==='apbio')  {
@@ -772,10 +1105,10 @@ function mkRules(){
   // Health note
   rules.push({l:'🟢',n:'Health (½ year)',w:'Required for SRVUSD graduation. Paired with Ethnic Studies in 9th grade. Does not count toward UC A-G but is required for diploma.'});
 
-  // Total credits
-  const totalCr=cs.reduce((a,c)=>a+(c.cr||10),0);
-  if(totalCr>=220) rules.push({l:'🟢',n:`Graduation credits: ${totalCr}/220`,w:`On track for graduation credit total. Remember: electives, CTE, and additional courses also count toward the 220 credit minimum.`});
-  else rules.push({l:'🟡',n:`Graduation credits: ${totalCr}/220 estimated`,w:`Add more elective courses to reach the 220 credit requirement. Electives, CTE, and additional classes all count.`});
+  // Total credits — all courses count, including HS-only
+  const totalCr=cs.reduce((a,c)=>a+(c.cr||10),0) + 10; // +10 for Algebra 1 done in MS
+  if(totalCr>=220) rules.push({l:'🟢',n:`Est. graduation credits: ~${totalCr}/220`,w:`On track for 220 credit graduation minimum. Algebra 1 (MS, 10cr) included in estimate. Electives and additional courses also accumulate toward 220.`});
+  else rules.push({l:'🟡',n:`Est. graduation credits: ~${totalCr}/220 — add electives`,w:`Need ${220-totalCr} more credits. Add elective courses to reach 220. Each year-long course = 10cr, each semester course = 5cr.`});
 
   return rules;
 }
@@ -1093,19 +1426,319 @@ function goTab(name,el){
   el.classList.add('on');
 }
 
+// ── STARTING POINT STATE
+// pre: set of completed courses before 9th grade
+// Possible values: 'geo' (MS), 'bio-ms' (MS bio), 'geo-sum' (summer geo), 'alg2-sum' (summer alg2), 'bio-sum' (summer bio)
+// Algebra 1 is always assumed done (all students)
+S.pre = new Set(['geo']); // default: your son's situation — Alg1+Geo done in MS
+
+// Derived starting points (computed from S.pre)
+function getStartMath(){
+  // Returns the first DVHS HS math course to take in 9th grade
+  const p = S.pre;
+  if(p.has('alg2-sum')) return 'precalc';   // Alg1+Geo+Alg2 done → start at Pre-Calc
+  if(p.has('geo') || p.has('geo-sum')) return 'alg2';  // Alg1+Geo done → start at Alg2
+  return 'geo';                              // Alg1 only → start at Geometry
+}
+function getStartSci(){
+  // Returns the first DVHS HS science course to take in 9th grade
+  const p = S.pre;
+  if(p.has('bio-ms') || p.has('bio-sum')) return 'chem'; // Bio done → start at Chem
+  return 'bio';                              // default → start at Biology
+}
+function hasBioDone(){ return S.pre.has('bio-ms') || S.pre.has('bio-sum'); }
+function hasGeoDone(){ return S.pre.has('geo') || S.pre.has('geo-sum'); }
+function hasAlg2Done(){ return S.pre.has('alg2-sum'); }
+
+// How many UC C years are already done before 9th
+function ucCMSBonus(){
+  let n = 1; // Alg1 always done
+  if(hasGeoDone()) n++;
+  if(hasAlg2Done()) n++;
+  return n;
+}
+
+function togglePre(key){
+  const cb = document.getElementById(`pre-${key}`);
+  if(!cb) return;
+  // Mutual exclusivity rules
+  if(key==='geo' && cb.checked){
+    // Can't have both MS geo and summer geo
+    S.pre.delete('geo-sum');
+    const gs=document.getElementById('pre-geo-sum'); if(gs) gs.checked=false;
+    // Can't have alg2-sum without geo
+  }
+  if(key==='geo-sum' && cb.checked){
+    S.pre.delete('geo'); S.pre.delete('alg2-sum');
+    const g=document.getElementById('pre-geo'); if(g) g.checked=false;
+    const a=document.getElementById('pre-alg2-sum'); if(a) a.checked=false;
+  }
+  if(key==='alg2-sum'){
+    // Only allowed if geo is done somehow
+    if(cb.checked && !hasGeoDone()){
+      cb.checked=false;
+      alert('⚠️ Algebra 2 summer requires Geometry to be completed first (check Geometry above).');
+      return;
+    }
+  }
+  if(key==='bio-ms' && cb.checked){
+    S.pre.delete('bio-sum');
+    const bs=document.getElementById('pre-bio-sum'); if(bs) bs.checked=false;
+  }
+  if(key==='bio-sum' && cb.checked){
+    S.pre.delete('bio-ms');
+    const bm=document.getElementById('pre-bio-ms'); if(bm) bm.checked=false;
+  }
+  if(key==='span1-ms'){
+    if(!cb.checked){
+      // If unchecking span1, must also uncheck span2
+      S.pre.delete('span2-ms');
+      const s2=document.getElementById('pre-span2-ms'); if(s2) s2.checked=false;
+    }
+  }
+  if(key==='span2-ms' && cb.checked){
+    // span2 requires span1
+    if(!S.pre.has('span1-ms')){
+      S.pre.add('span1-ms');
+      const s1=document.getElementById('pre-span1-ms'); if(s1) s1.checked=true;
+    }
+  }
+  if(cb.checked) S.pre.add(key); else S.pre.delete(key);
+
+  // Sync the S.msCredit for backward compat with getMATH
+  S.msCredit = (hasGeoDone()||hasAlg2Done()) ? 'alg1geo' : 'alg1';
+
+  // Auto-update elective slots based on Spanish MS credit
+  syncSpanishElectives();
+
+  updateSpcResult();
+  updateMathCards();
+  render();
+}
+
+function hasSpan1Done(){ return S.pre.has('span1-ms'); }
+function hasSpan2Done(){ return S.pre.has('span2-ms'); }
+
+function syncSpanishElectives(){
+  // Rebuilds the elective language slots to match what was already done in MS.
+  // Spanish 1+2 done in MS → 9th gets Spanish 3, 10th slot freed, UC E already met entering 9th.
+  // Spanish 1 only done in MS → 9th gets Spanish 2, 10th gets Spanish 3.
+  // Nothing done → 9th gets Spanish 1, 10th gets Spanish 2 (original defaults).
+  const sp3={name:'Spanish 3',icon:'🌎',type:'cl2',ag:'E',cr:10,meta:'3rd year — UC recommends 3 yrs'};
+  const sp2={name:'Spanish 2',icon:'🌎',type:'cl2',ag:'E',cr:10,meta:'Fulfills UC E minimum with Spanish 1'};
+  const sp1={name:'Spanish 1',icon:'🌎',type:'cl2',ag:'E',cr:10,meta:'Start of 2-yr sequence required for UC'};
+  const sp4={name:'Spanish 4',icon:'🌎',type:'cl2',ag:'E',cr:10,meta:'4th year — strong signal for competitive UCs'};
+
+  if(hasSpan2Done()){
+    // Both done in MS: enter 9th at Spanish 3
+    // 9th-0 = Spanish 3, 10th-0 = Spanish 4 (optional), language slots in 10th freed for elective
+    S.el['9-0'] = sp3;
+    S.el['10-0'] = sp4;
+    // 11th language slot is free — keep whatever was there unless it was a language
+    if(S.el['11-0']?.type==='cl2') S.el['11-0']=null;
+  } else if(hasSpan1Done()){
+    // Only Span1 done: enter 9th at Spanish 2
+    S.el['9-0'] = sp2;
+    S.el['10-0'] = sp3;
+    if(S.el['11-0']?.name==='Spanish 3') S.el['11-0']=null;
+  } else {
+    // Nothing done: original sequence
+    S.el['9-0'] = sp1;
+    S.el['10-0'] = sp2;
+    S.el['11-0'] = sp3;
+  }
+}
+function updateSpcResult(){
+  const res = document.getElementById('spc-result');
+  if(!res) return;
+  const sm = getStartMath(), ss = getStartSci();
+  const mathLabels = {geo:'Geometry',alg2:'Algebra 2',precalc:'Pre-Calc/Trig'};
+  const sciLabels  = {bio:'Biology',chem:'Chemistry (or Honors Chemistry)'};
+  const ucC = ucCMSBonus();
+  const mathNote = ucC>=3 ? '🎉 UC C minimum already fully met!' : ucC===2 ? '✓ UC C: 2/3 yrs done. Alg2 in 9th = UC min met after 9th!' : '✓ UC C: 1/3 yrs done. Will meet min after 10th.';
+  const apCalcNote = sm==='precalc' ? '🚀 Can reach AP Calc BC by 11th grade!' : sm==='alg2' ? '✓ Can reach AP Calc BC by 12th grade' : '→ Can reach AP Calc AB by 12th grade';
+  const bioNote = ss==='chem' ? '✓ Biology done — 9th science slot freed' : '→ Biology in 9th grade (standard start)';
+
+  const span2 = hasSpan2Done(), span1 = hasSpan1Done();
+  const langStatus = span2
+    ? '🎉 Spanish 1+2 done in MS — UC E minimum already met! Enters 9th at Spanish 3.'
+    : span1 ? '✓ Spanish 1 done — enters 9th at Spanish 2. UC E met after Spanish 2 in 9th.'
+    : '→ Starting Spanish 1 in 9th grade.';
+  const langExtra = span2 ? '<br><span style="font-size:.62rem">Sp 3(9th) → Sp 4(10th) → 4 yrs of Spanish 💪<br>10th lang slot freed for another elective!</span>' : '';
+
+  res.className = 'spc-result spc-ok';
+  res.innerHTML = `
+    <div class="spc-result-math">
+      <div class="spc-result-hd">📐 Math</div>
+      <strong>9th starts: ${mathLabels[sm]}</strong><br>${mathNote}<br>
+      <span style="font-size:.62rem">${apCalcNote}</span>
+    </div>
+    <div class="spc-result-sci">
+      <div class="spc-result-hd">🔬 Science</div>
+      <strong>9th starts: ${sciLabels[ss]}</strong><br>
+      <span style="font-size:.62rem">${bioNote}</span>
+      ${ss==='chem'?'<br><span style="font-size:.62rem;color:var(--amber)">⚠️ Confirm non-district Bio was pre-approved</span>':''}
+    </div>
+    <div class="spc-result-math">
+      <div class="spc-result-hd">🌎 World Language</div>
+      <span style="font-size:.68rem">${langStatus}</span>${langExtra}
+    </div>`;
+}
+
+function updateMathCards(){
+  const g = hasGeoDone() || hasAlg2Done();
+  const a2 = hasAlg2Done();
+  const seqs = {
+    geo:    a2 ? 'Pre-Calc/Trig → Calculus → Statistics → (elective)' :
+                 g ? 'Algebra 2 → Pre-Calc/Trig → Calculus → Statistics' :
+                     'Geometry → Algebra 2 → Pre-Calc/Trig → Statistics',
+    calc:   a2 ? 'Pre-Calc/Trig → H.Pre-Calc → Calculus → AP Stats' :
+                 g ? 'Algebra 2 → H.Pre-Calc/Trig → Calculus → AP Stats' :
+                     'Geometry → Algebra 2 → H.Pre-Calc/Trig → Calculus',
+    apcalc: a2 ? 'Pre-Calc/Trig → AP Calc AB → AP Calc BC → (elective) 🚀' :
+                 g ? 'Algebra 2 → H.Pre-Calc/Trig → AP Calc AB → AP Calc BC 🎉' :
+                     'Geometry → Algebra 2 → H.Pre-Calc/Trig → AP Calc AB',
+    apstats:a2 ? 'Pre-Calc/Trig → AP Calc AB → AP Calc BC → AP Stats' :
+                 g ? 'Algebra 2 → Pre-Calc/Trig → AP Calc AB → AP Statistics' :
+                     'Geometry → Algebra 2 → Pre-Calc/Trig → AP Statistics',
+  };
+  Object.entries(seqs).forEach(([k,v])=>{
+    const el=document.getElementById(`seq-${k}`); if(el) el.textContent=v;
+  });
+  const tagsEl=document.getElementById('tags-apcalc');
+  if(tagsEl) tagsEl.innerHTML = a2
+    ? '<span class="ptag ptag-ok">🚀 AP Calc BC by 11th!</span><span class="ptag ptag-ok">2+ APs in Math</span>'
+    : g ? '<span class="ptag ptag-ok">AP Calc BC in 4 yrs ✓</span><span class="ptag ptag-ok">2 APs</span><span class="ptag ptag-ok">Strongest STEM</span>'
+        : '<span class="ptag ptag-ok">AP Calc AB in 4 yrs ✓</span><span class="ptag ptag-ok">1 AP</span>';
+  const noteEl=document.getElementById('math-ms-note');
+  if(noteEl) noteEl.innerHTML = a2
+    ? '<strong style="color:var(--green)">✓ Alg1+Geo+Alg2 done</strong> — starting 9th at Pre-Calc. AP Calc BC reachable by 11th!'
+    : g ? '<strong style="color:var(--green)">✓ Alg1+Geo done</strong> — starting 9th at Algebra 2. AP Calc BC fits in 4 years!'
+        : '<strong>✓ Alg1 done</strong> — starting 9th at Geometry.';
+}
+
 function upGPA(yr,v){S.gpa[yr]=v;renderProgress();}
-function setSci(v){
+
+// ── SCIENCE recommended math pairings
+const SCI_TO_MATH={std:'geo',hon:'apcalc',apbio:'apcalc',apchem:'calc',marine:'apstats'};
+// ── MATH recommended science pairings
+const MATH_TO_SCI={geo:'std',calc:'apbio',apcalc:'apbio',apstats:'marine'};
+
+// ── CUSTOM per-year options
+const CUSTOM_SCI_YR={
+  9:['Biology','— (none)'],
+  10:['Chemistry','Honors Chemistry','Marine Biology','Environmental Chemistry','— (none)'],
+  11:['Physics','Honors Physics','AP Biology','AP Chemistry','AP Environmental Science','Chemistry','— (none)'],
+  12:['Anatomy & Physiology','H. Anatomy & Physiology','AP Biology','AP Chemistry','AP Environmental Science','AP Physics C','Marine Biology','— (none)'],
+};
+const CUSTOM_MATH_YR={
+  9:['Geometry'],
+  10:['Algebra 2'],
+  11:['Pre-Calc w/Trig','Honors Pre-Calc/Trig','AP Calculus AB','Statistics'],
+  12:['Calculus','AP Calculus BC','AP Statistics','Statistics','Honors Pre-Calc/Trig'],
+};
+// compatibility warnings (yr: {sciChoice: mathChoices that conflict})
+const COMPAT_WARN={
+  12:{'AP Physics C':['AP Statistics','Statistics','Pre-Calc w/Trig','Honors Pre-Calc/Trig']}
+};
+
+// Custom state
+S.customSci={9:'Biology',10:'Chemistry',11:'Physics',12:'Anatomy & Physiology'};
+S.customMath={9:'Geometry',10:'Algebra 2',11:'Pre-Calc w/Trig',12:'Statistics'};
+S.mode='sci'; // 'sci' | 'math' | 'custom'
+
+function setMode(m){
+  S.mode=m;
+  document.querySelectorAll('.mode-tab').forEach(t=>t.classList.remove('on'));
+  document.getElementById(`mt-${m}`).classList.add('on');
+  document.getElementById('mode-sci').style.display=m==='sci'?'block':'none';
+  document.getElementById('mode-math').style.display=m==='math'?'block':'none';
+  document.getElementById('mode-custom').style.display=m==='custom'?'block':'none';
+  if(m==='custom') renderCustomSelects();
+  render();
+}
+
+function setSciMode(v){
   S.sci=v;
+  S.math=SCI_TO_MATH[v]; // auto-pair math
   document.querySelectorAll('[id^="sci-"]').forEach(b=>b.classList.remove('on'));
   document.getElementById(`sci-${v}`)?.classList.add('on');
   render();
 }
-function setMath(v){
+
+function setMathMode(v){
   S.math=v;
+  S.sci=MATH_TO_SCI[v]; // auto-pair science
   document.querySelectorAll('[id^="math-"]').forEach(b=>b.classList.remove('on'));
   document.getElementById(`math-${v}`)?.classList.add('on');
   render();
 }
+
+function renderCustomSelects(){
+  // Science selects
+  const sd=document.getElementById('custom-sci-rows');
+  sd.innerHTML='';
+  [9,10,11,12].forEach(yr=>{
+    const row=document.createElement('div');
+    row.className='csel-row';
+    const opts=CUSTOM_SCI_YR[yr];
+    row.innerHTML=`<span class="csel-yr">${['9th','10th','11th','12th'][yr-9]}</span>
+      <select class="csel" onchange="updateCustomSci(${yr},this.value)">
+        ${opts.map(o=>`<option value="${o}" ${S.customSci[yr]===o?'selected':''}>${o}</option>`).join('')}
+      </select>`;
+    sd.appendChild(row);
+    // compat warning
+    const warn=document.createElement('div');
+    warn.className='csel-warn';
+    warn.id=`sci-warn-${yr}`;
+    sd.appendChild(warn);
+  });
+  // Math selects
+  const md=document.getElementById('custom-math-rows');
+  md.innerHTML='';
+  [9,10,11,12].forEach(yr=>{
+    const row=document.createElement('div');
+    row.className='csel-row';
+    const opts=CUSTOM_MATH_YR[yr];
+    const locked=yr<=10; // 9th=Geometry, 10th=Algebra 2 always
+    row.innerHTML=`<span class="csel-yr">${['9th','10th','11th','12th'][yr-9]}</span>
+      <select class="csel" ${locked?'disabled style="opacity:.5"':''} onchange="updateCustomMath(${yr},this.value)">
+        ${opts.map(o=>`<option value="${o}" ${S.customMath[yr]===o?'selected':''}>${o}</option>`).join('')}
+      </select>`;
+    md.appendChild(row);
+    const warn=document.createElement('div');
+    warn.className='csel-warn';
+    warn.id=`math-warn-${yr}`;
+    md.appendChild(warn);
+  });
+  checkCustomCompat();
+}
+
+function updateCustomSci(yr,v){
+  S.customSci[yr]=v;
+  checkCustomCompat();
+  render();
+}
+function updateCustomMath(yr,v){
+  S.customMath[yr]=v;
+  checkCustomCompat();
+  render();
+}
+function checkCustomCompat(){
+  [9,10,11,12].forEach(yr=>{
+    const w=document.getElementById(`sci-warn-${yr}`);
+    if(!w) return;
+    const sciChoice=S.customSci[yr], mathChoice=S.customMath[yr];
+    const conflicts=COMPAT_WARN[yr]?.[sciChoice];
+    if(conflicts && conflicts.includes(mathChoice)){
+      w.textContent=`⚠️ ${sciChoice} requires concurrent Calculus — current math (${mathChoice}) conflicts.`;
+      w.classList.add('show');
+    } else {
+      w.classList.remove('show');
+    }
+  });
+}
+
 function toggleBio(){
   S.bioSum=!S.bioSum;
   S.bioProvider=S.bioSum?'uc':null;
@@ -1113,21 +1746,30 @@ function toggleBio(){
   render();
 }
 
-// ══════════ DEFAULT SAMPLE PLAN ══════════
-// Pre-fill with a strong, realistic UC/CSU-targeted plan for STEM
-// Spanish 1 + Visual Art in 9th (covers UC E and F)
-// Spanish 2 + AP Human Geography in 10th
-// Spanish 3 + AP Psychology in 11th
-// AP Macro Economics in 12th
-S.el['9-0']={name:'Spanish 1',icon:'🌎',type:'cl2',ag:'E',cr:10,meta:'Start of 2-yr sequence required for UC'};
+// ══════════ INIT ══════════
+S.mode='sci'; S.sci='apbio'; S.math='apcalc';
+S.pre = new Set(['geo','span1-ms','span2-ms']); // Alg1+Geo+Spanish1+2 done in MS
+S.msCredit = 'alg1geo';
+
 S.el['9-1']={name:'Visual Art',icon:'🎨',type:'ca',ag:'F',cr:10,meta:'1 full year satisfies UC F'};
-S.el['10-0']={name:'Spanish 2',icon:'🌎',type:'cl2',ag:'E',cr:10,meta:'Fulfills UC E with Spanish 1'};
 S.el['10-1']={name:'AP Human Geography',icon:'🗺️',type:'cap',ag:'A',cr:10,ap:true,meta:'Good first AP, available via UC Scout'};
-S.el['11-0']={name:'Spanish 3',icon:'🌎',type:'cl2',ag:'E',cr:10,meta:'3rd year — UC recommends 3'};
 S.el['11-1']={name:'AP Psychology',icon:'🧠',type:'cap',ag:'G',cr:10,ap:true,meta:'Popular, manageable load'};
 S.el['12-0']={name:'AP Macro Economics',icon:'📈',type:'cap',ag:'G',cr:10,ap:true,meta:'Pairs well with Gov/Econ'};
 
-render();
+S.customSci={9:'Biology',10:'Honors Chemistry',11:'AP Biology',12:'H. Anatomy & Physiology'};
+S.customMath={9:'Algebra 2',10:'Honors Pre-Calc/Trig',11:'AP Calculus AB',12:'AP Calculus BC'};
+
+// Sync Spanish electives then check boxes to match default state
+syncSpanishElectives();
+window.addEventListener('DOMContentLoaded',()=>{
+  const g=document.getElementById('pre-geo'); if(g) g.checked=true;
+  const s1=document.getElementById('pre-span1-ms'); if(s1) s1.checked=true;
+  const s2=document.getElementById('pre-span2-ms'); if(s2) s2.checked=true;
+});
+
+setMode('sci');
+updateMathCards();
+updateSpcResult();
 </script>
 </body>
 </html>
